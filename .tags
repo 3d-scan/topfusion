@@ -1,0 +1,972 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	372;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	375;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	378;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	381;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	384;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	387;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	390;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	395;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	398;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	401;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	405;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	367;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	370;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	373;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	376;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	379;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	382;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	385;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	390;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	393;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	396;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	400;"	d	file:
+Aff3f	tfusion/src/internal.hpp	/^        struct Aff3f { Mat3f R; Vec3f t; };$/;"	s	namespace:tfusion::device
+Affine3f	tfusion/include/tfusion/types.hpp	/^    typedef cv::Affine3f Affine3f;$/;"	t	namespace:tfusion
+All	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ bool All(int predicate, volatile int* cta_buffer)$/;"	f	struct:tfusion::device::Emulation
+Ballot	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ int Ballot(int predicate, volatile int* cta_buffer)$/;"	f	struct:tfusion::device::Emulation
+Block	tfusion/src/cuda/temp_utils.hpp	/^        struct Block$/;"	s	namespace:tfusion::device
+CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/chuan\/topfusion\/build$/;"	m
+CMAKE_BINARY_DIR	build/apps/Makefile	/^CMAKE_BINARY_DIR = \/home\/chuan\/topfusion\/build$/;"	m
+CMAKE_BINARY_DIR	build/tfusion/Makefile	/^CMAKE_BINARY_DIR = \/home\/chuan\/topfusion\/build$/;"	m
+CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/apps/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/tfusion/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/chuan\/topfusion$/;"	m
+CMAKE_SOURCE_DIR	build/apps/Makefile	/^CMAKE_SOURCE_DIR = \/home\/chuan\/topfusion$/;"	m
+CMAKE_SOURCE_DIR	build/tfusion/Makefile	/^CMAKE_SOURCE_DIR = \/home\/chuan\/topfusion$/;"	m
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	103;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	124;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	132;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	137;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	144;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	147;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	14;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	150;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	153;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	168;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	190;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	208;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	217;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	220;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	227;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	245;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	248;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	251;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	37;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	45;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	57;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	66;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	75;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	96;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	101;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	108;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	115;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	122;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	129;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	137;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	13;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	142;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	149;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	152;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	155;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	170;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	184;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	192;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	19;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	210;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	219;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	222;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	240;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	243;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	246;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	42;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	50;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	56;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	62;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	71;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	80;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	94;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	105;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	112;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	119;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	133;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	139;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	157;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	172;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	183;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	192;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	19;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	211;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	222;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	230;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	235;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	38;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	46;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	53;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	59;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	68;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	78;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	83;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	91;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	98;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	103;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	110;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	117;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	124;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	130;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	138;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	144;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	159;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	15;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	174;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	185;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	194;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	213;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	225;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	230;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	24;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	43;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	51;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	58;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	64;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	73;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	83;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	88;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	96;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	106;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	113;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	120;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	126;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	134;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	158;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	173;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	184;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	193;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	20;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	212;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	223;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	231;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	236;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	39;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	47;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	54;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	60;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	69;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	79;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	84;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	92;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	99;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	104;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	111;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	118;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	125;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	131;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	139;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	145;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	160;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	16;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	175;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	186;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	195;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	214;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	226;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	231;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	25;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	44;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	52;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	59;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	65;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	74;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	84;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	89;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	97;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	100;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	107;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	114;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	121;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	128;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	141;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	159;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	174;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	186;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	197;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	200;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	213;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	224;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	22;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	232;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	237;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	24;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	41;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	48;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	62;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	71;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	80;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	85;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	93;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	105;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	112;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	119;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	126;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	133;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	146;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	161;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	176;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	188;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	199;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	202;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	215;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	227;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	232;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	27;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	29;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	46;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	53;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	67;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	76;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	85;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	90;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	98;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	165;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	204;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	28;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	167;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	206;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	33;"	d	file:
+CV_XADD	tfusion/src/device_memory.cpp	/^    template<typename _Tp> static inline _Tp CV_XADD(_Tp* addr, _Tp delta)$/;"	f	file:
+CV_XADD	tfusion/src/device_memory.cpp	20;"	d	file:
+CV_XADD	tfusion/src/device_memory.cpp	23;"	d	file:
+CV_XADD	tfusion/src/device_memory.cpp	28;"	d	file:
+CV_XADD	tfusion/src/device_memory.cpp	30;"	d	file:
+CV_XADD	tfusion/src/device_memory.cpp	36;"	d	file:
+Cloud	tfusion/include/tfusion/types.hpp	/^        typedef cuda::DeviceArray2D<Point> Cloud;$/;"	t	namespace:tfusion::cuda
+ComputeIcpHelper	tfusion/src/internal.hpp	/^        struct ComputeIcpHelper$/;"	s	namespace:tfusion::device
+ComputeIcpHelper	tfusion/src/projective_icp.cpp	/^tfusion::device::ComputeIcpHelper::ComputeIcpHelper(float dist_thres, float angle_thres)$/;"	f	class:tfusion::device::ComputeIcpHelper
+CudaData	tfusion/include/tfusion/types.hpp	/^        typedef cuda::DeviceMemory CudaData;$/;"	t	namespace:tfusion::cuda
+DEC	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	409;"	d	file:
+DEC	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	404;"	d	file:
+Depth	tfusion/include/tfusion/types.hpp	/^        typedef cuda::DeviceArray2D<unsigned short> Depth;$/;"	t	namespace:tfusion::cuda
+Depth	tfusion/src/internal.hpp	/^        typedef DeviceArray2D<ushort> Depth;$/;"	t	namespace:tfusion::device
+DepthPyr	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            typedef std::vector<Depth> DepthPyr;$/;"	t	class:tfusion::cuda::ProjectiveICP
+DevPtr	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ DevPtr() : data(0) {}$/;"	f	struct:tfusion::cuda::DevPtr
+DevPtr	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ DevPtr(T* data_arg) : data(data_arg) {}$/;"	f	struct:tfusion::cuda::DevPtr
+DevPtr	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^        template<typename T> struct DevPtr$/;"	s	namespace:tfusion::cuda
+DeviceArray	tfusion/include/tfusion/cuda/device_array.hpp	/^        class DeviceArray : public DeviceMemory$/;"	c	namespace:tfusion::cuda
+DeviceArray	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray<T>::DeviceArray() {}$/;"	f	class:tfusion::cuda::DeviceArray
+DeviceArray	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray<T>::DeviceArray(T *ptr, size_t size) : DeviceMemory(ptr, size * elem_size) {}$/;"	f	class:tfusion::cuda::DeviceArray
+DeviceArray	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray<T>::DeviceArray(const DeviceArray& other) : DeviceMemory(other) {}$/;"	f	class:tfusion::cuda::DeviceArray
+DeviceArray	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray<T>::DeviceArray(size_t size) : DeviceMemory(size * elem_size) {}$/;"	f	class:tfusion::cuda::DeviceArray
+DeviceArray2D	tfusion/include/tfusion/cuda/device_array.hpp	/^        class DeviceArray2D : public DeviceMemory2D$/;"	c	namespace:tfusion::cuda
+DeviceArray2D	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray2D<T>::DeviceArray2D() {}$/;"	f	class:tfusion::cuda::DeviceArray2D
+DeviceArray2D	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray2D<T>::DeviceArray2D(const DeviceArray2D& other) : DeviceMemory2D(other) {}$/;"	f	class:tfusion::cuda::DeviceArray2D
+DeviceArray2D	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray2D<T>::DeviceArray2D(int rows, int cols) : DeviceMemory2D(rows, cols * elem_size) {}$/;"	f	class:tfusion::cuda::DeviceArray2D
+DeviceArray2D	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray2D<T>::DeviceArray2D(int rows, int cols, void *data, size_t stepBytes) : DeviceMemory2D(rows, cols * elem_size, data, stepBytes) {}$/;"	f	class:tfusion::cuda::DeviceArray2D
+DeviceMemory	tfusion/include/tfusion/cuda/device_memory.hpp	/^        class KF_EXPORTS DeviceMemory$/;"	c	namespace:tfusion::cuda
+DeviceMemory	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory::DeviceMemory() : data_(0), sizeBytes_(0), refcount_(0) {}$/;"	f	class:tfusion::cuda::DeviceMemory
+DeviceMemory	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory::DeviceMemory(const DeviceMemory& other_arg)$/;"	f	class:tfusion::cuda::DeviceMemory
+DeviceMemory	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory::DeviceMemory(size_t sizeBtes_arg)  : data_(0), sizeBytes_(0), refcount_(0) { create(sizeBtes_arg); }$/;"	f	class:tfusion::cuda::DeviceMemory
+DeviceMemory	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory::DeviceMemory(void *ptr_arg, size_t sizeBytes_arg) : data_(ptr_arg), sizeBytes_(sizeBytes_arg), refcount_(0){}$/;"	f	class:tfusion::cuda::DeviceMemory
+DeviceMemory2D	tfusion/include/tfusion/cuda/device_memory.hpp	/^        class KF_EXPORTS DeviceMemory2D$/;"	c	namespace:tfusion::cuda
+DeviceMemory2D	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory2D::DeviceMemory2D() : data_(0), step_(0), colsBytes_(0), rows_(0), refcount_(0) {}$/;"	f	class:tfusion::cuda::DeviceMemory2D
+DeviceMemory2D	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory2D::DeviceMemory2D(const DeviceMemory2D& other_arg) :$/;"	f	class:tfusion::cuda::DeviceMemory2D
+DeviceMemory2D	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory2D::DeviceMemory2D(int rows_arg, int colsBytes_arg)$/;"	f	class:tfusion::cuda::DeviceMemory2D
+DeviceMemory2D	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory2D::DeviceMemory2D(int rows_arg, int colsBytes_arg, void *data_arg, size_t step_arg)$/;"	f	class:tfusion::cuda::DeviceMemory2D
+Dists	tfusion/include/tfusion/types.hpp	/^        typedef cuda::DeviceArray2D<unsigned short> Dists;$/;"	t	namespace:tfusion::cuda
+Dists	tfusion/src/internal.hpp	/^        typedef PtrStepSz<ushort> Dists;$/;"	t	namespace:tfusion::device
+EACH	tfusion/include/tfusion/types.hpp	/^        enum { EACH = 33 };$/;"	e	enum:tfusion::SampledScopeTime::__anon5
+EQUALS	build/Makefile	/^EQUALS = =$/;"	m
+EQUALS	build/apps/Makefile	/^EQUALS = =$/;"	m
+EQUALS	build/tfusion/Makefile	/^EQUALS = =$/;"	m
+Eigen33	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ Eigen33(volatile float* mat_pkg_arg) : mat_pkg(mat_pkg_arg) {}$/;"	f	struct:tfusion::device::Eigen33
+Eigen33	tfusion/src/cuda/temp_utils.hpp	/^        struct Eigen33$/;"	s	namespace:tfusion::device
+Emulation	tfusion/src/cuda/temp_utils.hpp	/^        struct Emulation$/;"	s	namespace:tfusion::device
+Frame	tfusion/include/tfusion/types.hpp	/^        struct Frame$/;"	s	namespace:tfusion::cuda
+GetAllocationList	tfusion/include/tfusion/LovalVBA.hpp	/^		int *GetAllocationList(void) { return allocationList->GetData(memoryType); }$/;"	f	class:Lib::LocalVBA
+GetAllocationList_MB	tfusion/include/tfusion/LovalVBA.hpp	/^		const void* GetAllocationList_MB(void) const { return allocationList->GetMetalBuffer(); }$/;"	f	class:Lib::LocalVBA
+GetHasSyncedData	tfusion/include/tfusion/GlobalCache.hpp	/^		bool *GetHasSyncedData(bool useGPU) const { return useGPU ? hasSyncedData_device : hasSyncedData_host; }$/;"	f	class:tfusion::GlobalCache
+GetNeededEntryIDs	tfusion/include/tfusion/GlobalCache.hpp	/^		int *GetNeededEntryIDs(bool useGPU) { return useGPU ? neededEntryIDs_device : neededEntryIDs_host; }$/;"	f	class:tfusion::GlobalCache
+GetStoredVoxelBlock	tfusion/include/tfusion/GlobalCache.hpp	/^		inline TVoxel *GetStoredVoxelBlock(int address) { return storedVoxelBlocks + address * SDF_BLOCK_SIZE3; }$/;"	f	class:tfusion::GlobalCache
+GetSwapStates	tfusion/include/tfusion/GlobalCache.hpp	/^		HashSwapState *GetSwapStates(bool useGPU) { return useGPU ? swapStates_device : swapStates_host; }$/;"	f	class:tfusion::GlobalCache
+GetSyncedVoxelBlocks	tfusion/include/tfusion/GlobalCache.hpp	/^		TVoxel *GetSyncedVoxelBlocks(bool useGPU) const { return useGPU ? syncedVoxelBlocks_device : syncedVoxelBlocks_host; }$/;"	f	class:tfusion::GlobalCache
+GetVoxelBlocks	tfusion/include/tfusion/LovalVBA.hpp	/^		inline TVoxel *GetVoxelBlocks(void) { return voxelBlocks->GetData(memoryType); }$/;"	f	class:Lib::LocalVBA
+GetVoxelBlocks	tfusion/include/tfusion/LovalVBA.hpp	/^		inline const TVoxel *GetVoxelBlocks(void) const { return voxelBlocks->GetData(memoryType); }$/;"	f	class:Lib::LocalVBA
+GetVoxelBlocks_MB	tfusion/include/tfusion/LovalVBA.hpp	/^		const void* GetVoxelBlocks_MB() const { return voxelBlocks->GetMetalBuffer(); }$/;"	f	class:Lib::LocalVBA
+GlobalCache	tfusion/include/tfusion/GlobalCache.hpp	/^		GlobalCache() : noTotalEntries(SDF_BUCKET_NUM + SDF_EXCESS_LIST_SIZE)$/;"	f	class:tfusion::GlobalCache
+GlobalCache	tfusion/include/tfusion/GlobalCache.hpp	/^	class GlobalCache$/;"	c	namespace:tfusion
+HEX	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	420;"	d	file:
+HEX	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	415;"	d	file:
+HasStoredData	tfusion/include/tfusion/GlobalCache.hpp	/^		inline bool HasStoredData(int address) const { return hasStoredData[address]; }$/;"	f	class:tfusion::GlobalCache
+HashSwapState	tfusion/include/tfusion/GlobalCache.hpp	/^	struct HashSwapState$/;"	s	namespace:tfusion
+ID_VOID_MAIN	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+Image	tfusion/include/tfusion/types.hpp	/^        typedef cuda::DeviceArray2D<RGB> Image;$/;"	t	namespace:tfusion::cuda
+Image	tfusion/src/internal.hpp	/^        typedef DeviceArray2D<uchar4> Image;$/;"	t	namespace:tfusion::device
+Impl	tfusion/src/capture.cpp	/^struct tfusion::OpenNISource::Impl$/;"	s	class:tfusion::OpenNISource	file:
+Intr	tfusion/include/tfusion/types.hpp	/^    struct  Intr$/;"	s	namespace:tfusion
+Intr	tfusion/src/precomp.cpp	/^tfusion::Intr::Intr () {}$/;"	f	class:tfusion::Intr
+Intr	tfusion/src/precomp.cpp	/^tfusion::Intr::Intr (float fx_, float fy_, float cx_, float cy_) : fx(fx_), fy(fy_), cx(cx_), cy(cy_) {}$/;"	f	class:tfusion::Intr
+KF_EXPORTS	tfusion/include/exports.hpp	4;"	d
+KF_EXPORTS	tfusion/include/exports.hpp	6;"	d
+KF_EXPORTS	tfusion/include/tfusion/exports.hpp	4;"	d
+KF_EXPORTS	tfusion/include/tfusion/exports.hpp	6;"	d
+KeyboardCallback	apps/demo.cpp	/^    static void KeyboardCallback(const cv::viz::KeyboardEvent& event, void* pthis)$/;"	f	struct:TopFuApp
+LOG_WARP_SIZE	tfusion/src/cuda/temp_utils.hpp	/^                LOG_WARP_SIZE = 5,$/;"	e	enum:tfusion::device::Warp::__anon11
+LdCs	tfusion/src/cuda/device.hpp	/^    template<> __tf_device__ ushort2 tfusion::device::gmem::LdCs(ushort2* ptr)$/;"	f	class:tfusion::device::gmem
+Lib	tfusion/include/tfusion/LovalVBA.hpp	/^namespace Lib$/;"	n
+LoadFromDirectory	tfusion/include/tfusion/LovalVBA.hpp	/^		void LoadFromDirectory(const std::string &inputDirectory)$/;"	f	class:Lib::LocalVBA
+LoadFromDirectory	tfusion/include/tfusion/scene.hpp	/^		void LoadFromDirectory(const std::string &outputDirectory)$/;"	f	class:tfusion::Scene
+LocalVBA	tfusion/include/tfusion/LovalVBA.hpp	/^		LocalVBA(MemoryDeviceType memoryType, int noBlocks, int blockSize)$/;"	f	class:Lib::LocalVBA
+LocalVBA	tfusion/include/tfusion/LovalVBA.hpp	/^	class LocalVBA$/;"	c	namespace:Lib
+MAX_PYRAMID_LEVELS	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            enum { MAX_PYRAMID_LEVELS = 4 };$/;"	e	enum:tfusion::cuda::ProjectiveICP::__anon8
+Mat33	tfusion/src/cuda/temp_utils.hpp	/^            typedef MiniMat<3> Mat33;$/;"	t	struct:tfusion::device::Eigen33
+Mat3f	tfusion/include/tfusion/types.hpp	/^    typedef cv::Matx33f Mat3f;$/;"	t	namespace:tfusion
+Mat3f	tfusion/src/internal.hpp	/^        struct Mat3f { float3 data[3]; };$/;"	s	namespace:tfusion::device
+Mat43	tfusion/src/cuda/temp_utils.hpp	/^            typedef MiniMat<4> Mat43;$/;"	t	struct:tfusion::device::Eigen33
+Mat6f	tfusion/src/projective_icp.cpp	/^    typedef cv::Matx66f Mat6f;$/;"	t	struct:tfusion::cuda::ProjectiveICP::StreamHelper	file:
+MiniMat	tfusion/src/cuda/temp_utils.hpp	/^            template<int Rows> struct MiniMat$/;"	s	struct:tfusion::device::Eigen33
+Normal	tfusion/include/tfusion/types.hpp	/^    typedef Point Normal;$/;"	t	namespace:tfusion
+Normal	tfusion/src/internal.hpp	/^        typedef float4 Normal;$/;"	t	namespace:tfusion::device
+Normals	tfusion/include/tfusion/types.hpp	/^        typedef cuda::DeviceArray2D<Normal> Normals;$/;"	t	namespace:tfusion::cuda
+Normals	tfusion/src/internal.hpp	/^        typedef DeviceArray2D<Normal> Normals;$/;"	t	namespace:tfusion::device
+NormalsPyr	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            typedef std::vector<Normals> NormalsPyr;$/;"	t	class:tfusion::cuda::ProjectiveICP
+OpenNISource	tfusion/include/io/capture.hpp	/^    class KF_EXPORTS OpenNISource$/;"	c	namespace:tfusion
+OpenNISource	tfusion/src/capture.cpp	/^tfusion::OpenNISource::OpenNISource() : depth_focal_length_VGA (0.f), baseline (0.f),$/;"	f	class:tfusion::OpenNISource
+OpenNISource	tfusion/src/capture.cpp	/^tfusion::OpenNISource::OpenNISource(const string& filename, bool repeat \/*= false*\/) {open (filename, repeat); }$/;"	f	class:tfusion::OpenNISource
+OpenNISource	tfusion/src/capture.cpp	/^tfusion::OpenNISource::OpenNISource(int device) {open (device); }$/;"	f	class:tfusion::OpenNISource
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	269;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	272;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	275;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	278;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	281;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	284;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	287;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	290;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	293;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	296;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	299;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	302;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	305;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	308;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	311;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	314;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	317;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	320;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	323;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	326;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	329;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	332;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	335;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	338;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	341;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	345;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	348;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	351;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	354;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	357;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	361;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	264;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	267;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	270;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	273;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	276;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	279;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	282;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	285;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	288;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	291;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	294;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	297;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	300;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	303;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	306;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	309;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	312;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	315;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	318;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	321;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	324;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	327;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	330;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	333;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	336;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	340;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	343;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	346;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	349;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	352;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	356;"	d	file:
+PROP_OPENNI_REGISTRATION_ON	tfusion/include/io/capture.hpp	/^        enum { PROP_OPENNI_REGISTRATION_ON  = 104 };$/;"	e	enum:tfusion::OpenNISource::__anon9
+PageLockHelper	tfusion/src/internal.hpp	/^            struct PageLockHelper$/;"	s	struct:tfusion::device::ComputeIcpHelper
+PageLockHelper	tfusion/src/projective_icp.cpp	/^    typedef device::ComputeIcpHelper::PageLockHelper PageLockHelper;$/;"	t	struct:tfusion::cuda::ProjectiveICP::StreamHelper	file:
+PixelRGB	tfusion/include/tfusion/types.hpp	/^    struct PixelRGB$/;"	s	namespace:tfusion
+Point	tfusion/include/tfusion/types.hpp	/^    struct Point$/;"	s	namespace:tfusion
+Point	tfusion/src/internal.hpp	/^        typedef float4 Point;$/;"	t	namespace:tfusion::device
+Points	tfusion/src/internal.hpp	/^        typedef DeviceArray2D<Point> Points;$/;"	t	namespace:tfusion::device
+PointsPyr	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            typedef std::vector<Cloud> PointsPyr;$/;"	t	class:tfusion::cuda::ProjectiveICP
+ProjectiveICP	tfusion/include/tfusion/cuda/projective_icp.hpp	/^        class ProjectiveICP$/;"	c	namespace:tfusion::cuda
+ProjectiveICP	tfusion/src/projective_icp.cpp	/^tfusion::cuda::ProjectiveICP::ProjectiveICP() : angle_thres_(deg2rad(20.f)), dist_thres_(0.1f)$/;"	f	class:tfusion::cuda::ProjectiveICP
+Projector	tfusion/src/internal.hpp	/^            Projector(){}$/;"	f	struct:tfusion::device::Projector
+Projector	tfusion/src/internal.hpp	/^        struct Projector$/;"	s	namespace:tfusion::device
+Projector	tfusion/src/precomp.cpp	/^tfusion::device::Projector::Projector(float fx, float fy, float cx, float cy) : f(make_float2(fx, fy)), c(make_float2(cx, cy)) {}$/;"	f	class:tfusion::device::Projector
+Ptr	tfusion/include/tfusion/topfu.hpp	/^        typedef cv::Ptr<TopFu> Ptr;$/;"	t	class:tfusion::TopFu
+PtrStep	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ PtrStep() : step(0) {}$/;"	f	struct:tfusion::cuda::PtrStep
+PtrStep	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ PtrStep(T* data_arg, size_t step_arg) : DevPtr<T>(data_arg), step(step_arg) {}$/;"	f	struct:tfusion::cuda::PtrStep
+PtrStep	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^        template<typename T>  struct PtrStep : public DevPtr<T>$/;"	s	namespace:tfusion::cuda
+PtrStepSz	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ PtrStepSz() : cols(0), rows(0) {}$/;"	f	struct:tfusion::cuda::PtrStepSz
+PtrStepSz	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ PtrStepSz(int rows_arg, int cols_arg, T* data_arg, size_t step_arg)$/;"	f	struct:tfusion::cuda::PtrStepSz
+PtrStepSz	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^        template <typename T> struct PtrStepSz : public PtrStep<T>$/;"	s	namespace:tfusion::cuda
+PtrSz	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ PtrSz() : size(0) {}$/;"	f	struct:tfusion::cuda::PtrSz
+PtrSz	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ PtrSz(T* data_arg, size_t size_arg) : DevPtr<T>(data_arg), size(size_arg) {}$/;"	f	struct:tfusion::cuda::PtrSz
+PtrSz	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^        template<typename T> struct PtrSz : public DevPtr<T>$/;"	s	namespace:tfusion::cuda
+R	tfusion/src/internal.hpp	/^        struct Aff3f { Mat3f R; Vec3f t; };$/;"	m	struct:tfusion::device::Aff3f
+REPORT_ERROR	tfusion/src/capture.cpp	38;"	d	file:
+RGB	tfusion/include/tfusion/types.hpp	/^    struct RGB$/;"	s	namespace:tfusion
+RGB24	tfusion/include/io/capture.hpp	/^        typedef tfusion::PixelRGB RGB24;$/;"	t	class:tfusion::OpenNISource
+RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	build/apps/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	build/tfusion/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+ReadFromFile	tfusion/include/tfusion/GlobalCache.hpp	/^		void ReadFromFile(char *fileName)$/;"	f	class:tfusion::GlobalCache
+Reprojector	tfusion/src/internal.hpp	/^            Reprojector() {}$/;"	f	struct:tfusion::device::Reprojector
+Reprojector	tfusion/src/internal.hpp	/^        struct Reprojector$/;"	s	namespace:tfusion::device
+Reprojector	tfusion/src/precomp.cpp	/^tfusion::device::Reprojector::Reprojector(float fx, float fy, float cx, float cy) : finv(make_float2(1.f\/fx, 1.f\/fy)), c(make_float2(cx, cy)) {}$/;"	f	class:tfusion::device::Reprojector
+SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	build/apps/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	build/tfusion/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SIMULATE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	16;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	157;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	172;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	21;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	162;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	177;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	32;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	164;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	179;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	37;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	178;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	33;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	165;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	180;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	38;"	d	file:
+STRIDE	tfusion/src/cuda/temp_utils.hpp	/^                STRIDE        = WARP_SIZE$/;"	e	enum:tfusion::device::Warp::__anon11
+SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	build/apps/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	build/tfusion/Makefile	/^SUFFIXES =$/;"	m
+SampledScopeTime	tfusion/include/tfusion/types.hpp	/^    struct SampledScopeTime$/;"	s	namespace:tfusion
+SampledScopeTime	tfusion/src/core.cpp	/^tf::SampledScopeTime::SampledScopeTime(double& time_ms) : time_ms_(time_ms)$/;"	f	class:tf::SampledScopeTime
+SaveToDirectory	tfusion/include/tfusion/LovalVBA.hpp	/^		void SaveToDirectory(const std::string &outputDirectory) const$/;"	f	class:Lib::LocalVBA
+SaveToDirectory	tfusion/include/tfusion/scene.hpp	/^		void SaveToDirectory(const std::string &outputDirectory) const$/;"	f	class:tfusion::Scene
+SaveToFile	tfusion/include/tfusion/GlobalCache.hpp	/^		void SaveToFile(char *fileName) const$/;"	f	class:tfusion::GlobalCache
+Scene	tfusion/include/tfusion/scene.hpp	/^		Scene(const SceneParams *_sceneParams, bool _useSwapping, MemoryDeviceType _memoryType)$/;"	f	class:tfusion::Scene
+Scene	tfusion/include/tfusion/scene.hpp	/^	class Scene$/;"	c	namespace:tfusion
+SceneReconstruction	tfusion/include/tfusion/reconstruction.hpp	/^	class SceneReconstruction<TVoxel,VoxelBlockHash>$/;"	c	namespace:tfusion
+ScopeTime	tfusion/include/tfusion/types.hpp	/^    struct ScopeTime$/;"	s	namespace:tfusion
+ScopeTime	tfusion/src/core.cpp	/^tf::ScopeTime::ScopeTime(const char *name_) : name(name_)$/;"	f	class:tf::ScopeTime
+SetStoredData	tfusion/include/tfusion/GlobalCache.hpp	/^		inline void SetStoredData(int address, TVoxel *data) $/;"	f	class:tfusion::GlobalCache
+StCs	tfusion/src/cuda/device.hpp	/^    template<> __tf_device__ void tfusion::device::gmem::StCs(const ushort2& val, ushort2* ptr)$/;"	f	class:tfusion::device::gmem
+StreamHelper	tfusion/src/projective_icp.cpp	/^    StreamHelper() { cudaSafeCall( cudaStreamCreate(&stream) ); }$/;"	f	struct:tfusion::cuda::ProjectiveICP::StreamHelper
+StreamHelper	tfusion/src/projective_icp.cpp	/^struct tfusion::cuda::ProjectiveICP::StreamHelper$/;"	s	class:tfusion::cuda::ProjectiveICP	file:
+TextureBinder	tfusion/src/cuda/texture_binder.hpp	/^            TextureBinder(const A& arr, const struct texture<T, 2, readMode>& tex, const cudaChannelFormatDesc& desc) : texref(&tex)$/;"	f	class:tfusion::cuda::TextureBinder
+TextureBinder	tfusion/src/cuda/texture_binder.hpp	/^            TextureBinder(const DeviceArray2D<T>& arr, const struct texture<T, 2, readMode>& tex) : texref(&tex)$/;"	f	class:tfusion::cuda::TextureBinder
+TextureBinder	tfusion/src/cuda/texture_binder.hpp	/^            TextureBinder(const DeviceArray<T>& arr, const struct texture<T, 1, readMode> &tex) : texref(&tex)$/;"	f	class:tfusion::cuda::TextureBinder
+TextureBinder	tfusion/src/cuda/texture_binder.hpp	/^            TextureBinder(const PtrStepSz<T>& arr, const struct texture<T, 2, readMode>& tex) : texref(&tex)$/;"	f	class:tfusion::cuda::TextureBinder
+TextureBinder	tfusion/src/cuda/texture_binder.hpp	/^            TextureBinder(const PtrSz<T>& arr, const struct texture<T, 1, readMode> &tex) : texref(&tex)$/;"	f	class:tfusion::cuda::TextureBinder
+TextureBinder	tfusion/src/cuda/texture_binder.hpp	/^        class TextureBinder$/;"	c	namespace:tfusion::cuda
+TopFu	tfusion/include/tfusion/topfu.hpp	/^    class KF_EXPORTS TopFu$/;"	c	namespace:tfusion
+TopFu	tfusion/src/topfu.cpp	/^tfusion::TopFu::TopFu(const TopFuParams& params) : frame_counter_(0), params_(params)$/;"	f	class:tfusion::TopFu
+TopFuApp	apps/demo.cpp	/^    TopFuApp(OpenNISource& source) : exit_ (false),  iteractive_mode_(false), capture_ (source), pause_(false)$/;"	f	struct:TopFuApp
+TopFuApp	apps/demo.cpp	/^struct TopFuApp$/;"	s	file:
+TopFuParams	tfusion/include/tfusion/topfu.hpp	/^    struct KF_EXPORTS TopFuParams$/;"	s	namespace:tfusion
+TsdfVolume	tfusion/src/internal.hpp	/^        struct TsdfVolume$/;"	s	namespace:tfusion::device
+TsdfVolume	tfusion/src/precomp.cpp	/^tfusion::device::TsdfVolume::TsdfVolume(elem_type* _data, int3 _dims, float3 _voxel_size, float _trunc_dist, int _max_weight)$/;"	f	class:tfusion::device::TsdfVolume
+Vec3f	tfusion/include/tfusion/types.hpp	/^    typedef cv::Vec3f Vec3f;$/;"	t	namespace:tfusion
+Vec3f	tfusion/src/internal.hpp	/^        typedef float3 Vec3f;$/;"	t	namespace:tfusion::device
+Vec3i	tfusion/include/tfusion/types.hpp	/^    typedef cv::Vec3i Vec3i;$/;"	t	namespace:tfusion
+Vec3i	tfusion/src/internal.hpp	/^        typedef int3   Vec3i;$/;"	t	namespace:tfusion::device
+Vec6f	tfusion/src/projective_icp.cpp	/^    typedef cv::Vec6f Vec6f;$/;"	t	struct:tfusion::cuda::ProjectiveICP::StreamHelper	file:
+View	tfusion/include/tfusion/View.hpp	/^		View(const RGBDCalib& calibration, Vector2i imgSize_rgb, Vector2i imgSize_d, bool useGPU)$/;"	f	class:tfusion::View
+View	tfusion/include/tfusion/View.hpp	/^	class View$/;"	c	namespace:tfusion
+ViewBuilder	tfusion/include/tfusion/ViewBuilder.hpp	/^		ViewBuilder(const RGBDCalib& calib_)$/;"	f	class:tfusion::ViewBuilder
+ViewBuilder	tfusion/include/tfusion/ViewBuilder.hpp	/^	class ViewBuilder$/;"	c	namespace:tfusion
+WARP_SIZE	tfusion/src/cuda/temp_utils.hpp	/^                WARP_SIZE     = 1 << LOG_WARP_SIZE,$/;"	e	enum:tfusion::device::Warp::__anon11
+Warp	tfusion/src/cuda/temp_utils.hpp	/^        struct Warp$/;"	s	namespace:tfusion::device
+_ASM_PTR_	tfusion/src/cuda/device.hpp	116;"	d
+_ASM_PTR_	tfusion/src/cuda/device.hpp	99;"	d
+_CRT_SECURE_NO_DEPRECATE	tfusion/src/capture.cpp	2;"	d	file:
+___cudaSafeCall	tfusion/src/safe_call.hpp	/^        static inline void ___cudaSafeCall(cudaError_t err, const char *file, const int line, const char *func = "")$/;"	f	namespace:tfusion::cuda
+__tf_device__	tfusion/include/tfusion/cuda/kernel_containers.hpp	5;"	d
+__tf_device__	tfusion/include/tfusion/cuda/kernel_containers.hpp	8;"	d
+__tf_hdevice__	tfusion/include/tfusion/cuda/kernel_containers.hpp	4;"	d
+__tf_hdevice__	tfusion/include/tfusion/cuda/kernel_containers.hpp	7;"	d
+aff	tfusion/src/internal.hpp	/^            Aff3f aff;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+allocate_buffers	tfusion/src/topfu.cpp	/^void tfusion::TopFu::allocate_buffers()$/;"	f	class:tfusion::TopFu
+allocatedSize	tfusion/include/tfusion/LovalVBA.hpp	/^		int allocatedSize;$/;"	m	class:Lib::LocalVBA
+allocationList	tfusion/include/tfusion/LovalVBA.hpp	/^		ORUtils::MemoryBlock<int> *allocationList;$/;"	m	class:Lib::LocalVBA
+allocationTempData_device	tfusion/include/tfusion/reconstruction.hpp	/^		void *allocationTempData_device;$/;"	m	class:tfusion::SceneReconstruction
+allocationTempData_host	tfusion/include/tfusion/reconstruction.hpp	/^		void *allocationTempData_host;$/;"	m	class:tfusion::SceneReconstruction
+angle_thres_	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            float angle_thres_;$/;"	m	class:tfusion::cuda::ProjectiveICP
+b	tfusion/include/tfusion/types.hpp	/^            struct { unsigned char b, g, r; };$/;"	m	struct:tfusion::RGB::__anon3::__anon4
+b	tfusion/include/tfusion/types.hpp	/^        unsigned char r, g, b;$/;"	m	struct:tfusion::PixelRGB
+baseline	tfusion/include/io/capture.hpp	/^        float baseline;               \/\/ mm$/;"	m	class:tfusion::OpenNISource
+beg	tfusion/src/cuda/device.hpp	/^__tf_device__ tfusion::device::TsdfVolume::elem_type* tfusion::device::TsdfVolume::beg(int x, int y) const$/;"	f	class:tfusion::device::TsdfVolume
+bgra	tfusion/include/tfusion/types.hpp	/^            int bgra;$/;"	m	union:tfusion::RGB::__anon3
+bilateral_kernel_size	tfusion/include/tfusion/topfu.hpp	/^        int   bilateral_kernel_size;   \/\/pixels$/;"	m	struct:tfusion::TopFuParams
+bilateral_sigma_depth	tfusion/include/tfusion/topfu.hpp	/^        float bilateral_sigma_depth;   \/\/meters$/;"	m	struct:tfusion::TopFuParams
+bilateral_sigma_spatial	tfusion/include/tfusion/topfu.hpp	/^        float bilateral_sigma_spatial;   \/\/pixels$/;"	m	struct:tfusion::TopFuParams
+binaryExclScan	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ int binaryExclScan(int ballot_mask)$/;"	f	struct:tfusion::device::Warp
+blockCoords_device	tfusion/include/tfusion/reconstruction.hpp	/^		Vector4s *blockCoords_device;$/;"	m	class:tfusion::SceneReconstruction
+buffer_	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            DeviceArray2D<float> buffer_;$/;"	m	class:tfusion::cuda::ProjectiveICP
+c	tfusion/src/internal.hpp	/^            float2 f, c, finv;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+c	tfusion/src/internal.hpp	/^            float2 f, c;$/;"	m	struct:tfusion::device::Projector
+c	tfusion/src/internal.hpp	/^            float2 finv, c;$/;"	m	struct:tfusion::device::Reprojector
+c1	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+c1	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+c2	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+c2	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+c3	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+c3	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+c4	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+c4	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+calib	tfusion/include/tfusion/View.hpp	/^		const RGBDCalib calib;$/;"	m	class:tfusion::View
+capture_	apps/demo.cpp	/^    OpenNISource& capture_;$/;"	m	struct:TopFuApp	file:
+checkIfPreFermiGPU	tfusion/src/core.cpp	/^bool tf::cuda::checkIfPreFermiGPU(int device)$/;"	f	class:tf::cuda
+cloud_buffer	apps/demo.cpp	/^    cuda::DeviceArray<Point> cloud_buffer;$/;"	m	struct:TopFuApp	file:
+cols	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline int tfusion::cuda::DeviceArray2D<T>::cols() const { return DeviceMemory2D::colsBytes()\/elem_size; }$/;"	f	class:tfusion::cuda::DeviceArray2D
+cols	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            int cols;$/;"	m	struct:tfusion::cuda::PtrStepSz
+cols	tfusion/include/tfusion/topfu.hpp	/^        int cols;  \/\/pixels$/;"	m	struct:tfusion::TopFuParams
+cols	tfusion/src/internal.hpp	/^            float rows, cols;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+colsBytes	tfusion/src/device_memory.cpp	/^int tfusion::cuda::DeviceMemory2D::colsBytes() const { return colsBytes_; }$/;"	f	class:tfusion::cuda::DeviceMemory2D
+colsBytes_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            int colsBytes_;$/;"	m	class:tfusion::cuda::DeviceMemory2D
+compute	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ void compute(Mat33& tmp, Mat33& vec_tmp, Mat33& evecs, float3& evals)$/;"	f	struct:tfusion::device::Eigen33
+computeDists	tfusion/src/imgproc.cpp	/^void tfusion::cuda::computeDists(const Depth& depth, Dists& dists, const Intr& intr)$/;"	f	class:tfusion::cuda
+computeNormalsAndMaskDepth	tfusion/src/imgproc.cpp	/^void tfusion::cuda::computeNormalsAndMaskDepth(const Intr& intr, Depth& depth, Normals& normals)$/;"	f	class:tfusion::cuda
+computePointNormals	tfusion/src/imgproc.cpp	/^void tfusion::cuda::computePointNormals(const Intr& intr, const Depth& depth, Cloud& points, Normals& normals)$/;"	f	class:tfusion::cuda
+computeRoots2	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ void computeRoots2(const float& b, const float& c, float3& roots)$/;"	f	namespace:tfusion::device
+computeRoots3	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ void computeRoots3(float c0, float c1, float c2, float3& roots)$/;"	f	namespace:tfusion::device
+context	tfusion/src/capture.cpp	/^    Context context;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+convertSMVer2Cores	tfusion/src/core.cpp	/^    inline int convertSMVer2Cores(int major, int minor)$/;"	f	namespace:__anon10
+copyTo	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray2D<T>::copyTo(DeviceArray2D& other) const$/;"	f	class:tfusion::cuda::DeviceArray2D
+copyTo	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray<T>::copyTo(DeviceArray& other) const$/;"	f	class:tfusion::cuda::DeviceArray
+copyTo	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory2D::copyTo(DeviceMemory2D& other) const$/;"	f	class:tfusion::cuda::DeviceMemory2D
+copyTo	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory::copyTo(DeviceMemory& other) const$/;"	f	class:tfusion::cuda::DeviceMemory
+create	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray2D<T>::create(int rows, int cols)$/;"	f	class:tfusion::cuda::DeviceArray2D
+create	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray<T>::create(size_t size)$/;"	f	class:tfusion::cuda::DeviceArray
+create	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory2D::create(int rows_arg, int colsBytes_arg)$/;"	f	class:tfusion::cuda::DeviceMemory2D
+create	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory::create(size_t sizeBytes_arg)$/;"	f	class:tfusion::cuda::DeviceMemory
+cross	tfusion/src/cuda/temp_utils.hpp	/^        __tf_hdevice__ float3 cross(const float3& v1, const float3& v2)$/;"	f	namespace:tfusion::device
+cuda	tfusion/include/tfusion/cuda/device_array.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/include/tfusion/cuda/device_memory.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/include/tfusion/cuda/imgproc.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/include/tfusion/cuda/projective_icp.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/include/tfusion/topfu.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/include/tfusion/types.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/src/cuda/texture_binder.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cuda	tfusion/src/safe_call.hpp	/^    namespace cuda$/;"	n	namespace:tfusion
+cudaSafeCall	tfusion/src/safe_call.hpp	14;"	d
+curr_	tfusion/include/tfusion/topfu.hpp	/^        cuda::Frame curr_, prev_;$/;"	m	class:tfusion::TopFu
+cx	tfusion/include/tfusion/types.hpp	/^        float fx, fy, cx, cy;$/;"	m	struct:tfusion::Intr
+cy	tfusion/include/tfusion/types.hpp	/^        float fx, fy, cx, cy;$/;"	m	struct:tfusion::Intr
+data	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            T* data;$/;"	m	struct:tfusion::cuda::DevPtr
+data	tfusion/include/tfusion/types.hpp	/^            float data[4];$/;"	m	union:tfusion::Point::__anon1
+data	tfusion/src/cuda/temp_utils.hpp	/^                float3 data[Rows];$/;"	m	struct:tfusion::device::Eigen33::MiniMat
+data	tfusion/src/internal.hpp	/^                float* data;$/;"	m	struct:tfusion::device::ComputeIcpHelper::PageLockHelper
+data	tfusion/src/internal.hpp	/^            elem_type *const data;$/;"	m	struct:tfusion::device::TsdfVolume
+data	tfusion/src/internal.hpp	/^        struct Mat3f { float3 data[3]; };$/;"	m	struct:tfusion::device::Mat3f
+data_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            void *data_;$/;"	m	class:tfusion::cuda::DeviceMemory
+data_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            void *data_;$/;"	m	class:tfusion::cuda::DeviceMemory2D
+dcurr	tfusion/src/internal.hpp	/^            PtrStep<ushort> dcurr;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+default_params	tfusion/src/topfu.cpp	/^tfusion::TopFuParams tfusion::TopFuParams::default_params()$/;"	f	class:tfusion::TopFuParams
+deg2rad	tfusion/include/tfusion/types.hpp	/^    inline float deg2rad (float alpha) { return alpha * 0.017453293f; }$/;"	f	namespace:tfusion
+deg2rad	tfusion/src/topfu.cpp	/^static inline float deg2rad (float alpha) { return alpha * 0.017453293f; }$/;"	f	file:
+depth	tfusion/include/tfusion/View.hpp	/^		FloatImage *depth;$/;"	m	class:tfusion::View
+depth	tfusion/src/capture.cpp	/^    DepthGenerator depth;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+depthBilateralFilter	tfusion/src/imgproc.cpp	/^void tfusion::cuda::depthBilateralFilter(const Depth& in, Depth& out, int kernel_size, float sigma_spatial, float sigma_depth)$/;"	f	class:tfusion::cuda
+depthBuildPyramid	tfusion/src/imgproc.cpp	/^void tfusion::cuda::depthBuildPyramid(const Depth& depth, Depth& pyramid, float sigma_depth)$/;"	f	class:tfusion::cuda
+depthConfidence	tfusion/include/tfusion/View.hpp	/^		FloatImage *depthConfidence;$/;"	m	class:tfusion::View
+depthMD	tfusion/src/capture.cpp	/^    DepthMetaData depthMD;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+depthNormal	tfusion/include/tfusion/View.hpp	/^		Float4Image *depthNormal;$/;"	m	class:tfusion::View
+depthTruncation	tfusion/src/imgproc.cpp	/^void tfusion::cuda::depthTruncation(Depth& depth, float threshold)$/;"	f	class:tfusion::cuda
+depthUncertainty	tfusion/include/tfusion/View.hpp	/^		FloatImage *depthUncertainty;$/;"	m	class:tfusion::View
+depth_device_	apps/demo.cpp	/^    cuda::Depth depth_device_;$/;"	m	struct:TopFuApp	file:
+depth_focal_length_VGA	tfusion/include/io/capture.hpp	/^        float depth_focal_length_VGA;$/;"	m	class:tfusion::OpenNISource
+depth_pyr	tfusion/include/tfusion/types.hpp	/^            std::vector<Depth> depth_pyr;$/;"	m	struct:tfusion::cuda::Frame
+depths_	tfusion/include/tfusion/topfu.hpp	/^        cuda::Depth depths_;$/;"	m	class:tfusion::TopFu
+device	tfusion/include/tfusion/cuda/device_array.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device	tfusion/include/tfusion/cuda/device_memory.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device	tfusion/src/cuda/device.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device	tfusion/src/cuda/temp_utils.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device	tfusion/src/cuda/texture_binder.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device	tfusion/src/internal.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device	tfusion/src/safe_call.hpp	/^    namespace device$/;"	n	namespace:tfusion
+device_cast	tfusion/src/precomp.hpp	/^    inline D device_cast(const S& source)$/;"	f	namespace:tfusion
+device_cast	tfusion/src/precomp.hpp	/^    inline device::Aff3f device_cast<device::Aff3f, Affine3f>(const Affine3f& source)$/;"	f	namespace:tfusion
+dims	tfusion/src/internal.hpp	/^            const int3 dims;$/;"	m	struct:tfusion::device::TsdfVolume
+dist2_thres	tfusion/src/internal.hpp	/^            float dist2_thres;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+dist_thres_	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            float dist_thres_;$/;"	m	class:tfusion::cuda::ProjectiveICP
+dists_	tfusion/include/tfusion/topfu.hpp	/^        cuda::Dists dists_;$/;"	m	class:tfusion::TopFu
+divUp	tfusion/src/safe_call.hpp	/^        static inline int divUp(int total, int grain) { return (total + grain - 1) \/ grain; }$/;"	f	namespace:tfusion::cuda
+dot	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float dot(const float3& v1, const float3& v2)$/;"	f	namespace:tfusion::device
+download	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray2D<T>::download(void *host_ptr, size_t host_step) const$/;"	f	class:tfusion::cuda::DeviceArray2D
+download	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray<T>::download(T *host_ptr) const$/;"	f	class:tfusion::cuda::DeviceArray
+download	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> template<class A> inline void tfusion::cuda::DeviceArray2D<T>::download(std::vector<T, A>& data, int& elem_step) const$/;"	f	class:tfusion::cuda::DeviceArray2D
+download	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> template<class A> inline void tfusion::cuda::DeviceArray<T>::download(std::vector<T, A>& data) const { data.resize(size()); if (!data.empty()) download(&data[0]); }$/;"	f	class:tfusion::cuda::DeviceArray
+download	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory2D::download(void *host_ptr_arg, size_t host_step_arg) const$/;"	f	class:tfusion::cuda::DeviceMemory2D
+download	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory::download(void *host_ptr_arg) const$/;"	f	class:tfusion::cuda::DeviceMemory
+elemSize	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ size_t elemSize() const { return elem_size; }$/;"	f	struct:tfusion::cuda::DevPtr
+elem_size	tfusion/include/tfusion/cuda/device_array.hpp	/^            enum { elem_size = sizeof(T) };$/;"	e	enum:tfusion::cuda::DeviceArray2D::__anon7
+elem_size	tfusion/include/tfusion/cuda/device_array.hpp	/^            enum { elem_size = sizeof(T) };$/;"	e	enum:tfusion::cuda::DeviceArray::__anon6
+elem_size	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            const static size_t elem_size = sizeof(elem_type);$/;"	m	struct:tfusion::cuda::DevPtr
+elem_step	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline size_t tfusion::cuda::DeviceArray2D<T>::elem_step() const { return DeviceMemory2D::step()\/elem_size; }$/;"	f	class:tfusion::cuda::DeviceArray2D
+elem_type	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            typedef T elem_type;$/;"	t	struct:tfusion::cuda::DevPtr
+elem_type	tfusion/src/internal.hpp	/^            typedef ushort2 elem_type;$/;"	t	struct:tfusion::device::TsdfVolume
+empty	tfusion/src/device_memory.cpp	/^bool tfusion::cuda::DeviceMemory2D::empty() const { return !data_; }$/;"	f	class:tfusion::cuda::DeviceMemory2D
+empty	tfusion/src/device_memory.cpp	/^bool tfusion::cuda::DeviceMemory::empty() const { return !data_; }$/;"	f	class:tfusion::cuda::DeviceMemory
+entriesAllocType_device	tfusion/include/tfusion/reconstruction.hpp	/^		unsigned char *entriesAllocType_device;$/;"	m	class:tfusion::SceneReconstruction
+epsilon	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ static float epsilon() { return 1.192092896e-07f\/*FLT_EPSILON*\/; };$/;"	f	struct:tfusion::device::numeric_limits
+error	tfusion/src/device_memory.cpp	/^void tfusion::cuda::error(const char *error_string, const char *file, const int line, const char *func)$/;"	f	class:tfusion::cuda
+estimateTransform	tfusion/src/projective_icp.cpp	/^bool tfusion::cuda::ProjectiveICP::estimateTransform(Affine3f& \/*affine*\/, const Intr& \/*intr*\/, const Frame& \/*curr*\/, const Frame& \/*prev*\/)$/;"	f	class:tfusion::cuda::ProjectiveICP
+estimateTransform	tfusion/src/projective_icp.cpp	/^bool tfusion::cuda::ProjectiveICP::estimateTransform(Affine3f& affine, const Intr& intr, const DepthPyr& dcurr, const NormalsPyr ncurr, const DepthPyr dprev, const NormalsPyr nprev)$/;"	f	class:tfusion::cuda::ProjectiveICP
+estimateTransform	tfusion/src/projective_icp.cpp	/^bool tfusion::cuda::ProjectiveICP::estimateTransform(Affine3f& affine, const Intr& intr, const PointsPyr& vcurr, const NormalsPyr ncurr, const PointsPyr vprev, const NormalsPyr nprev)$/;"	f	class:tfusion::cuda::ProjectiveICP
+execute	apps/demo.cpp	/^    bool execute()$/;"	f	struct:TopFuApp
+exit_	apps/demo.cpp	/^    bool exit_, iteractive_mode_;$/;"	m	struct:TopFuApp	file:
+f	tfusion/src/internal.hpp	/^            float2 f, c, finv;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+f	tfusion/src/internal.hpp	/^            float2 f, c;$/;"	m	struct:tfusion::device::Projector
+features	build/CMakeFiles/feature_tests.c	/^  const char features[] = {""$/;"	v
+features	build/CMakeFiles/feature_tests.cxx	/^  const char features[] = {""$/;"	v
+finv	tfusion/src/internal.hpp	/^            float2 f, c, finv;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+finv	tfusion/src/internal.hpp	/^            float2 finv, c;$/;"	m	struct:tfusion::device::Reprojector
+flattenedThreadId	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ int flattenedThreadId()$/;"	f	struct:tfusion::device::Block
+float12	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	s	namespace:tfusion::device
+float8	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	s	namespace:tfusion::device
+frame_counter_	tfusion/include/tfusion/topfu.hpp	/^        int frame_counter_;$/;"	m	class:tfusion::TopFu
+fx	tfusion/include/tfusion/types.hpp	/^        float fx, fy, cx, cy;$/;"	m	struct:tfusion::Intr
+fy	tfusion/include/tfusion/types.hpp	/^        float fx, fy, cx, cy;$/;"	m	struct:tfusion::Intr
+g	tfusion/include/tfusion/types.hpp	/^            struct { unsigned char b, g, r; };$/;"	m	struct:tfusion::RGB::__anon3::__anon4
+g	tfusion/include/tfusion/types.hpp	/^        unsigned char r, g, b;$/;"	m	struct:tfusion::PixelRGB
+get	tfusion/src/projective_icp.cpp	/^    Mat6f get(Vec6f& b)$/;"	f	struct:tfusion::cuda::ProjectiveICP::StreamHelper
+getAngleThreshold	tfusion/src/projective_icp.cpp	/^float tfusion::cuda::ProjectiveICP::getAngleThreshold() const$/;"	f	class:tfusion::cuda::ProjectiveICP
+getCameraPose	tfusion/src/topfu.cpp	/^tfusion::Affine3f tfusion::TopFu::getCameraPose (int time) const$/;"	f	class:tfusion::TopFu
+getCudaAttribute	tfusion/src/core.cpp	/^    template <class T> inline void getCudaAttribute(T *attribute, CUdevice_attribute device_attribute, int device)$/;"	f	namespace:__anon10
+getCudaEnabledDeviceCount	tfusion/src/core.cpp	/^int tf::cuda::getCudaEnabledDeviceCount()$/;"	f	class:tf::cuda
+getDeviceName	tfusion/src/core.cpp	/^std::string tf::cuda::getDeviceName(int device)$/;"	f	class:tf::cuda
+getDistThreshold	tfusion/src/projective_icp.cpp	/^float tfusion::cuda::ProjectiveICP::getDistThreshold() const$/;"	f	class:tfusion::cuda::ProjectiveICP
+getParams	tfusion/src/capture.cpp	/^void tfusion::OpenNISource::getParams ()$/;"	f	class:tfusion::OpenNISource
+getTime	tfusion/src/core.cpp	/^double tf::SampledScopeTime::getTime()$/;"	f	class:tf::SampledScopeTime
+getUsedLevelsNum	tfusion/src/projective_icp.cpp	/^int tfusion::cuda::ProjectiveICP::getUsedLevelsNum() const$/;"	f	class:tfusion::cuda::ProjectiveICP
+globalCache	tfusion/include/tfusion/scene.hpp	/^		GlobalCache<TVoxel> *globalCache;$/;"	m	class:tfusion::Scene
+gmem	tfusion/src/cuda/device.hpp	/^        struct gmem$/;"	s	namespace:tfusion::device
+grab	tfusion/src/capture.cpp	/^bool tfusion::OpenNISource::grab(cv::Mat& depth, cv::Mat& image)$/;"	f	class:tfusion::OpenNISource
+gradient_delta_factor	tfusion/include/tfusion/topfu.hpp	/^        float gradient_delta_factor; \/\/ in voxel sizes$/;"	m	struct:tfusion::TopFuParams
+hasStoredData	tfusion/include/tfusion/GlobalCache.hpp	/^		bool *hasStoredData;$/;"	m	class:tfusion::GlobalCache
+hasSyncedData_device	tfusion/include/tfusion/GlobalCache.hpp	/^		bool *hasSyncedData_host, *hasSyncedData_device;$/;"	m	class:tfusion::GlobalCache
+hasSyncedData_host	tfusion/include/tfusion/GlobalCache.hpp	/^		bool *hasSyncedData_host, *hasSyncedData_device;$/;"	m	class:tfusion::GlobalCache
+has_depth	tfusion/src/capture.cpp	/^    bool has_depth;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+has_image	tfusion/src/capture.cpp	/^    bool has_image;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+icp	tfusion/src/topfu.cpp	/^const tfusion::cuda::ProjectiveICP& tfusion::TopFu::icp() const$/;"	f	class:tfusion::TopFu
+icp	tfusion/src/topfu.cpp	/^tfusion::cuda::ProjectiveICP& tfusion::TopFu::icp()$/;"	f	class:tfusion::TopFu
+icp_	tfusion/include/tfusion/topfu.hpp	/^        cv::Ptr<cuda::ProjectiveICP> icp_;$/;"	m	class:tfusion::TopFu
+icp_angle_thres	tfusion/include/tfusion/topfu.hpp	/^        float icp_angle_thres;         \/\/radians$/;"	m	struct:tfusion::TopFuParams
+icp_dist_thres	tfusion/include/tfusion/topfu.hpp	/^        float icp_dist_thres;          \/\/meters$/;"	m	struct:tfusion::TopFuParams
+icp_iter_num	tfusion/include/tfusion/topfu.hpp	/^        std::vector<int> icp_iter_num; \/\/iterations for level index 0,1,..,3$/;"	m	struct:tfusion::TopFuParams
+icp_truncate_depth_dist	tfusion/include/tfusion/topfu.hpp	/^        float icp_truncate_depth_dist; \/\/meters$/;"	m	struct:tfusion::TopFuParams
+id	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ unsigned int id()$/;"	f	struct:tfusion::device::Warp
+image	tfusion/src/capture.cpp	/^    ImageGenerator image;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+imageMD	tfusion/src/capture.cpp	/^    ImageMetaData imageMD;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+impl_	tfusion/include/io/capture.hpp	/^        cv::Ptr<Impl> impl_;$/;"	m	class:tfusion::OpenNISource
+index	tfusion/include/tfusion/scene.hpp	/^		TIndex index;$/;"	m	class:tfusion::Scene
+info_arch	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_platform	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_simulate_version	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+intr	tfusion/include/tfusion/topfu.hpp	/^        Intr intr;  \/\/Camera parameters$/;"	m	struct:tfusion::TopFuParams
+isMuchSmallerThan	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ static bool isMuchSmallerThan (float x, float y)$/;"	f	struct:tfusion::device::Eigen33
+iteractive_mode_	apps/demo.cpp	/^    bool exit_, iteractive_mode_;$/;"	m	struct:TopFuApp	file:
+iters_	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            std::vector<int> iters_;$/;"	m	class:tfusion::cuda::ProjectiveICP
+laneId	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ unsigned int laneId()$/;"	f	struct:tfusion::device::Warp
+laneMaskLt	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ int laneMaskLt()$/;"	f	struct:tfusion::device::Warp
+lastFreeBlockId	tfusion/include/tfusion/LovalVBA.hpp	/^		int lastFreeBlockId;$/;"	m	class:Lib::LocalVBA
+light_pose	tfusion/include/tfusion/topfu.hpp	/^        Vec3f light_pose; \/\/meters$/;"	m	struct:tfusion::TopFuParams
+localVBA	tfusion/include/tfusion/scene.hpp	/^		LocalVBA<TVoxel> localVBA;$/;"	m	class:tfusion::Scene
+locked_buffer	tfusion/src/projective_icp.cpp	/^    PageLockHelper locked_buffer;$/;"	m	struct:tfusion::cuda::ProjectiveICP::StreamHelper	file:
+m00	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m00() const { return mat_pkg[0]; }$/;"	f	struct:tfusion::device::Eigen33
+m01	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m01() const { return mat_pkg[1]; }$/;"	f	struct:tfusion::device::Eigen33
+m02	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m02() const { return mat_pkg[2]; }$/;"	f	struct:tfusion::device::Eigen33
+m10	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m10() const { return mat_pkg[1]; }$/;"	f	struct:tfusion::device::Eigen33
+m11	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m11() const { return mat_pkg[3]; }$/;"	f	struct:tfusion::device::Eigen33
+m12	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m12() const { return mat_pkg[4]; }$/;"	f	struct:tfusion::device::Eigen33
+m20	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m20() const { return mat_pkg[2]; }$/;"	f	struct:tfusion::device::Eigen33
+m21	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m21() const { return mat_pkg[4]; }$/;"	f	struct:tfusion::device::Eigen33
+m22	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float m22() const { return mat_pkg[5]; }$/;"	f	struct:tfusion::device::Eigen33
+main	apps/demo.cpp	/^int main (int argc, char* argv[])$/;"	f
+main	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
+main	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	build/CMakeFiles/feature_tests.c	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+main	build/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+mat_pkg	tfusion/src/cuda/temp_utils.hpp	/^            volatile float* mat_pkg;$/;"	m	struct:tfusion::device::Eigen33
+max	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ static float max() { return 3.402823466e+38f\/*FLT_MAX*\/; };$/;"	f	struct:tfusion::device::numeric_limits
+max	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ static unsigned short max() { return USHRT_MAX; };$/;"	f	struct:tfusion::device::numeric_limits
+max_depth	tfusion/include/io/capture.hpp	/^        unsigned short max_depth;     \/\/ mm$/;"	m	class:tfusion::OpenNISource
+max_weight	tfusion/src/internal.hpp	/^            const int max_weight;$/;"	m	struct:tfusion::device::TsdfVolume
+memoryType	tfusion/include/tfusion/LovalVBA.hpp	/^		MemoryDeviceType memoryType;$/;"	m	class:Lib::LocalVBA
+min	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ static float min() { return 1.175494351e-38f\/*FLT_MIN*\/; };$/;"	f	struct:tfusion::device::numeric_limits
+min_cosine	tfusion/src/internal.hpp	/^            float min_cosine;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+n4	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+name	tfusion/include/tfusion/types.hpp	/^        const char* name;$/;"	m	struct:tfusion::ScopeTime
+ncurr	tfusion/src/internal.hpp	/^            PtrStep<Normal> ncurr;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+neededEntryIDs_device	tfusion/include/tfusion/GlobalCache.hpp	/^		int *neededEntryIDs_host, *neededEntryIDs_device;$/;"	m	class:tfusion::GlobalCache
+neededEntryIDs_host	tfusion/include/tfusion/GlobalCache.hpp	/^		int *neededEntryIDs_host, *neededEntryIDs_device;$/;"	m	class:tfusion::GlobalCache
+noTotalEntries	tfusion/include/tfusion/GlobalCache.hpp	/^		int noTotalEntries; $/;"	m	class:tfusion::GlobalCache
+no_sample_value	tfusion/include/io/capture.hpp	/^        int shadow_value, no_sample_value;$/;"	m	class:tfusion::OpenNISource
+node	tfusion/src/capture.cpp	/^    ProductionNode node;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+norm	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float norm(const float3& v)$/;"	f	namespace:tfusion::device
+norm_sqr	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float norm_sqr(const float3& v)$/;"	f	namespace:tfusion::device
+normal_x	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+normal_y	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+normal_z	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+normalized	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3 normalized(const float3& v)$/;"	f	namespace:tfusion::device
+normals_	tfusion/include/tfusion/topfu.hpp	/^        cuda::Normals normals_;$/;"	m	class:tfusion::TopFu
+normals_pyr	tfusion/include/tfusion/types.hpp	/^            std::vector<Normals> normals_pyr;$/;"	m	struct:tfusion::cuda::Frame
+numeric_limits	tfusion/src/cuda/temp_utils.hpp	/^        template<> struct numeric_limits<float>$/;"	s	namespace:tfusion::device
+numeric_limits	tfusion/src/cuda/temp_utils.hpp	/^        template<> struct numeric_limits<unsigned short>$/;"	s	namespace:tfusion::device
+open	tfusion/src/capture.cpp	/^void tfusion::OpenNISource::open (int device)$/;"	f	class:tfusion::OpenNISource
+open	tfusion/src/capture.cpp	/^void tfusion::OpenNISource::open(const std::string& filename, bool repeat \/*= false*\/)$/;"	f	class:tfusion::OpenNISource
+operator ()	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__       T& operator()(int y, int x)       { return ptr(y)[x]; }$/;"	f	struct:tfusion::cuda::PtrStep
+operator ()	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ const T& operator()(int y, int x) const { return ptr(y)[x]; }$/;"	f	struct:tfusion::cuda::PtrStep
+operator ()	tfusion/src/cuda/device.hpp	/^            __tf_device__ double operator () (double l, double r) const  { return l + r; }$/;"	f	struct:tfusion::device::plus
+operator ()	tfusion/src/cuda/device.hpp	/^            __tf_device__ float operator () (float l, float r) const  { return l + r; }$/;"	f	struct:tfusion::device::plus
+operator ()	tfusion/src/cuda/device.hpp	/^__tf_device__ const tfusion::device::TsdfVolume::elem_type* tfusion::device::TsdfVolume::operator() (int x, int y, int z) const$/;"	f	class:tfusion::device::TsdfVolume
+operator ()	tfusion/src/cuda/device.hpp	/^__tf_device__ float2 tfusion::device::Projector::operator()(const float3& p) const$/;"	f	class:tfusion::device::Projector
+operator ()	tfusion/src/cuda/device.hpp	/^__tf_device__ float3 tfusion::device::Reprojector::operator()(int u, int v, float z) const$/;"	f	class:tfusion::device::Reprojector
+operator ()	tfusion/src/cuda/device.hpp	/^__tf_device__ tfusion::device::TsdfVolume::elem_type* tfusion::device::TsdfVolume::operator()(int x, int y, int z)$/;"	f	class:tfusion::device::TsdfVolume
+operator ()	tfusion/src/precomp.cpp	/^tfusion::Intr tfusion::Intr::operator()(int level_index) const$/;"	f	class:tfusion::Intr
+operator ()	tfusion/src/topfu.cpp	/^bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion::cuda::Image&)$/;"	f	class:tfusion::TopFu
+operator *	tfusion/src/cuda/device.hpp	/^        __tf_device__ Vec3f operator*(const Aff3f& a, const Vec3f& v) { return a.R * v + a.t; }$/;"	f	namespace:tfusion::device
+operator *	tfusion/src/cuda/device.hpp	/^        __tf_device__ Vec3f operator*(const Mat3f& m, const Vec3f& v)$/;"	f	namespace:tfusion::device
+operator *	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3 operator*(const float3& v1, const float3& v2)$/;"	f	namespace:tfusion::device
+operator *	tfusion/src/cuda/temp_utils.hpp	/^        __tf_hdevice__ float3 operator*(const float& v, const float3& v1)$/;"	f	namespace:tfusion::device
+operator *	tfusion/src/cuda/temp_utils.hpp	/^        __tf_hdevice__ float3 operator*(const float3& v1, const float& v)$/;"	f	namespace:tfusion::device
+operator *	tfusion/src/cuda/temp_utils.hpp	/^        __tf_hdevice__ float3 operator*(const float3& v1, const int3& v2)$/;"	f	namespace:tfusion::device
+operator *=	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3& operator*=(float3& vec, const float& v)$/;"	f	namespace:tfusion::device
+operator +	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3 operator+(const float3& v1, const float3& v2)$/;"	f	namespace:tfusion::device
+operator +=	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3& operator+=(float3& v1, const float3& v2)$/;"	f	namespace:tfusion::device
+operator +=	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3& operator+=(float3& vec, const float& v)$/;"	f	namespace:tfusion::device
+operator -	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3 operator-(const float3& v1, const float3& v2)$/;"	f	namespace:tfusion::device
+operator /	tfusion/src/cuda/temp_utils.hpp	/^        __tf_device__ float3 operator\/(const float3& v1, const float3& v2)$/;"	f	namespace:tfusion::device
+operator /	tfusion/src/cuda/temp_utils.hpp	/^        __tf_hdevice__ float3 operator\/(const float& v, const float3& vec)$/;"	f	namespace:tfusion::device
+operator <<	tfusion/src/precomp.cpp	/^std::ostream& operator << (std::ostream& os, const tfusion::Intr& intr)$/;"	f
+operator =	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray2D<T>& tfusion::cuda::DeviceArray2D<T>::operator=(const DeviceArray2D& other)$/;"	f	class:tfusion::cuda::DeviceArray2D
+operator =	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray<T>& tfusion::cuda::DeviceArray<T>::operator=(const DeviceArray& other)$/;"	f	class:tfusion::cuda::DeviceArray
+operator =	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory& tfusion::cuda::DeviceMemory::operator = (const tfusion::cuda::DeviceMemory& other_arg)$/;"	f	class:tfusion::cuda::DeviceMemory
+operator =	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory2D& tfusion::cuda::DeviceMemory2D::operator = (const tfusion::cuda::DeviceMemory2D& other_arg)$/;"	f	class:tfusion::cuda::DeviceMemory2D
+operator T*	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray2D<T>::operator T*() { return ptr(); }$/;"	f	class:tfusion::cuda::DeviceArray2D
+operator T*	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray<T>::operator T*() { return ptr(); }$/;"	f	class:tfusion::cuda::DeviceArray
+operator T*	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ operator       T*()       { return data; }$/;"	f	struct:tfusion::cuda::DevPtr
+operator []	tfusion/src/cuda/temp_utils.hpp	/^                __tf_hdevice__ const float3& operator[](int i) const { return data[i]; }$/;"	f	struct:tfusion::device::Eigen33::MiniMat
+operator []	tfusion/src/cuda/temp_utils.hpp	/^                __tf_hdevice__ float3& operator[](int i) { return data[i]; }$/;"	f	struct:tfusion::device::Eigen33::MiniMat
+operator const T*	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray2D<T>::operator const T*() const { return ptr(); }$/;"	f	class:tfusion::cuda::DeviceArray2D
+operator const T*	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline tfusion::cuda::DeviceArray<T>::operator const T*() const { return ptr(); }$/;"	f	class:tfusion::cuda::DeviceArray
+operator const T*	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ operator const T*() const { return data; }$/;"	f	struct:tfusion::cuda::DevPtr
+operator cudaStream_t	tfusion/src/projective_icp.cpp	/^    operator cudaStream_t() { return stream; }$/;"	f	struct:tfusion::cuda::ProjectiveICP::StreamHelper
+operator float*	tfusion/src/projective_icp.cpp	/^    operator float*() { return locked_buffer.data; }$/;"	f	struct:tfusion::cuda::ProjectiveICP::StreamHelper
+operator tfusion::cuda::PtrStep<U>	tfusion/include/tfusion/cuda/device_memory.hpp	/^template <class U> tfusion::cuda::DeviceMemory2D::operator tfusion::cuda::PtrStep<U>() const$/;"	f	class:tfusion::cuda::DeviceMemory2D
+operator tfusion::cuda::PtrStepSz<U>	tfusion/include/tfusion/cuda/device_memory.hpp	/^template <class U> tfusion::cuda::DeviceMemory2D::operator tfusion::cuda::PtrStepSz<U>() const$/;"	f	class:tfusion::cuda::DeviceMemory2D
+operator tfusion::cuda::PtrSz<U>	tfusion/include/tfusion/cuda/device_memory.hpp	/^template <class U> inline tfusion::cuda::DeviceMemory::operator tfusion::cuda::PtrSz<U>() const$/;"	f	class:tfusion::cuda::DeviceMemory
+pack_tsdf	tfusion/src/cuda/device.hpp	/^__tf_device__ ushort2 tfusion::device::pack_tsdf (float tsdf, int weight)$/;"	f	class:tfusion::device
+params	tfusion/src/topfu.cpp	/^const tfusion::TopFuParams& tfusion::TopFu::params() const$/;"	f	class:tfusion::TopFu
+params	tfusion/src/topfu.cpp	/^tfusion::TopFuParams& tfusion::TopFu::params()$/;"	f	class:tfusion::TopFu
+params_	tfusion/include/tfusion/topfu.hpp	/^        TopFuParams params_;$/;"	m	class:tfusion::TopFu
+pause_	apps/demo.cpp	/^    bool pause_ \/*= false*\/;$/;"	m	struct:TopFuApp	file:
+pixelSize	tfusion/include/io/capture.hpp	/^        double pixelSize;             \/\/ mm$/;"	m	class:tfusion::OpenNISource
+player_	tfusion/src/capture.cpp	/^    Player player_;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+plus	tfusion/src/cuda/device.hpp	/^        struct plus$/;"	s	namespace:tfusion::device
+points_	tfusion/include/tfusion/topfu.hpp	/^        cuda::Cloud points_;$/;"	m	class:tfusion::TopFu
+points_pyr	tfusion/include/tfusion/types.hpp	/^            std::vector<Cloud> points_pyr;$/;"	m	struct:tfusion::cuda::Frame
+poses_	tfusion/include/tfusion/topfu.hpp	/^        std::vector<Affine3f> poses_;$/;"	m	class:tfusion::TopFu
+prev_	tfusion/include/tfusion/topfu.hpp	/^        cuda::Frame curr_, prev_;$/;"	m	class:tfusion::TopFu
+printCudaDeviceInfo	tfusion/src/core.cpp	/^void tf::cuda::printCudaDeviceInfo(int device)$/;"	f	class:tf::cuda
+printShortCudaDeviceInfo	tfusion/src/core.cpp	/^void tf::cuda::printShortCudaDeviceInfo(int device)$/;"	f	class:tf::cuda
+ptr	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline       T* tfusion::cuda::DeviceArray2D<T>::ptr(int y)       { return DeviceMemory2D::ptr<T>(y); }$/;"	f	class:tfusion::cuda::DeviceArray2D
+ptr	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline       T* tfusion::cuda::DeviceArray<T>::ptr()       { return DeviceMemory::ptr<T>(); }$/;"	f	class:tfusion::cuda::DeviceArray
+ptr	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline const T* tfusion::cuda::DeviceArray2D<T>::ptr(int y) const { return DeviceMemory2D::ptr<T>(y); }$/;"	f	class:tfusion::cuda::DeviceArray2D
+ptr	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline const T* tfusion::cuda::DeviceArray<T>::ptr() const { return DeviceMemory::ptr<T>(); }$/;"	f	class:tfusion::cuda::DeviceArray
+ptr	tfusion/include/tfusion/cuda/device_memory.hpp	/^template<class T>        T* tfusion::cuda::DeviceMemory2D::ptr(int y_arg)       { return (      T*)((      char*)data_ + y_arg * step_); }$/;"	f	class:tfusion::cuda::DeviceMemory2D
+ptr	tfusion/include/tfusion/cuda/device_memory.hpp	/^template<class T>  const T* tfusion::cuda::DeviceMemory2D::ptr(int y_arg) const { return (const T*)((const char*)data_ + y_arg * step_); }$/;"	f	class:tfusion::cuda::DeviceMemory2D
+ptr	tfusion/include/tfusion/cuda/device_memory.hpp	/^template<class T> inline       T* tfusion::cuda::DeviceMemory::ptr()       { return (      T*)data_; }$/;"	f	class:tfusion::cuda::DeviceMemory
+ptr	tfusion/include/tfusion/cuda/device_memory.hpp	/^template<class T> inline const T* tfusion::cuda::DeviceMemory::ptr() const { return (const T*)data_; }$/;"	f	class:tfusion::cuda::DeviceMemory
+ptr	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__       T* ptr(int y = 0)       { return (      T*)( (      char*)DevPtr<T>::data + y * step); }$/;"	f	struct:tfusion::cuda::PtrStep
+ptr	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            __tf_hdevice__ const T* ptr(int y = 0) const { return (const T*)( (const char*)DevPtr<T>::data + y * step); }$/;"	f	struct:tfusion::cuda::PtrStep
+qnxnto	build/CMakeFiles/3.2.2/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+qnxnto	build/CMakeFiles/3.2.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+quiet_NaN	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ static float quiet_NaN() { return __int_as_float(0x7fffffff); \/*CUDART_NAN_F*\/ };$/;"	f	struct:tfusion::device::numeric_limits
+r	tfusion/include/tfusion/types.hpp	/^            struct { unsigned char b, g, r; };$/;"	m	struct:tfusion::RGB::__anon3::__anon4
+r	tfusion/include/tfusion/types.hpp	/^        unsigned char r, g, b;$/;"	m	struct:tfusion::PixelRGB
+raycast_step_factor	tfusion/include/tfusion/topfu.hpp	/^        float raycast_step_factor;   \/\/ in voxel sizes$/;"	m	struct:tfusion::TopFuParams
+reduce	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ T reduce(volatile T* buffer, T init, BinOp op)$/;"	f	struct:tfusion::device::Block
+reduce	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ void reduce(volatile T* buffer, BinOp op)$/;"	f	struct:tfusion::device::Block
+refcount_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            int* refcount_;$/;"	m	class:tfusion::cuda::DeviceMemory
+refcount_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            int* refcount_;$/;"	m	class:tfusion::cuda::DeviceMemory2D
+release	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray2D<T>::release()$/;"	f	class:tfusion::cuda::DeviceArray2D
+release	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray<T>::release()$/;"	f	class:tfusion::cuda::DeviceArray
+release	tfusion/src/capture.cpp	/^void tfusion::OpenNISource::release ()$/;"	f	class:tfusion::OpenNISource
+release	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory2D::release()$/;"	f	class:tfusion::cuda::DeviceMemory2D
+release	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory::release()$/;"	f	class:tfusion::cuda::DeviceMemory
+renderImage	tfusion/src/imgproc.cpp	/^void tfusion::cuda::renderImage(const Cloud& points, const Normals& normals, const Intr& intr, const Vec3f& light_pose, Image& image)$/;"	f	class:tfusion::cuda
+renderImage	tfusion/src/imgproc.cpp	/^void tfusion::cuda::renderImage(const Depth& depth, const Normals& normals, const Intr& intr, const Vec3f& light_pose, Image& image)$/;"	f	class:tfusion::cuda
+renderImage	tfusion/src/topfu.cpp	/^void tfusion::TopFu::renderImage(cuda::Image& image, const Affine3f& pose, int flag)$/;"	f	class:tfusion::TopFu
+renderImage	tfusion/src/topfu.cpp	/^void tfusion::TopFu::renderImage(cuda::Image& image, int flag)$/;"	f	class:tfusion::TopFu
+renderTangentColors	tfusion/src/imgproc.cpp	/^void tfusion::cuda::renderTangentColors(const Normals& normals, Image& image)$/;"	f	class:tfusion::cuda
+reset	tfusion/src/topfu.cpp	/^void tfusion::TopFu::reset()$/;"	f	class:tfusion::TopFu
+resizeDepthNormals	tfusion/src/imgproc.cpp	/^void tfusion::cuda::resizeDepthNormals(const Depth& depth, const Normals& normals, Depth& depth_out, Normals& normals_out)$/;"	f	class:tfusion::cuda
+resizePointsNormals	tfusion/src/imgproc.cpp	/^void tfusion::cuda::resizePointsNormals(const Cloud& points, const Normals& normals, Cloud& points_out, Normals& normals_out)$/;"	f	class:tfusion::cuda
+rgb	tfusion/include/tfusion/View.hpp	/^		UChar4Image *rgb; $/;"	m	class:tfusion::View
+rgb_prev	tfusion/include/tfusion/View.hpp	/^		UChar4Image *rgb_prev; $/;"	m	class:tfusion::View
+row0	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float3 row0() const { return make_float3( m00(), m01(), m02() ); }$/;"	f	struct:tfusion::device::Eigen33
+row1	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float3 row1() const { return make_float3( m10(), m11(), m12() ); }$/;"	f	struct:tfusion::device::Eigen33
+row2	tfusion/src/cuda/temp_utils.hpp	/^            __tf_device__ float3 row2() const { return make_float3( m20(), m21(), m22() ); }$/;"	f	struct:tfusion::device::Eigen33
+rows	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline int tfusion::cuda::DeviceArray2D<T>::rows() const { return DeviceMemory2D::rows(); }$/;"	f	class:tfusion::cuda::DeviceArray2D
+rows	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            int rows;                                                                              $/;"	m	struct:tfusion::cuda::PtrStepSz
+rows	tfusion/include/tfusion/topfu.hpp	/^        int rows;  \/\/pixels$/;"	m	struct:tfusion::TopFuParams
+rows	tfusion/src/device_memory.cpp	/^int tfusion::cuda::DeviceMemory2D::rows() const { return rows_; }$/;"	f	class:tfusion::cuda::DeviceMemory2D
+rows	tfusion/src/internal.hpp	/^            float rows, cols;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+rows_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            int rows_;$/;"	m	class:tfusion::cuda::DeviceMemory2D
+sceneParams	tfusion/include/tfusion/scene.hpp	/^		const SceneParams *sceneParams;$/;"	m	class:tfusion::Scene
+scriptNode	tfusion/src/capture.cpp	/^    ScriptNode scriptNode;$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+setAngleThreshold	tfusion/src/projective_icp.cpp	/^void tfusion::cuda::ProjectiveICP::setAngleThreshold(float angle)$/;"	f	class:tfusion::cuda::ProjectiveICP
+setDevice	tfusion/src/core.cpp	/^void tf::cuda::setDevice(int device)$/;"	f	class:tf::cuda
+setDistThreshold	tfusion/src/projective_icp.cpp	/^void tfusion::cuda::ProjectiveICP::setDistThreshold(float distance)$/;"	f	class:tfusion::cuda::ProjectiveICP
+setIterationsNum	tfusion/src/projective_icp.cpp	/^void tfusion::cuda::ProjectiveICP::setIterationsNum(const std::vector<int>& iters)$/;"	f	class:tfusion::cuda::ProjectiveICP
+setLevelIntr	tfusion/src/projective_icp.cpp	/^void tfusion::device::ComputeIcpHelper::setLevelIntr(int level_index, float fx, float fy, float cx, float cy)$/;"	f	class:tfusion::device::ComputeIcpHelper
+setRegistration	tfusion/src/capture.cpp	/^bool tfusion::OpenNISource::setRegistration (bool value)$/;"	f	class:tfusion::OpenNISource
+shadow_value	tfusion/include/io/capture.hpp	/^        int shadow_value, no_sample_value;$/;"	m	class:tfusion::OpenNISource
+shelp_	tfusion/include/tfusion/cuda/projective_icp.hpp	/^            cv::Ptr<StreamHelper> shelp_;$/;"	m	class:tfusion::cuda::ProjectiveICP
+show_depth	apps/demo.cpp	/^    void show_depth(const cv::Mat& depth)$/;"	f	struct:TopFuApp
+show_raycasted	apps/demo.cpp	/^    void show_raycasted(TopFu& topfu)$/;"	f	struct:TopFuApp
+size	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline size_t tfusion::cuda::DeviceArray<T>::size() const { return sizeBytes() \/ elem_size; }$/;"	f	class:tfusion::cuda::DeviceArray
+size	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            size_t size;$/;"	m	struct:tfusion::cuda::PtrSz
+sizeBytes	tfusion/src/device_memory.cpp	/^size_t tfusion::cuda::DeviceMemory::sizeBytes() const { return sizeBytes_; }$/;"	f	class:tfusion::cuda::DeviceMemory
+sizeBytes_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            size_t sizeBytes_;$/;"	m	class:tfusion::cuda::DeviceMemory
+start	tfusion/include/tfusion/types.hpp	/^        double start;$/;"	m	struct:tfusion::SampledScopeTime
+start	tfusion/include/tfusion/types.hpp	/^        double start;$/;"	m	struct:tfusion::ScopeTime
+state	tfusion/include/tfusion/GlobalCache.hpp	/^		uchar state;$/;"	m	struct:tfusion::HashSwapState
+step	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^            size_t step;            $/;"	m	struct:tfusion::cuda::PtrStep
+step	tfusion/src/device_memory.cpp	/^size_t tfusion::cuda::DeviceMemory2D::step() const { return step_; }/;"	f	class:tfusion::cuda::DeviceMemory2D
+step_	tfusion/include/tfusion/cuda/device_memory.hpp	/^            size_t step_;$/;"	m	class:tfusion::cuda::DeviceMemory2D
+storedVoxelBlocks	tfusion/include/tfusion/GlobalCache.hpp	/^		TVoxel *storedVoxelBlocks;$/;"	m	class:tfusion::GlobalCache
+strError	tfusion/src/capture.cpp	/^    XnChar strError[1024];$/;"	m	struct:tfusion::OpenNISource::Impl	file:
+stream	tfusion/src/projective_icp.cpp	/^    cudaStream_t stream;$/;"	m	struct:tfusion::cuda::ProjectiveICP::StreamHelper	file:
+stride	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ unsigned int stride()$/;"	f	struct:tfusion::device::Block
+swap	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> void  tfusion::cuda::DeviceArray2D<T>::swap(DeviceArray2D& other_arg) { DeviceMemory2D::swap(other_arg); }$/;"	f	class:tfusion::cuda::DeviceArray2D
+swap	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> void tfusion::cuda::DeviceArray<T>::swap(DeviceArray& other_arg) { DeviceMemory::swap(other_arg); }$/;"	f	class:tfusion::cuda::DeviceArray
+swap	tfusion/src/cuda/temp_utils.hpp	/^        template <class T> __tf_hdevice__ void swap(T& a, T& b) { T c(a); a=b; b=c; }$/;"	f	namespace:tfusion::device
+swap	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory2D::swap(DeviceMemory2D& other_arg)$/;"	f	class:tfusion::cuda::DeviceMemory2D
+swap	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory::swap(DeviceMemory& other_arg)$/;"	f	class:tfusion::cuda::DeviceMemory
+swapStates_device	tfusion/include/tfusion/GlobalCache.hpp	/^		HashSwapState *swapStates_host, *swapStates_device;$/;"	m	class:tfusion::GlobalCache
+swapStates_host	tfusion/include/tfusion/GlobalCache.hpp	/^		HashSwapState *swapStates_host, *swapStates_device;$/;"	m	class:tfusion::GlobalCache
+syncedVoxelBlocks_device	tfusion/include/tfusion/GlobalCache.hpp	/^		TVoxel *syncedVoxelBlocks_host, *syncedVoxelBlocks_device;$/;"	m	class:tfusion::GlobalCache
+syncedVoxelBlocks_host	tfusion/include/tfusion/GlobalCache.hpp	/^		TVoxel *syncedVoxelBlocks_host, *syncedVoxelBlocks_device;$/;"	m	class:tfusion::GlobalCache
+t	tfusion/src/internal.hpp	/^        struct Aff3f { Mat3f R; Vec3f t; };$/;"	m	struct:tfusion::device::Aff3f
+take_cloud	apps/demo.cpp	/^    void take_cloud(TopFu& topfu)$/;"	f	struct:TopFuApp
+texref	tfusion/src/cuda/texture_binder.hpp	/^            const struct textureReference *texref;$/;"	m	class:tfusion::cuda::TextureBinder	typeref:struct:tfusion::cuda::TextureBinder::textureReference
+tfusion	tfusion/include/io/capture.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/GlobalCache.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/View.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/ViewBuilder.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/cuda/device_array.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/cuda/device_memory.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/cuda/imgproc.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/cuda/kernel_containers.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/cuda/projective_icp.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/reconstruction.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/scene.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/topfu.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/include/tfusion/types.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/src/cuda/device.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/src/cuda/temp_utils.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/src/cuda/texture_binder.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/src/internal.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/src/precomp.hpp	/^namespace tfusion$/;"	n
+tfusion	tfusion/src/safe_call.hpp	/^namespace tfusion$/;"	n
+time_ms_	tfusion/include/tfusion/types.hpp	/^        double& time_ms_;$/;"	m	struct:tfusion::SampledScopeTime
+topfu_	apps/demo.cpp	/^    TopFu::Ptr topfu_;$/;"	m	struct:TopFuApp	file:
+tr	tfusion/src/cuda/device.hpp	/^        __tf_device__ Vec3f tr(const float4& v) { return make_float3(v.x, v.y, v.z); }$/;"	f	namespace:tfusion::device
+trunc_dist	tfusion/src/internal.hpp	/^            const float trunc_dist;$/;"	m	struct:tfusion::device::TsdfVolume
+tsdf_max_weight	tfusion/include/tfusion/topfu.hpp	/^        int tsdf_max_weight;               \/\/frames$/;"	m	struct:tfusion::TopFuParams
+tsdf_min_camera_movement	tfusion/include/tfusion/topfu.hpp	/^        float tsdf_min_camera_movement; \/\/meters, integrate only if exceedes$/;"	m	struct:tfusion::TopFuParams
+tsdf_trunc_dist	tfusion/include/tfusion/topfu.hpp	/^        float tsdf_trunc_dist;             \/\/meters;$/;"	m	struct:tfusion::TopFuParams
+type	tfusion/include/tfusion/cuda/device_array.hpp	/^            typedef T type;$/;"	t	class:tfusion::cuda::DeviceArray
+type	tfusion/include/tfusion/cuda/device_array.hpp	/^            typedef T type;$/;"	t	class:tfusion::cuda::DeviceArray2D
+uchar	tfusion/src/internal.hpp	/^        typedef unsigned char uchar;$/;"	t	namespace:tfusion::device
+unitOrthogonal	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ float3 unitOrthogonal (const float3& src)$/;"	f	struct:tfusion::device::Eigen33
+unpack_tsdf	tfusion/src/cuda/device.hpp	/^__tf_device__ float tfusion::device::unpack_tsdf (ushort2 value) { return __half2float (value.x); }$/;"	f	class:tfusion::device
+unpack_tsdf	tfusion/src/cuda/device.hpp	/^__tf_device__ float tfusion::device::unpack_tsdf(ushort2 value, int& weight)$/;"	f	class:tfusion::device
+upload	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray2D<T>::upload(const void *host_ptr, size_t host_step, int rows, int cols)$/;"	f	class:tfusion::cuda::DeviceArray2D
+upload	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> inline void tfusion::cuda::DeviceArray<T>::upload(const T *host_ptr, size_t size)$/;"	f	class:tfusion::cuda::DeviceArray
+upload	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> template<class A> inline void tfusion::cuda::DeviceArray2D<T>::upload(const std::vector<T, A>& data, int cols)$/;"	f	class:tfusion::cuda::DeviceArray2D
+upload	tfusion/include/tfusion/cuda/device_array.hpp	/^template<class T> template<class A> inline void tfusion::cuda::DeviceArray<T>::upload(const std::vector<T, A>& data) { upload(&data[0], data.size()); }$/;"	f	class:tfusion::cuda::DeviceArray
+upload	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory2D::upload(const void *host_ptr_arg, size_t host_step_arg, int rows_arg, int colsBytes_arg)$/;"	f	class:tfusion::cuda::DeviceMemory2D
+upload	tfusion/src/device_memory.cpp	/^void tfusion::cuda::DeviceMemory::upload(const void *host_ptr_arg, size_t sizeBytes_arg)$/;"	f	class:tfusion::cuda::DeviceMemory
+use_points	tfusion/include/tfusion/types.hpp	/^            bool use_points;$/;"	m	struct:tfusion::cuda::Frame
+ushort	tfusion/src/internal.hpp	/^        typedef unsigned short ushort;$/;"	t	namespace:tfusion::device
+vcurr	tfusion/src/internal.hpp	/^            PtrStep<Point> vcurr;$/;"	m	struct:tfusion::device::ComputeIcpHelper
+view	tfusion/include/tfusion/topfu.hpp	/^        View *view;$/;"	m	class:tfusion::TopFu
+viewBuilder	tfusion/include/tfusion/topfu.hpp	/^        ViewBuilder *viewBuilder;$/;"	m	class:tfusion::TopFu
+view_device_	apps/demo.cpp	/^    cuda::Image view_device_;$/;"	m	struct:TopFuApp	file:
+view_host_	apps/demo.cpp	/^    cv::Mat view_host_;$/;"	m	struct:TopFuApp	file:
+viz	apps/demo.cpp	/^    cv::viz::Viz3d viz;$/;"	m	struct:TopFuApp	file:
+volume_dims	tfusion/include/tfusion/topfu.hpp	/^        Vec3i volume_dims; \/\/number of voxels$/;"	m	struct:tfusion::TopFuParams
+volume_pose	tfusion/include/tfusion/topfu.hpp	/^        Affine3f volume_pose; \/\/meters, inital pose$/;"	m	struct:tfusion::TopFuParams
+volume_size	tfusion/include/tfusion/topfu.hpp	/^        Vec3f volume_size; \/\/meters$/;"	m	struct:tfusion::TopFuParams
+voxelBlocks	tfusion/include/tfusion/LovalVBA.hpp	/^		ORUtils::MemoryBlock<TVoxel> *voxelBlocks;$/;"	m	class:Lib::LocalVBA
+voxel_size	tfusion/src/internal.hpp	/^            const float3 voxel_size;$/;"	m	struct:tfusion::device::TsdfVolume
+w	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+w	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+waitAllDefaultStream	tfusion/src/imgproc.cpp	/^void tfusion::cuda::waitAllDefaultStream()$/;"	f	class:tfusion::cuda
+warp_reduce	tfusion/src/cuda/temp_utils.hpp	/^            static __tf_device__ int warp_reduce ( volatile int *ptr , const unsigned int tid)$/;"	f	struct:tfusion::device::Emulation
+x	tfusion/include/tfusion/types.hpp	/^            struct { float x, y, z; };$/;"	m	struct:tfusion::Point::__anon1::__anon2
+x	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+x	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+y	tfusion/include/tfusion/types.hpp	/^            struct { float x, y, z; };$/;"	m	struct:tfusion::Point::__anon1::__anon2
+y	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+y	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+z	tfusion/include/tfusion/types.hpp	/^            struct { float x, y, z; };$/;"	m	struct:tfusion::Point::__anon1::__anon2
+z	tfusion/src/internal.hpp	/^        struct float12 { float x, y, z, w, normal_x, normal_y, normal_z, n4, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float12
+z	tfusion/src/internal.hpp	/^        struct float8  { float x, y, z, w, c1, c2, c3, c4; };$/;"	m	struct:tfusion::device::float8
+zstep	tfusion/src/cuda/device.hpp	/^__tf_device__ tfusion::device::TsdfVolume::elem_type* tfusion::device::TsdfVolume::zstep(elem_type *const ptr) const$/;"	f	class:tfusion::device::TsdfVolume
+~DeviceMemory	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory::~DeviceMemory() { release(); }$/;"	f	class:tfusion::cuda::DeviceMemory
+~DeviceMemory2D	tfusion/src/device_memory.cpp	/^tfusion::cuda::DeviceMemory2D::~DeviceMemory2D() { release(); }$/;"	f	class:tfusion::cuda::DeviceMemory2D
+~GlobalCache	tfusion/include/tfusion/GlobalCache.hpp	/^		~GlobalCache(void) $/;"	f	class:tfusion::GlobalCache
+~LocalVBA	tfusion/include/tfusion/LovalVBA.hpp	/^		~LocalVBA(void)$/;"	f	class:Lib::LocalVBA
+~OpenNISource	tfusion/src/capture.cpp	/^tfusion::OpenNISource::~OpenNISource() { release (); }$/;"	f	class:tfusion::OpenNISource
+~ProjectiveICP	tfusion/src/projective_icp.cpp	/^tfusion::cuda::ProjectiveICP::~ProjectiveICP() {}$/;"	f	class:tfusion::cuda::ProjectiveICP
+~SampledScopeTime	tfusion/src/core.cpp	/^tf::SampledScopeTime::~SampledScopeTime()$/;"	f	class:tf::SampledScopeTime
+~Scene	tfusion/include/tfusion/scene.hpp	/^		~Scene(void)$/;"	f	class:tfusion::Scene
+~ScopeTime	tfusion/src/core.cpp	/^tf::ScopeTime::~ScopeTime()$/;"	f	class:tf::ScopeTime
+~StreamHelper	tfusion/src/projective_icp.cpp	/^    ~StreamHelper() { cudaSafeCall( cudaStreamDestroy(stream) ); }$/;"	f	struct:tfusion::cuda::ProjectiveICP::StreamHelper
+~TextureBinder	tfusion/src/cuda/texture_binder.hpp	/^            ~TextureBinder()$/;"	f	class:tfusion::cuda::TextureBinder
+~View	tfusion/include/tfusion/View.hpp	/^		virtual ~View(void)$/;"	f	class:tfusion::View
+~ViewBuilder	tfusion/include/tfusion/ViewBuilder.hpp	/^		~ViewBuilder()$/;"	f	class:tfusion::ViewBuilder

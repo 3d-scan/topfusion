@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/demo.dir/demo.cpp.o  -o ../bin/demo -rdynamic ../lib/libtfusion.a /usr/local/lib/libopencv_viz.so.2.4.9 /usr/local/lib/libopencv_highgui.so.2.4.9 /usr/local/lib/libopencv_core.so.2.4.9 /usr/local/cuda/lib64/libcudart.so -lcuda -lOpenNI -Wl,-rpath,/usr/local/lib:/usr/local/cuda/lib64: -Wl,-rpath-link,/usr/local/lib 
