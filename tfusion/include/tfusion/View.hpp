@@ -2,6 +2,7 @@
 
 #include "../Camera/CalibIO.h"
 #include "../../Utils/ImageTypes.h"
+#include <tfusion/types.hpp>
 
 namespace tfusion
 {
@@ -22,7 +23,8 @@ namespace tfusion
 		UChar4Image *rgb_prev; 
 
 		/// Float valued depth image, if available according to @ref inputImageType.
-		FloatImage *depth;
+		// FloatImage *depth;
+		cuda::Dists *depth;
 
 		/// surface normal of depth image
 		// allocated when needed

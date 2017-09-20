@@ -179,7 +179,9 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
 
     //allocation and integration
     {
-        viewBuilder->UpdateView(&view,rgbimage,rawDepthImage,setting->useBilateralFilter);
+        // view->depth = dists_;
+        
+        // viewBuilder->UpdateView(&view,rgbimage,rawDepthImage,setting->useBilateralFilter);
 
     }
 
