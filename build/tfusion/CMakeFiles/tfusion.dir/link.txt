@@ -1,2 +1,0 @@
-/usr/bin/ar cq ../lib/libtfusion.a  CMakeFiles/tfusion.dir/src/device_memory.cpp.o CMakeFiles/tfusion.dir/src/capture.cpp.o CMakeFiles/tfusion.dir/src/core.cpp.o CMakeFiles/tfusion.dir/src/imgproc.cpp.o CMakeFiles/tfusion.dir/src/topfu.cpp.o CMakeFiles/tfusion.dir/src/projective_icp.cpp.o CMakeFiles/tfusion.dir/src/precomp.cpp.o CMakeFiles/tfusion.dir/src/cuda/tfusion_generated_imgproc.cu.o CMakeFiles/tfusion.dir/src/cuda/tfusion_generated_proj_icp.cu.o
-/usr/bin/ranlib ../lib/libtfusion.a

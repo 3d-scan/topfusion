@@ -1,2 +1,0 @@
-/home/chuan/topfusion/build/tfusion/CMakeFiles/tfusion.dir
-/home/chuan/topfusion/build/apps/CMakeFiles/demo.dir
