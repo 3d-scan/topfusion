@@ -5,6 +5,7 @@
 #include <tfusion/cuda/projective_icp.hpp>
 #include <vector>
 #include <string>
+#include <tfusion/cuda/reconstruction.hpp>
 
 namespace tfusion
 {
@@ -95,5 +96,7 @@ namespace tfusion
 
         View *view;
         ViewBuilder *viewBuilder;
+        Scene *scene;
+        SceneReconstruction<TVoxel,VoxelBlockHash> sceneEngine;
     };
 }

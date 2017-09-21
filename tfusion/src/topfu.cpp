@@ -179,10 +179,8 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
 
     //allocation and integration
     {
-        // view->depth = dists_;
-        
-        // viewBuilder->UpdateView(&view,rgbimage,rawDepthImage,setting->useBilateralFilter);
-
+        sceneEngine->AllocateSceneFromDepth(scene,view,pose_.back(),dists_);
+        sceneEngine->IntegrateIntoScene(scene,view,pose_.back(),dists_);
     }
 
     prev_.points_pyr.swap(curr_.points_pyr);
