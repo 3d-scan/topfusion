@@ -1,7 +1,7 @@
 #include "VisualisationEngine_CUDA.h"
 #include "VisualisationHelpers_CUDA.h"
 
-using namespace Lib;
+using namespace tfusion;
 
 inline dim3 getGridSize(dim3 taskSize, dim3 blockSize)
 {

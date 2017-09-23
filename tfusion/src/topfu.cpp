@@ -189,30 +189,34 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
     return ok;
 }
 
-void tfusion::TopFu::renderImage(cuda::Image& image, int flag)
+void tfusion::TopFu::renderImage(cuda::Image& image,const Affine3f& pose_, int flag)
 {
-//     const TopFuParams& p = params_;
-//     image.create(p.rows, flag != 3 ? p.cols : p.cols * 2);
+    
+    visualisation->RenderImage(scene,trackingState->pose_d,&view->calib.intrinsics_d,rederState_live
+        rederState_live->raycastImage,imageType,raycastType);
+    // Affine3f pose = pose_.inv();
+    // // Vector2i imgSize = outputImage->noDims;
+    // Vector2i imgSize(image.cols,image.rows);
+    // // Matrix4f invM = pose->GetInvM();
+    // Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+    //             pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
+    //             pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
+    //             pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
 
-// #if defined USE_DEPTH
-//     #define PASS1 prev_.depth_pyr
-// #else
-//     #define PASS1 prev_.points_pyr
-// #endif
+    // Vector4f *pointsRay;
 
-//     if (flag < 1 || flag > 3)
-//         cuda::renderImage(PASS1[0], prev_.normals_pyr[0], params_.intr, params_.light_pose, image);
-//     else if (flag == 2)
-//         cuda::renderTangentColors(prev_.normals_pyr[0], image);
-//     else /* if (flag == 3) */
-//     {
-//         DeviceArray2D<RGB> i1(p.rows, p.cols, image.ptr(), image.step());
-//         DeviceArray2D<RGB> i2(p.rows, p.cols, image.ptr() + p.cols, image.step());
+    // GeneticRaycast(scene,imgSize,invM,intrinsics->projectionParamsSimple.all,renderState,false);
+    // pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
 
-//         cuda::renderImage(PASS1[0], prev_.normals_pyr[0], params_.intr, params_.light_pose, i1);
-//         cuda::renderTangentColors(prev_.normals_pyr[0], i2);
-//     }
-// #undef PASS1
+    // Vector3f lightSource = -Vector3f(invM.getColumn(2));
+
+    // Vector4u * outRendering = outputImage->GetData(MEMORYDEVICE_CUDA);
+
+    // dim3 cudaBlockSize(8,8);
+    // dim3 gridSize((int)ceil((float)imgSize.x / (float)cudaBlockSize.x),(int)ceil((float)imgSize.y / (float)cudaBlockSize.y));
+
+    // rederGrey_ImageNormals_device<false><<<gridSize,cudaBlockSize>>>(outRendering,pointsRay,scene->sceneParams->voxelSize,imgSize,lightSource);
+    
 }
 
 

@@ -10,7 +10,7 @@ namespace tfusion
 	Represents the 3D world model as a hash of small voxel
 	blocks
 	*/
-	template<class TVoxel, class TIndex>
+	// template<class TVoxel, class TIndex>
 	class Scene
 	{
 	public:
@@ -26,20 +26,8 @@ namespace tfusion
 		/** Global content of the 8x8x8 voxel blocks -- stored on host only */
 		GlobalCache<TVoxel> *globalCache;
 
-		void SaveToDirectory(const std::string &outputDirectory) const
-		{
-			localVBA.SaveToDirectory(outputDirectory);
-			index.SaveToDirectory(outputDirectory);
-		}
-
-		void LoadFromDirectory(const std::string &outputDirectory)
-		{
-			localVBA.LoadFromDirectory(outputDirectory);
-			index.LoadFromDirectory(outputDirectory);			
-		}
-
-		Scene(const SceneParams *_sceneParams, bool _useSwapping, MemoryDeviceType _memoryType)
-			: sceneParams(_sceneParams), index(_memoryType), localVBA(_memoryType, index.getNumAllocatedVoxelBlocks(), index.getVoxelBlockSize())
+		Scene(const SceneParams *_sceneParams, bool _useSwapping)
+			: sceneParams(_sceneParams), localVBA(index.getNumAllocatedVoxelBlocks(), index.getVoxelBlockSize())
 		{
 			if (_useSwapping) globalCache = new GlobalCache<TVoxel>();
 			else globalCache = NULL;
