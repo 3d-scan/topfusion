@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Math.h"
+#include <tfusion/types.hpp>
 
 namespace tfusion
 {
@@ -22,7 +23,7 @@ namespace tfusion
 		updated by a tfusion::Engine::VisualisationEngine
 		before any raycasting operation.
 		*/
-		cuda::DeviceArray2D<Vector2f> *renderingRangeImage;
+		cuda::DeviceArray2D<Vector2f> renderingRangeImage;
 
 		/** @brief
 		Float rendering output of the scene, containing the 3D
@@ -31,35 +32,31 @@ namespace tfusion
 		This is typically created as a by-product of
 		raycasting operations.
 		*/
-		cuda::DeviceArray2D<Vector4f> *raycastResult;
+		cuda::DeviceArray2D<Vector4f> raycastResult;
 
-		cuda::DeviceArray2D<Vector4f> *forwardProjection;
-		cuda::DeviceArray2D<int> *fwdProjMissingPoints;
+		cuda::DeviceArray2D<Vector4f> forwardProjection;
+		cuda::DeviceArray2D<int> fwdProjMissingPoints;
 		int noFwdProjMissingPoints;
 
-		cuda::DeviceArray2D<Vector4u> *raycastImage;
+		cuda::DeviceArray2D<Vector4u> raycastImage;
 
 		RenderState(const Vector2i &imgSize, float vf_min, float vf_max, MemoryDeviceType memoryType)
 		{
-			renderingRangeImage = new cuda::DeviceArray2D<Vector2f>(imgSize, memoryType);
-			raycastResult = new cuda::DeviceArray2D<Vector4f>(imgSize, memoryType);
-			forwardProjection = new cuda::DeviceArray2D<Vector4f>(imgSize, memoryType);
-			fwdProjMissingPoints = new cuda::DeviceArray2D<int>(imgSize, memoryType);
-			raycastImage = new cuda::DeviceArray2D<Vector4u>(imgSize, memoryType);
-
-			cuda::DeviceArray2D<Vector2f> *buffImage = new cuda::DeviceArray2D<Vector2f>(imgSize, MEMORYDEVICE_CPU);
+			int x = imgSize.x;
+			int y = imgSize.y;
+			renderingRangeImage.create(y,x);
+			raycastResult.create(y,x);
+			forwardProjection.create(y,x);
+			fwdProjMissingPoints.create(y,x);
+			raycastImage.create(y,x);
+			
+			Vector2f buffImage = (Vector2f*)malloc(x*y*sizeof(Vector2f));
 
 			Vector2f v_lims(vf_min, vf_max);
-			for (int i = 0; i < imgSize.x * imgSize.y; i++) buffImage->GetData(MEMORYDEVICE_CPU)[i] = v_lims;
 
-			if (memoryType == MEMORYDEVICE_CUDA)
-			{
-#ifndef COMPILE_WITHOUT_CUDA
-				renderingRangeImage->SetFrom(buffImage, ORUtils::MemoryBlock<Vector2f>::CPU_TO_CUDA);
-#endif
-			}
-			else renderingRangeImage->SetFrom(buffImage, ORUtils::MemoryBlock<Vector2f>::CPU_TO_CPU);
+			for(int i = 0;i < imgSize.x * imgSize.y;i++) buffImage[i] = v_lims;
 
+			renderingRangeImage.upload(buffImage,x*sizeof(Vector2f),y,x);
 			delete buffImage;
 
 			noFwdProjMissingPoints = 0;
