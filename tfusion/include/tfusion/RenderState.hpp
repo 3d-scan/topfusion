@@ -40,7 +40,7 @@ namespace tfusion
 
 		cuda::DeviceArray2D<Vector4u> raycastImage;
 
-		RenderState(const Vector2i &imgSize, float vf_min, float vf_max, MemoryDeviceType memoryType)
+		RenderState(const Vector2i &imgSize, float vf_min, float vf_max)
 		{
 			int x = imgSize.x;
 			int y = imgSize.y;

@@ -41,6 +41,8 @@ tfusion::TopFuParams tfusion::TopFuParams::default_params()
     //p.light_pose = p.volume_pose.translation()/4; //meters
     p.light_pose = Vec3f::all(0.f); //meters
 
+    p.sceneParams = new tfusion::SceneParams(0.02f, 100, 0.005f, 0.2f, 3.0f, false);
+
     return p;
 }
 
@@ -56,6 +58,12 @@ tfusion::TopFu::TopFu(const TopFuParams& params) : frame_counter_(0), params_(pa
     // volume_->setPose(params_.volume_pose);
     // volume_->setRaycastStepFactor(params_.raycast_step_factor);
     // volume_->setGradientDeltaFactor(params_.gradient_delta_factor);
+    scene = new tfusion::Scene(params_.sceneParams,false);
+    sceneEngine = new tfusion::SceneReconstruction<TVoxel,TIndex>();
+    renderState = new tfusion::RenderState_VH(VoxelBlockHash::noTotalEntries,new Vector2i(params_.cols,params_.rows),params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
+    visualisationEngine = new tfusion::VisualisationEngine<TVoxel,TIndex>();
+
+    sceneEngine->reset(scene);
 
     icp_ = cv::Ptr<cuda::ProjectiveICP>(new cuda::ProjectiveICP());
     icp_->setDistThreshold(params_.icp_dist_thres);
@@ -177,10 +185,17 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
 
     poses_.push_back(poses_.back() * affine);
 
+    Affine3f pose = poses_.back();
+
+    Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+                pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
+                pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
+                pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
     //allocation and integration
     {
-        sceneEngine->AllocateSceneFromDepth(scene,view,pose_.back(),dists_);
-        sceneEngine->IntegrateIntoScene(scene,view,pose_.back(),dists_);
+        // sceneEngine->AllocateSceneFromDepth(scene,view,pose_.back(),dists_);
+        sceneEngine->AllocateSceneFromDepth(scene,p.intr,M_d,dists_,renderState);
+        sceneEngine->IntegrateIntoScene(scene,p.intr,M_d,dists_,renderState);
     }
 
     prev_.points_pyr.swap(curr_.points_pyr);
@@ -192,8 +207,17 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
 void tfusion::TopFu::renderImage(cuda::Image& image,const Affine3f& pose_, int flag)
 {
     
-    visualisation->RenderImage(scene,trackingState->pose_d,&view->calib.intrinsics_d,rederState_live
-        rederState_live->raycastImage,imageType,raycastType);
+    VisualisationEngine::RenderImageType imageType = VisualisationEngine::RENDER_SHADED_GREYSCALE_IMAGENORMALS;
+    VisualisationEngine::RenderRaycastSelection raycastType = VisualisationEngine::RENDER_FROM_NEW_RAYCAST;
+
+    Affine3f pose = poses_.back();
+    Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+                pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
+                pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
+                pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+
+    Vector4f intrs(p.intr.fx,p.intr.fy,p.intr.cx,p.intr.cy);
+    visualisation->RenderImage(scene,M_d,intrs,rederState,rederState->raycastImage,imageType,raycastType);
     // Affine3f pose = pose_.inv();
     // // Vector2i imgSize = outputImage->noDims;
     // Vector2i imgSize(image.cols,image.rows);

@@ -50,6 +50,7 @@ namespace tfusion
 
         Vec3f light_pose; //meters
 
+        SceneParams *sceneParams;
     };
 
     class KF_EXPORTS TopFu
@@ -94,9 +95,11 @@ namespace tfusion
         // cv::Ptr<cuda::TsdfVolume> volume_;
         cv::Ptr<cuda::ProjectiveICP> icp_;
 
-        View *view;
-        ViewBuilder *viewBuilder;
+        // View *view;
+        // ViewBuilder *viewBuilder;
         Scene *scene;
-        SceneReconstruction<TVoxel,VoxelBlockHash> sceneEngine;
+        SceneReconstruction<TVoxel,VoxelBlockHash> *sceneEngine;
+        RenderState *renderState;
+        VisualisationEngine *visualisationEngine;
     };
 }

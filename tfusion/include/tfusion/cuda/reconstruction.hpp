@@ -14,10 +14,11 @@ namespace tfusion
 	public:
 		void ResetScene(Scene<TVoxel,VoxelBlockHash> *scene);
 
-		void AllocateSceneFromDepth(Scene<TVoxel,VoxelBlockHash>* scene,const View view,const TrackingState *trackingstate,
-			const RenderState* renderstate, bool onlyUpdateVisibleList = false,bool resetVisibleList = false);
+		void AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr, 
+	const Matrix4f pose, cuda::Dist &dist,const RenderState *renderState,bool onlyUpdateVisibleList = false,bool resetVisibleList = false);
 
-		void IntegrateIntoScene(Scene<TVoxel,VoxelBlockHash> *scene,const View view,const TrackingState *trackingstate,const RenderState* renderstate);
+		void IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr,
+	const Matrix4f pose, cuda::Dist& dist, const RenderState *renderState);
 
 		SceneReconstruction(void);
 		~SceneReconstruction(void);

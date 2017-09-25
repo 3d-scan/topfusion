@@ -1,4 +1,4 @@
-#include <tfusion/cuda/reconstruction.hpp>
+#include <tfusion/cuda/reconstruction_CUDA.hpp>
 
 struct AllocationTempData{
 
@@ -83,8 +83,8 @@ void SceneReconstruction<TVoxel,VoxelBlockHash>::ResetScene(Scene<TVoxel, VoxelB
 }
 //modified by chuan
 template<class TVoxel>
-void SceneReconstruction<TVoxel, VoxelBlockHash>::AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const View *view, 
-	const Affine3f pose, cuda::Dist &dist,const RenderState *renderState,bool onlyUpdateVisibleList, bool resetVisibleList)
+void SceneReconstruction<TVoxel, VoxelBlockHash>::AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr, 
+	const Matrix4f pose, cuda::Dist &dist,const RenderState *renderState,bool onlyUpdateVisibleList, bool resetVisibleList)
 {
 	// Vector2i depthImgSize = view->depth->noDims;
 	Vector2i depthImgSize(dist.cols,dist.rows);
@@ -97,15 +97,16 @@ void SceneReconstruction<TVoxel, VoxelBlockHash>::AllocateSceneFromDepth(Scene<T
 
 	if (resetVisibleList) renderState_vh->noVisibleEntries = 0;
 
-	Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
-				pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
-				pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
-				pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+	// Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+	// 			pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
+	// 			pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
+	// 			pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
 	// M_d = trackingState->pose_d->GetM(); M_d.inv(invM_d);
+	Matrix4f M_d(pose);
 	Matrix4f invM_d;
 	M_d.inv(invM_d);
 	
-	projParams_d = view->calib.intrinsics_d.projectionParamsSimple.all;
+	projParams_d = new Vector4f(intr.fx,intr.fy,intr.cx,intr.cy);
 	invProjParams_d = projParams_d;
 	invProjParams_d.x = 1.0f / invProjParams_d.x;
 	invProjParams_d.y = 1.0f / invProjParams_d.y;
@@ -156,6 +157,7 @@ void SceneReconstruction<TVoxel, VoxelBlockHash>::AllocateSceneFromDepth(Scene<T
 
 	bool useSwapping = scene->globalCache != NULL;
 	if (onlyUpdateVisibleList) useSwapping = false;
+	//execute
 	if (!onlyUpdateVisibleList)
 	{
 		allocateVoxelBlocksList_device << <gridSizeAL, cudaBlockSizeAL >> >(voxelAllocationList, excessAllocationList, hashTable,
@@ -163,20 +165,21 @@ void SceneReconstruction<TVoxel, VoxelBlockHash>::AllocateSceneFromDepth(Scene<T
 			blockCoords_device);
 		ORcudaKernelCheck;
 	}
-
+	//no execute
 	if (useSwapping)
 	{
 		buildVisibleList_device<true> << <gridSizeAL, cudaBlockSizeAL >> >(hashTable, swapStates, noTotalEntries, visibleEntryIDs,
 			(AllocationTempData*)allocationTempData_device, entriesVisibleType, M_d, projParams_d, depthImgSize, voxelSize);
 		ORcudaKernelCheck;
 	}
+	//execute
 	else
 	{
 		buildVisibleList_device<false> << <gridSizeAL, cudaBlockSizeAL >> >(hashTable, swapStates, noTotalEntries, visibleEntryIDs,
 			(AllocationTempData*)allocationTempData_device, entriesVisibleType, M_d, projParams_d, depthImgSize, voxelSize);
 		ORcudaKernelCheck;
 	}
-
+	//no execute
 	if (useSwapping)
 	{
 		reAllocateSwappedOutVoxelBlocks_device << <gridSizeAL, cudaBlockSizeAL >> >(voxelAllocationList, hashTable, noTotalEntries, 
@@ -191,29 +194,24 @@ void SceneReconstruction<TVoxel, VoxelBlockHash>::AllocateSceneFromDepth(Scene<T
 }
 
 template<class TVoxel>
-void SceneReconstruction<TVoxel, VoxelBlockHash>::IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const View *view,
-	const Affine3f pose, cuda::Dist& dist, const RenderState *renderState)
+void SceneReconstruction<TVoxel, VoxelBlockHash>::IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr,
+	const Matrix4f pose, cuda::Dist& dist, const RenderState *renderState)
 {
-	// Vector2i rgbImgSize = view->rgb->noDims;
-	// Vector2i depthImgSize = view->depth->noDims;
 	Vector2i depthImgSize(dist.cols,dist.rows);
 	float voxelSize = scene->sceneParams->voxelSize;
-
-	// Matrix4f M_d, M_rgb;
-	Vector4f projParams_d, projParams_rgb;
 
 	RenderState_VH *renderState_vh = (RenderState_VH*)renderState;
 	if(renderState_vh->noVisibleEntries == 0) return;
 
 	// M_d = trackingState->pose_d->GetM();
-	Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
-				pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
-				pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
-				pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+	// Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+	// 			pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
+	// 			pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
+	// 			pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+	Matrix4f M_d(pose);
 	// if (TVoxel::hasColorInformation) M_rgb = view->calib.trafo_rgb_to_depth.calib_inv * M_d;
 
-	projParams_d = view->calib.intrinsics_d.projectionParamsSimple.all;
-	// projParams_rgb = view->calib.intrinsics_rgb.projectionParamsSimple.all;
+	Vector4f projParams_d(intr.fx,intr.fy,intr.cx,intr.cy);
 
 	float mu = scene->sceneParams->mu; int maxW = scene->sceneParams->maxW;
 
@@ -236,6 +234,7 @@ void SceneReconstruction<TVoxel, VoxelBlockHash>::IntegrateIntoScene(Scene<TVoxe
 		integrateIntoScene_device<TVoxel, true> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,dist, depthImgSize, M_d, projParams_d, voxelSize, mu, maxW);
 		ORcudaKernelCheck;
 	}
+	//execute
 	else
 	{
 		// integrateIntoScene_device<TVoxel, false> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,

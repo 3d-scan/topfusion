@@ -22,24 +22,6 @@ VisualisationEngine_CUDA<TVoxel, TIndex>::~VisualisationEngine_CUDA(void)
 	ORcudaSafeCall(cudaFree(noTotalPoints_device));
 }
 
-template<class TVoxel>
-VisualisationEngine_CUDA<TVoxel, VoxelBlockHash>::VisualisationEngine_CUDA(void)
-{
-	ORcudaSafeCall(cudaMalloc((void**)&renderingBlockList_device, sizeof(RenderingBlock) * MAX_RENDERING_BLOCKS));
-	ORcudaSafeCall(cudaMalloc((void**)&noTotalBlocks_device, sizeof(uint)));
-	ORcudaSafeCall(cudaMalloc((void**)&noTotalPoints_device, sizeof(uint)));
-	ORcudaSafeCall(cudaMalloc((void**)&noVisibleEntries_device, sizeof(uint)));
-}
-
-template<class TVoxel>
-VisualisationEngine_CUDA<TVoxel, VoxelBlockHash>::~VisualisationEngine_CUDA(void)
-{
-	ORcudaSafeCall(cudaFree(noTotalPoints_device));
-	ORcudaSafeCall(cudaFree(noTotalBlocks_device));
-	ORcudaSafeCall(cudaFree(renderingBlockList_device));
-	ORcudaSafeCall(cudaFree(noVisibleEntries_device));
-}
-
 template<class TVoxel, class TIndex>
 RenderState* VisualisationEngine_CUDA<TVoxel, TIndex>::CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const
 {
@@ -54,11 +36,6 @@ RenderState_VH* VisualisationEngine_CUDA<TVoxel, VoxelBlockHash>::CreateRenderSt
 	return new RenderState_VH(
 		VoxelBlockHash::noTotalEntries, imgSize, scene->sceneParams->viewFrustum_min, scene->sceneParams->viewFrustum_max, MEMORYDEVICE_CUDA
 	);
-}
-
-template<class TVoxel, class TIndex>
-void VisualisationEngine_CUDA<TVoxel, TIndex>::FindVisibleBlocks(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, RenderState *renderState) const
-{
 }
 
 template<class TVoxel>
@@ -220,11 +197,12 @@ static void GenericRaycast(const Scene<TVoxel, TIndex> *scene, const Vector2i& i
 }
 
 template<class TVoxel, class TIndex>
-static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, const RenderState *renderState,
+static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, const Matrix4f pose, const Vector4f intrinsics, const RenderState *renderState,
 	UChar4Image *outputImage, IVisualisationEngine::RenderImageType type, IVisualisationEngine::RenderRaycastSelection raycastType)
 {
 	Vector2i imgSize = outputImage->noDims;
-	Matrix4f invM = pose->GetInvM();
+	// Matrix4f invM = pose->GetInvM();
+	Matrix4f invM = pose.inv();
 
 	Vector4f *pointsRay;
 	if (raycastType == IVisualisationEngine::RENDER_FROM_OLD_RAYCAST) {
@@ -232,7 +210,7 @@ static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, const ORUtils
 	} else if (raycastType == IVisualisationEngine::RENDER_FROM_OLD_FORWARDPROJ) {
 		pointsRay = renderState->forwardProjection->GetData(MEMORYDEVICE_CUDA);
 	} else {
-		GenericRaycast(scene, imgSize, invM, intrinsics->projectionParamsSimple.all, renderState, false);
+		GenericRaycast(scene, imgSize, invM, intrinsics, renderState, false);
 		pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
 	}
 
@@ -394,21 +372,28 @@ static void ForwardRender_common(const Scene<TVoxel, TIndex> *scene, const View 
 	}
 }
 
+// template<class TVoxel, class TIndex>
+// void VisualisationEngine_CUDA<TVoxel, TIndex>::RenderImage(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, const RenderState *renderState,
+// 	UChar4Image *outputImage, IVisualisationEngine::RenderImageType type,
+// 	IVisualisationEngine::RenderRaycastSelection raycastType) const
+// {
+// 	RenderImage_common(scene, pose, intrinsics, renderState, outputImage, type, raycastType);
+// }
 template<class TVoxel, class TIndex>
-void VisualisationEngine_CUDA<TVoxel, TIndex>::RenderImage(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, const RenderState *renderState,
+void VisualisationEngine_CUDA<TVoxel, TIndex>::RenderImage(const Scene<TVoxel,TIndex> *scene, Matrix4f pose, const Vector4f intrinsics, const RenderState *renderState,
 	UChar4Image *outputImage, IVisualisationEngine::RenderImageType type,
 	IVisualisationEngine::RenderRaycastSelection raycastType) const
 {
 	RenderImage_common(scene, pose, intrinsics, renderState, outputImage, type, raycastType);
 }
 
-template<class TVoxel>
-void VisualisationEngine_CUDA<TVoxel, VoxelBlockHash>::RenderImage(const Scene<TVoxel,VoxelBlockHash> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
-	const RenderState *renderState, UChar4Image *outputImage, IVisualisationEngine::RenderImageType type,
-	IVisualisationEngine::RenderRaycastSelection raycastType) const
-{
-	RenderImage_common(scene, pose, intrinsics, renderState, outputImage, type, raycastType);
-}
+// template<class TVoxel>
+// void VisualisationEngine_CUDA<TVoxel, VoxelBlockHash>::RenderImage(const Scene<TVoxel,VoxelBlockHash> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
+// 	const RenderState *renderState, UChar4Image *outputImage, IVisualisationEngine::RenderImageType type,
+// 	IVisualisationEngine::RenderRaycastSelection raycastType) const
+// {
+// 	RenderImage_common(scene, pose, intrinsics, renderState, outputImage, type, raycastType);
+// }
 
 template<class TVoxel, class TIndex>
 void VisualisationEngine_CUDA<TVoxel, TIndex>::FindSurface(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, const RenderState *renderState) const
