@@ -54,12 +54,16 @@ namespace tfusion
     namespace cuda
     {
         typedef cuda::DeviceMemory CudaData;
-        typedef cuda::DeviceArray cudaData_array;
+        // typedef cuda::DeviceArray cudaData_array;
         typedef cuda::DeviceArray2D<unsigned short> Depth;
         typedef cuda::DeviceArray2D<unsigned short> Dists;
         typedef cuda::DeviceArray2D<RGB> Image;
         typedef cuda::DeviceArray2D<Normal> Normals;
         typedef cuda::DeviceArray2D<Point> Cloud;
+        typedef cuda::DeviceArray2D<Vector4f> image4f;
+        typedef cuda::DeviceArray2D<int> imageInt;
+        typedef cuda::DeviceArray2D<Vector2f> image2f;
+        typedef cuda::DeviceArray2D<Vector4u> image4u;
 
         struct Frame
         {

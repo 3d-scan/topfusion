@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Math.h"
+#include "Math.hpp"
 #include <tfusion/types.hpp>
 
 namespace tfusion
@@ -23,7 +23,8 @@ namespace tfusion
 		updated by a tfusion::Engine::VisualisationEngine
 		before any raycasting operation.
 		*/
-		cuda::DeviceArray2D<Vector2f> renderingRangeImage;
+		// cuda::DeviceArray2D<Vector2f> renderingRangeImage;
+		cuda::image2f renderingRangeImage;
 
 		/** @brief
 		Float rendering output of the scene, containing the 3D
@@ -32,13 +33,22 @@ namespace tfusion
 		This is typically created as a by-product of
 		raycasting operations.
 		*/
-		cuda::DeviceArray2D<Vector4f> raycastResult;
+		// cuda::DeviceArray2D<Vector4f> raycastResult;
+		cuda::image4f raycastResult;
 
-		cuda::DeviceArray2D<Vector4f> forwardProjection;
-		cuda::DeviceArray2D<int> fwdProjMissingPoints;
+		// cuda::DeviceArray2D<Vector4f> forwardProjection;
+		cuda::image4f forwardProjection;
+		// cuda::DeviceArray2D<int> fwdProjMissingPoints;
+		cuda::imageInt fwdProjMissingPoints;
 		int noFwdProjMissingPoints;
 
-		cuda::DeviceArray2D<Vector4u> raycastImage;
+		// cuda::DeviceArray2D<Vector4u> raycastImage;
+		cuda::image4u raycastImage;
+
+		struct Vector2f_host{
+			float x,y;
+			Vector2f_host(float x_,float y_):x(x_),y(y_){}
+		};
 
 		RenderState(const Vector2i &imgSize, float vf_min, float vf_max)
 		{
@@ -50,13 +60,13 @@ namespace tfusion
 			fwdProjMissingPoints.create(y,x);
 			raycastImage.create(y,x);
 			
-			Vector2f buffImage = (Vector2f*)malloc(x*y*sizeof(Vector2f));
+			Vector2f_host *buffImage = (Vector2f_host*)malloc(x*y*sizeof(Vector2f_host));
 
-			Vector2f v_lims(vf_min, vf_max);
+			Vector2f_host v_lims(vf_min, vf_max);
 
 			for(int i = 0;i < imgSize.x * imgSize.y;i++) buffImage[i] = v_lims;
 
-			renderingRangeImage.upload(buffImage,x*sizeof(Vector2f),y,x);
+			renderingRangeImage.upload(buffImage,x*sizeof(Vector2f_host),y,x);
 			delete buffImage;
 
 			noFwdProjMissingPoints = 0;
@@ -64,13 +74,13 @@ namespace tfusion
 
 		virtual ~RenderState()
 		{
-			delete renderingRangeImage;
-			delete raycastResult;
-			delete forwardProjection;
-			delete fwdProjMissingPoints;
-			delete raycastImage;
+			// delete renderingRangeImage;
+			// delete raycastResult;
+			// delete forwardProjection;
+			// delete fwdProjMissingPoints;
+			// delete raycastImage;
 		}
 	};
 }
 
-#endif
+

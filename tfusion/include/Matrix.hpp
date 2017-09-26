@@ -9,7 +9,7 @@
 /* In all other parts of the code, we still use row major order.		*/
 /************************************************************************/
 
-namespace ORUtils {
+namespace tfusion {
 	template <class T> class Vector2;
 	template <class T> class Vector3;
 	template <class T> class Vector4;

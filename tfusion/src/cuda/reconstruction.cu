@@ -231,7 +231,7 @@ void SceneReconstruction<TVoxel, VoxelBlockHash>::IntegrateIntoScene(Scene<TVoxe
 		// integrateIntoScene_device<TVoxel, true> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,
 		// 	rgb, rgbImgSize, depth, confidence, depthImgSize, M_d, M_rgb, projParams_d, projParams_rgb, voxelSize, mu, maxW);
 		// ORcudaKernelCheck;
-		integrateIntoScene_device<TVoxel, true> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,dist, depthImgSize, M_d, projParams_d, voxelSize, mu, maxW);
+		integrateIntoScene_device<TVoxel, true> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,(PtrStepSz<ushort>)dist, depthImgSize, M_d, projParams_d, voxelSize, mu, maxW);
 		ORcudaKernelCheck;
 	}
 	//execute
@@ -240,7 +240,7 @@ void SceneReconstruction<TVoxel, VoxelBlockHash>::IntegrateIntoScene(Scene<TVoxe
 		// integrateIntoScene_device<TVoxel, false> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,
 		// 	rgb, rgbImgSize, depth, confidence, depthImgSize, M_d, M_rgb, projParams_d, projParams_rgb, voxelSize, mu, maxW);
 		// ORcudaKernelCheck;
-		integrateIntoScene_device<TVoxel, false> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,dist, depthImgSize, M_d, projParams_d, voxelSize, mu, maxW);
+		integrateIntoScene_device<TVoxel, false> << <gridSize, cudaBlockSize >> >(localVBA, hashTable, visibleEntryIDs,(PtrStepSz<ushort>)dist, depthImgSize, M_d, projParams_d, voxelSize, mu, maxW);
 		ORcudaKernelCheck;
 	}
 }
@@ -251,7 +251,7 @@ namespace
 
 template<class TVoxel, bool stopMaxW>
 __global__ void integrateIntoScene_device(TVoxel *localVBA, const HashEntry *hashTable, int *visibleEntryIDs,
-	const cuda::Dist &depth, Vector2i depthImgSize, Matrix4f M_d, Vector4f projParams_d, 
+	const PtrStepSz<ushort> depth, Vector2i depthImgSize, Matrix4f M_d, Vector4f projParams_d, 
 	float _voxelSize, float mu, int maxW)
 {
 	Vector3i globalPos;
@@ -291,7 +291,7 @@ __global__ void buildHashAllocAndVisibleType_device(uchar *entriesAllocType, uch
 
 	if (x > _imgSize.x - 1 || y > _imgSize.y - 1) return;
 
-	buildHashAllocAndVisibleTypePP(entriesAllocType, entriesVisibleType, x, y, blockCoords, depth, invM_d,
+	buildHashAllocAndVisibleTypePP(entriesAllocType, entriesVisibleType, x, y, blockCoords, (tfusion::cuda::PtrStepSz<ushort>)depth, invM_d,
 		projParams_d, mu, _imgSize, _voxelSize, hashTable, viewFrustum_min, viewFrustum_max);
 }
 

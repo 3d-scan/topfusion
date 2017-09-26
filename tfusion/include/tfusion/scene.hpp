@@ -1,8 +1,8 @@
 #pragma once
 
-#include "LocalVBA.hpp"
-#include "GlobalCache.hpp"
-#include "../../Utils/SceneParams.hpp"
+#include "tfusion/LocalVBA.hpp"
+#include "tfusion/GlobalCache.hpp"
+#include "tfusion/SceneParams.hpp"
 
 namespace tfusion
 {
@@ -10,7 +10,7 @@ namespace tfusion
 	Represents the 3D world model as a hash of small voxel
 	blocks
 	*/
-	// template<class TVoxel, class TIndex>
+	template<class TVoxel, class TIndex>
 	class Scene
 	{
 	public:

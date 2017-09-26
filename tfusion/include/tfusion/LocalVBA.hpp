@@ -15,8 +15,8 @@ namespace tfusion
 		// ORUtils::MemoryBlock<int> *allocationList;
 
 		// MemoryDeviceType memoryType;
-		tfusion::cuda::cudaData_array<TVoxel> voxelBlocks;
-		tfusion::cuda::cudaData_array<int> allocationList;
+		tfusion::cuda::DeviceArray<TVoxel> voxelBlocks;
+		tfusion::cuda::DeviceArray<int> allocationList;
 
 	public:
 		inline TVoxel *GetVoxelBlocks(void) {return voxelBlocks.ptr();}
@@ -31,7 +31,7 @@ namespace tfusion
 		{
 			allocatedSize = noBlocks * blockSize;
 
-			voxel.create(allocatedSize * sizeof(TVoxel));
+			voxelBlocks.create(allocatedSize * sizeof(TVoxel));
 			allocationList.create(noBlocks * sizeof(int));
 		}
 		~LocalVBA(void)

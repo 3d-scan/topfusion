@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "VoxelBlockHash.h"
-#include "../../../ORUtils/CUDADefines.h"
+#include "tfusion/cuda/VoxelBlockHash.hpp"
+#include "tfusion/cuda/CUDADefines.hpp"
 
 namespace tfusion
 {

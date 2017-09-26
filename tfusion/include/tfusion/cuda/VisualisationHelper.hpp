@@ -1,11 +1,8 @@
 #pragma once
 
-#include "../../../Objects/Tracking/TrackingState.h"
-#include "../../../Objects/Views/View.h"
-
-#include "../Shared/VisualisationEngine_Shared.h"
-#include "../../Reconstruction/Shared/SceneReconstructionEngine_Shared.h"
-#include "../../../Utils/CUDAUtils.h"
+#include "tfusion/cuda/VisualisationEngine_Shared.hpp"
+#include "tfusion/cuda/SceneReconstructionEngine.hpp"
+#include "tfusion/cuda/CUDAUtils.hpp"
 
 namespace tfusion
 {

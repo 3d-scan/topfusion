@@ -4,7 +4,8 @@
 #include <fstream>
 #include <iostream>
 
-#include "Math.h"
+#include "Math.hpp"
+#include "tfusion/types.hpp"
 
 #define SDF_BLOCK_SIZE 8				// SDF block size
 #define SDF_BLOCK_SIZE3 512				// SDF_BLOCK_SIZE3 = SDF_BLOCK_SIZE * SDF_BLOCK_SIZE * SDF_BLOCK_SIZE
@@ -69,7 +70,7 @@ namespace tfusion
 
 		/** The actual data in the hash table. */
 		// ORUtils::MemoryBlock<HashEntry> *hashEntries;
-		tfusion::cuda::cudaData_array<HashEntry> hashEntries;
+		cuda::DeviceArray<HashEntry> hashEntries;
 
 		/** Identifies which entries of the overflow
 		list are allocated. This is used if too
@@ -77,7 +78,7 @@ namespace tfusion
 		overflow.
 		*/
 		// ORUtils::MemoryBlock<int> *excessAllocationList;
-		tfusion::cuda::cudaData_array<int> excessAllocationList;
+		cuda::DeviceArray<int> excessAllocationList;
 
 
 	public:
@@ -89,8 +90,8 @@ namespace tfusion
 
 		~VoxelBlockHash(void)
 		{
-			delete hashEntries;
-			delete excessAllocationList;
+			// delete hashEntries;
+			// delete excessAllocationList;
 		}
 
 		/** Get the list of actual entries in the hash table. */

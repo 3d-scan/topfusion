@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../Objects/Scene/RepresentationAccess.h"
+#include "tfusion/cuda/RepresentationAccess.hpp"
 
 static const CONSTPTR(int) MAX_RENDERING_BLOCKS = 65536*4;
 //static const int MAX_RENDERING_BLOCKS = 16384;

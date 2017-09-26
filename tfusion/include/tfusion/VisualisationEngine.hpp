@@ -1,9 +1,11 @@
 #pragma once
 
-#include "../../../Objects/RenderStates/RenderState_VH.h"
-#include "../../../Objects/Scene/Scene.h"
-#include "../../../Objects/Tracking/TrackingState.h"
-#include "../../../Objects/Views/View.h"
+#include <tfusion/cuda/RenderState.hpp>
+#include <tfusion/cuda/RenderState_VH.hpp>
+#include <tfusion/scene.hpp>
+
+// #include "../../../Objects/Tracking/TrackingState.h"
+// #include "../../../Objects/Views/View.h"
 
 namespace tfusion
 {
@@ -28,9 +30,9 @@ namespace tfusion
 
 		virtual ~IVisualisationEngine(void) {}
 
-		static void DepthToUchar4(UChar4Image *dst, const FloatImage *src);
-		static void NormalToUchar4(UChar4Image* dst, const Float4Image *src);
-		static void WeightToUchar4(UChar4Image *dst, const FloatImage *src);
+		// static void DepthToUchar4(UChar4Image *dst, const FloatImage *src);
+		// static void NormalToUchar4(UChar4Image* dst, const Float4Image *src);
+		// static void WeightToUchar4(UChar4Image *dst, const FloatImage *src);
 	};
 
 	template<class TIndex> struct IndexToRenderState { typedef RenderState type; };
@@ -62,47 +64,47 @@ namespace tfusion
 		appropriate visualisation state object, created
 		previously using allocateInternalState().
 		*/
-		virtual void FindVisibleBlocks(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
-			RenderState *renderState) const = 0;
+		// virtual void FindVisibleBlocks(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
+		// 	RenderState *renderState) const = 0;
 
 		/** Given a render state, Count the number of visible blocks
 		with minBlockId <= blockID <= maxBlockId .
 		*/
-		virtual int CountVisibleBlocks(const Scene<TVoxel,TIndex> *scene, const RenderState *renderState, int minBlockId = 0, int maxBlockId = SDF_LOCAL_BLOCK_NUM) const = 0;
+		// virtual int CountVisibleBlocks(const Scene<TVoxel,TIndex> *scene, const RenderState *renderState, int minBlockId = 0, int maxBlockId = SDF_LOCAL_BLOCK_NUM) const = 0;
 
 		/** Given scene, pose and intrinsics, create an estimate
 		of the minimum and maximum depths at each pixel of
 		an image.
 		*/
-		virtual void CreateExpectedDepths(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
-			RenderState *renderState) const = 0;
+		// virtual void CreateExpectedDepths(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
+		// 	RenderState *renderState) const = 0;
 
 		/** This will render an image using raycasting. */
-		virtual void RenderImage(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
-			const RenderState *renderState, UChar4Image *outputImage, RenderImageType type = RENDER_SHADED_GREYSCALE, RenderRaycastSelection raycastType = RENDER_FROM_NEW_RAYCAST) const = 0;
+		virtual void RenderImage(const Scene<TVoxel,TIndex> *scene, Matrix4f pose, const Vector4f intrinsics, const RenderState *renderState,
+	cuda::image4u& outputImage, RenderImageType type = RENDER_SHADED_GREYSCALE, RenderRaycastSelection raycastType = RENDER_FROM_NEW_RAYCAST) const = 0;
 
 		/** Finds the scene surface using raycasting. */
-		virtual void FindSurface(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
-			const RenderState *renderState) const = 0;
+		// virtual void FindSurface(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
+		// 	const RenderState *renderState) const = 0;
 
 		/** Create a point cloud as required by the
 		Lib::Engine::ColorTracker classes.
 		*/
-		virtual void CreatePointCloud(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState, 
-			RenderState *renderState, bool skipPoints) const = 0;
+		// virtual void CreatePointCloud(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState, 
+		// 	RenderState *renderState, bool skipPoints) const = 0;
 
 		/** Create an image of reference points and normals as
 		required by the Lib::Engine::DepthTracker classes.
 		*/
-		virtual void CreateICPMaps(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState, 
-			RenderState *renderState) const = 0;
+		// virtual void CreateICPMaps(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState, 
+		// 	RenderState *renderState) const = 0;
 
 		/** Create an image of reference points and normals as
 		required by the Lib::Engine::DepthTracker classes.
 
 		Incrementally previous raycast result.
 		*/
-		virtual void ForwardRender(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState,
-			RenderState *renderState) const = 0;
+		// virtual void ForwardRender(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState,
+			// RenderState *renderState) const = 0;
 	};
 }

@@ -1,11 +1,12 @@
 #pragma once
 
-#include "../../../Objects/Scene/RepresentationAccess.h"
-#include "../../../Utils/PixelUtils.h"
+#include "tfusion/cuda/RepresentationAccess.hpp"
+#include "tfusion/cuda/PixelUtils.hpp"
+#include "tfusion/types.hpp"
 
 template<class TVoxel>
 _CPU_AND_GPU_CODE_ inline float computeUpdatedVoxelDepthInfo(DEVICEPTR(TVoxel) &voxel, const THREADPTR(Vector4f) & pt_model, const CONSTPTR(Matrix4f) & M_d,
-	const CONSTPTR(Vector4f) & projParams_d, float mu, int maxW, const PtrStepSz<ushort> depth, const CONSTPTR(Vector2i) & imgSize)
+	const CONSTPTR(Vector4f) & projParams_d, float mu, int maxW, tfusion::cuda::PtrStepSz<ushort> depth, const CONSTPTR(Vector2i) & imgSize)
 {
 	Vector4f pt_camera; Vector2f pt_image;
 	float depth_measure, eta, oldF, newF;
@@ -130,7 +131,7 @@ struct ComputeUpdatedVoxelInfo<false, false, TVoxel> {
 	_CPU_AND_GPU_CODE_ static void compute(DEVICEPTR(TVoxel) & voxel, const THREADPTR(Vector4f) & pt_model,
 		const CONSTPTR(Matrix4f) & M_d, const CONSTPTR(Vector4f) & projParams_d,
 		float mu, int maxW,
-		const cuda::Dist &depth, const CONSTPTR(Vector2i) & imgSize_d)
+		const tfusion::cuda::PtrStepSz<ushort> depth, const CONSTPTR(Vector2i) & imgSize_d)
 	{
 		computeUpdatedVoxelDepthInfo(voxel, pt_model, M_d, projParams_d, mu, maxW, depth, imgSize_d);
 	}
@@ -180,7 +181,7 @@ struct ComputeUpdatedVoxelInfo<false, false, TVoxel> {
 // };
 
 _CPU_AND_GPU_CODE_ inline void buildHashAllocAndVisibleTypePP(DEVICEPTR(uchar) *entriesAllocType, DEVICEPTR(uchar) *entriesVisibleType, int x, int y,
-	DEVICEPTR(Vector4s) *blockCoords, const PtrStepSz<ushort> depth, Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i imgSize,
+	DEVICEPTR(Vector4s) *blockCoords, const tfusion::cuda::PtrStepSz<ushort> depth, Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i imgSize,
 	float oneOverVoxelSize, const CONSTPTR(HashEntry) *hashTable, float viewFrustum_min, float viewFrustum_max)
 {
 	float depth_measure; unsigned int hashIdx; int noSteps;

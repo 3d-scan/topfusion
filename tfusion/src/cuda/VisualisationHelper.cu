@@ -1,4 +1,4 @@
-#include "VisualisationHelpers_CUDA.h"
+#include "tfusion/cuda/VisualisationHelper.hpp"
 
 using namespace tfusion;
 

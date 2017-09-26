@@ -2,9 +2,9 @@
 
 #include <stdlib.h>
 
-#include "RenderState.h"
-#include "../Scene/VoxelBlockHash.h"
-#include "../../../ORUtils/MemoryBlock.h"
+#include <tfusion/cuda/RenderState.hpp>
+#include <tfusion/cuda/VoxelBlockHash.hpp>
+#include <tfusion/types.hpp>
 
 namespace tfusion
 {
@@ -20,34 +20,34 @@ namespace tfusion
 		/** A list of "visible entries", that are currently
 		being processed by the tracker.
 		*/
-		cuda::cudaData_array<int> visibleEntryIDs;
+		cuda::DeviceArray<int> visibleEntryIDs;
 
 		/** A list of "visible entries", that are
 		currently being processed by integration
 		and tracker.
 		*/
-		cuda::cudaData_array<uchar> entriesVisibleType;
+		cuda::DeviceArray<uchar> entriesVisibleType;
            
 	public:
 		/** Number of entries in the live list. */
 		int noVisibleEntries;
            
-		RenderState_VH(int noTotalEntries, const Vector2i & imgSize, float vf_min, float vf_max, MemoryDeviceType memoryType = MEMORYDEVICE_CPU)
+		RenderState_VH(int noTotalEntries, const Vector2i & imgSize, float vf_min, float vf_max)
 			: RenderState(imgSize, vf_min, vf_max)
 		{
 			// this->memoryType = memoryType;
 
 			// visibleEntryIDs = new ORUtils::MemoryBlock<int>(SDF_LOCAL_BLOCK_NUM, memoryType);
 			// entriesVisibleType = new ORUtils::MemoryBlock<uchar>(noTotalEntries, memoryType);
-			GetVisibleEntryIDs.create(SDF_LOCAL_BLOCK_NUM * sizeof(int));
+			visibleEntryIDs.create(SDF_LOCAL_BLOCK_NUM * sizeof(int));
 			entriesVisibleType.create(noTotalEntries * sizeof(uchar));
 
 			noVisibleEntries = 0;
 		}
 		~RenderState_VH()
 		{
-			delete visibleEntryIDs;
-			delete entriesVisibleType;
+			// delete visibleEntryIDs;
+			// delete entriesVisibleType;
 		}
 		/** Get the list of "visible entries", that are currently
 		processed by the tracker.

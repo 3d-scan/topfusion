@@ -1,11 +1,12 @@
 #pragma once
 
-#include "SceneReconstructionEngine.h"
+#include "tfusion/cuda/SceneReconstructionEngine.hpp"
+#include <tfusion/cuda/CUDAUtils.hpp>
 
 namespace tfusion
 {
 	template<class TVoxel>
-	class SceneReconstructionEngine_CUDA<TVoxel, VoxelBlockHash> : public SceneReconstructionEngine < TVoxel, VoxelBlockHash >
+	class SceneReconstructionEngine_CUDA<TVoxel, VoxelBlockHash>
 	{
 	private:
 		void *allocationTempData_device;

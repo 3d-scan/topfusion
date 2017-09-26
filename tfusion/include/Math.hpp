@@ -11,30 +11,30 @@ typedef unsigned short ushort;
 typedef unsigned int uint;
 typedef unsigned long ulong;
 
-#include "../../ORUtils/Vector.h"
-#include "../../ORUtils/Matrix.h"
+#include "tfusion/cuda/Vector.hpp"
+#include "Matrix.hpp"
 
-typedef class ORUtils::Matrix3<float> Matrix3f;
-typedef class ORUtils::Matrix4<float> Matrix4f;
+typedef class tfusion::Matrix3<float> Matrix3f;
+typedef class tfusion::Matrix4<float> Matrix4f;
 
-typedef class ORUtils::Vector2<short> Vector2s;
-typedef class ORUtils::Vector2<int> Vector2i;
-typedef class ORUtils::Vector2<float> Vector2f;
-typedef class ORUtils::Vector2<double> Vector2d;
+typedef class tfusion::Vector2<short> Vector2s;
+typedef class tfusion::Vector2<int> Vector2i;
+typedef class tfusion::Vector2<float> Vector2f;
+typedef class tfusion::Vector2<double> Vector2d;
 
-typedef class ORUtils::Vector3<short> Vector3s;
-typedef class ORUtils::Vector3<double> Vector3d;
-typedef class ORUtils::Vector3<int> Vector3i;
-typedef class ORUtils::Vector3<uint> Vector3ui;
-typedef class ORUtils::Vector3<uchar> Vector3u;
-typedef class ORUtils::Vector3<float> Vector3f;
+typedef class tfusion::Vector3<short> Vector3s;
+typedef class tfusion::Vector3<double> Vector3d;
+typedef class tfusion::Vector3<int> Vector3i;
+typedef class tfusion::Vector3<uint> Vector3ui;
+typedef class tfusion::Vector3<uchar> Vector3u;
+typedef class tfusion::Vector3<float> Vector3f;
 
-typedef class ORUtils::Vector4<float> Vector4f;
-typedef class ORUtils::Vector4<int> Vector4i;
-typedef class ORUtils::Vector4<short> Vector4s;
-typedef class ORUtils::Vector4<uchar> Vector4u;
+typedef class tfusion::Vector4<float> Vector4f;
+typedef class tfusion::Vector4<int> Vector4i;
+typedef class tfusion::Vector4<short> Vector4s;
+typedef class tfusion::Vector4<uchar> Vector4u;
 
-typedef class ORUtils::Vector6<float> Vector6f;
+typedef class tfusion::Vector6<float> Vector6f;
 
 #ifndef TO_INT_ROUND3
 #define TO_INT_ROUND3(x) (x).toIntRound()
