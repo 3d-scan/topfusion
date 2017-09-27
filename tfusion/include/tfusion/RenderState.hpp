@@ -49,7 +49,7 @@ namespace tfusion
 			float x,y;
 			Vector2f_host(float x_,float y_):x(x_),y(y_){}
 		};
-
+		
 		RenderState(const Vector2i &imgSize, float vf_min, float vf_max)
 		{
 			int x = imgSize.x;

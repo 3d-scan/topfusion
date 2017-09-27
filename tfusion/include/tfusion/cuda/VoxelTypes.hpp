@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Math.h"
+#include "Math.hpp"
 
 /** \brief
     Stores the information of a single voxel in the volume

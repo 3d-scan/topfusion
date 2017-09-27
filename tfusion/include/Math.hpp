@@ -11,7 +11,7 @@ typedef unsigned short ushort;
 typedef unsigned int uint;
 typedef unsigned long ulong;
 
-#include "tfusion/cuda/Vector.hpp"
+#include "Vector.hpp"
 #include "Matrix.hpp"
 
 typedef class tfusion::Matrix3<float> Matrix3f;

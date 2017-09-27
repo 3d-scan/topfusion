@@ -1,7 +1,7 @@
 #pragma once
 
-#include <tfusion/cuda/RenderState.hpp>
-#include <tfusion/cuda/RenderState_VH.hpp>
+#include <tfusion/RenderState.hpp>
+#include <tfusion/RenderState_VH.hpp>
 #include <tfusion/scene.hpp>
 
 // #include "../../../Objects/Tracking/TrackingState.h"

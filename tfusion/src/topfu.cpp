@@ -187,15 +187,15 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
 
     Affine3f pose = poses_.back();
 
-    Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
-                pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
-                pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
-                pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+    // Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+    //             pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
+    //             pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
+    //             pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
     //allocation and integration
     {
         // sceneEngine->AllocateSceneFromDepth(scene,view,pose_.back(),dists_);
-        sceneEngine->AllocateSceneFromDepth(scene,p.intr,M_d,dists_,renderState);
-        sceneEngine->IntegrateIntoScene(scene,p.intr,M_d,dists_,renderState);
+        sceneEngine->AllocateSceneFromDepth(scene,p.intr,pose,dists_,renderState);
+        sceneEngine->IntegrateIntoScene(scene,p.intr,pose,dists_,renderState);
     }
 
     prev_.points_pyr.swap(curr_.points_pyr);

@@ -163,7 +163,7 @@ RenderState* VisualisationEngine_CUDA<TVoxel, TIndex>::CreateRenderState(const S
 // }
 
 template <class TVoxel, class TIndex>
-static void GenericRaycast(const Scene<TVoxel, TIndex> *scene, const Vector2i& imgSize, const Matrix4f& invM, const Vector4f& projParams, const RenderState *renderState, bool updateVisibleList)
+__global__ static void GenericRaycast(const Scene<TVoxel, TIndex> *scene, const Vector2i& imgSize, const Matrix4f& invM, const Vector4f& projParams, const RenderState *renderState, bool updateVisibleList)
 {
 	float voxelSize = scene->sceneParams->voxelSize;
 	float oneOverVoxelSize = 1.0f / voxelSize;
@@ -208,7 +208,7 @@ static void GenericRaycast(const Scene<TVoxel, TIndex> *scene, const Vector2i& i
 }
 
 template<class TVoxel, class TIndex>
-static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, const Matrix4f pose, const Vector4f intrinsics, const RenderState *renderState,
+__global__ static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, const Matrix4f pose, const Vector4f intrinsics, RenderState *renderState,
 	cuda::image4u &outputImage, IVisualisationEngine::RenderImageType type, IVisualisationEngine::RenderRaycastSelection raycastType)
 {
 	// Vector2i imgSize = outputImage->noDims;
@@ -217,18 +217,18 @@ static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, const Matrix4
 	Matrix4f invM;
 	pose.inv(invM);
 
-	Vector4f *pointsRay;
-	if (raycastType == IVisualisationEngine::RENDER_FROM_OLD_RAYCAST) {
+	// Vector4f *pointsRay;
+	// if (raycastType == IVisualisationEngine::RENDER_FROM_OLD_RAYCAST) {
 		// pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
-		pointsRay = renderState->raycastResult.ptr();
-	} else if (raycastType == IVisualisationEngine::RENDER_FROM_OLD_FORWARDPROJ) {
+		// pointsRay = renderState->raycastResult.ptr();
+	// } else if (raycastType == IVisualisationEngine::RENDER_FROM_OLD_FORWARDPROJ) {
 		// pointsRay = renderState->forwardProjection->GetData(MEMORYDEVICE_CUDA);
-		pointsRay = renderState->forwardProjection.ptr();
-	} else {
+		// pointsRay = renderState->forwardProjection.ptr();
+	// } else {
 		GenericRaycast(scene, imgSize, invM, intrinsics, renderState, false);
 		// pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
-		pointsRay = renderState->raycastResult.ptr();
-	}
+	Vector4f *pointsRay = renderState->raycastResult.ptr();
+	// }
 
 	Vector3f lightSource = -Vector3f(invM.getColumn(2));
 

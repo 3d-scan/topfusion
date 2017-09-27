@@ -5,6 +5,8 @@
 #include <opencv2/core/affine.hpp>
 #include <opencv2/viz/vizcore.hpp>
 #include <iosfwd>
+#include <Vector.hpp>
+#include <Math.hpp>
 
 struct CUevent_st;
 

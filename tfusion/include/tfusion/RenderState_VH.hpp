@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-#include <tfusion/cuda/RenderState.hpp>
+#include <tfusion/RenderState.hpp>
 #include <tfusion/cuda/VoxelBlockHash.hpp>
 #include <tfusion/types.hpp>
 

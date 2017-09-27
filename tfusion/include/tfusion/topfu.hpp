@@ -6,6 +6,9 @@
 #include <vector>
 #include <string>
 #include <tfusion/cuda/reconstruction.hpp>
+#include <tfusion/Defines.hpp>
+#include <tfusion/cuda/reconstruction_CUDA.hpp>
+#include <tfusion/cuda/VisualisationEngine_CUDA.hpp>
 
 namespace tfusion
 {
@@ -97,9 +100,9 @@ namespace tfusion
 
         // View *view;
         // ViewBuilder *viewBuilder;
-        Scene *scene;
-        SceneReconstruction<TVoxel,VoxelBlockHash> *sceneEngine;
+        Scene<TVoxel,VoxelBlockHash> *scene;
+        SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash> *sceneEngine;
         RenderState *renderState;
-        VisualisationEngine *visualisationEngine;
+        VisualisationEngine_CUDA<TVoxel,VoxelBlockHash> *visualisationEngine;
     };
 }
