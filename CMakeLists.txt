@@ -15,7 +15,7 @@ include(cmake/Utils.cmake)
 include(cmake/Targets.cmake)
 
 # ---[ find dependencies
-find_package(OpenCV 2.4.8 REQUIRED COMPONENTS core viz highgui)
+find_package(OpenCV 2.4.9 REQUIRED COMPONENTS core viz highgui)
 find_package(CUDA 5.0 REQUIRED)
 find_package(OpenNI REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS} ${CUDA_INCLUDE_DIRS} ${OPENNI_INCLUDE_DIR})
@@ -33,6 +33,7 @@ list(APPEND CUDA_NVCC_FLAGS "-gencode;arch=compute_20,code=sm_20;-gencode;arch=c
 
 if(UNIX OR APPLE)
   list(APPEND CUDA_NVCC_FLAGS "-Xcompiler;-fPIC;")
+  # list(APPEND CMAKE_CXX_FLAGS "-fpermissive;")
 endif()
 
 warnings_disable(CMAKE_CXX_FLAGS /wd4985)

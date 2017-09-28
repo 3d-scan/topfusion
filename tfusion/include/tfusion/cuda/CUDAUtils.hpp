@@ -1,10 +1,10 @@
 #pragma once
 #include <tfusion/cuda/CUDADefines.hpp>
-#include <cuda.h>
-#include <cuda_runtime_api.h>
-#include <cuda_runtime.h>
-#include <device_launch_parameters.h>
-#include <device_functions.h>
+// #include <cuda.h>
+// #include <cuda_runtime_api.h>
+// #include <cuda_runtime.h>
+// #include <device_launch_parameters.h>
+// #include <device_functions.hpp>
 
 template<class T>
 inline __device__ void warpReduce(volatile T* sdata, int tid) {
@@ -46,6 +46,7 @@ __device__ int computePrefixSum_device(uint element, T *sum, int localSize, int 
 
 	prefixBuffer[localId] = element;
 	__syncthreads();
+	// syncthreads();
 
 	int s1, s2;
 
