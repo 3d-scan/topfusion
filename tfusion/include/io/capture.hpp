@@ -1,10 +1,11 @@
-#include <tfusion/topfu.hpp>
+// #include <tfusion/topfu.hpp>
 #include <opencv2/core/core.hpp>
 #include <string>
+#include <tfusion/types.hpp>
 
 namespace tfusion
 {
-    class KF_EXPORTS OpenNISource
+    class OpenNISource
     {
     public:
         typedef tfusion::PixelRGB RGB24;

@@ -18,7 +18,7 @@ macro(pickup_std_sources)
   kf_source_group("Source" GLOB "src/*.cpp" "src/*.h*")
   kf_source_group("Source\\utils" GLOB "src/utils/*.cpp" "src/utils/*.h*")
   kf_source_group("Source\\cuda" GLOB "src/cuda/*.c*" "src/cuda/*.h*")
-  FILE(GLOB_RECURSE sources include/${module_name}/*.h* src/*.cpp src/*.h* src/cuda/*.h* src/cuda/*.c*)
+  FILE(GLOB_RECURSE sources include/${module_name}/*.h* include/${module_name}/cuda/*.h* src/*.cpp src/*.h* src/cuda/*.h* src/cuda/*.c*)
 endmacro()
 
 
@@ -95,7 +95,8 @@ macro(add_module_library name)
   endif()
 
   if (__has_cuda)  
-    cuda_add_library(${module_name} ${__lib_type} ${sources})
+    CUDA_ADD_LIBRARY(${module_name} ${__lib_type} ${sources})
+    # message(${headers})
   else()
     add_library(${module_name} ${__lib_type} ${sources})
   endif()

@@ -1,5 +1,7 @@
 #include "precomp.hpp"
 #include "internal.hpp"
+#include "tfusion/topfu.hpp"
+#include "tfusion/cuda/SceneReconstructionEngine_host.hpp"
 
 using namespace std;
 using namespace tfusion;
@@ -58,12 +60,13 @@ tfusion::TopFu::TopFu(const TopFuParams& params) : frame_counter_(0), params_(pa
     // volume_->setPose(params_.volume_pose);
     // volume_->setRaycastStepFactor(params_.raycast_step_factor);
     // volume_->setGradientDeltaFactor(params_.gradient_delta_factor);
-    scene = new tfusion::Scene(params_.sceneParams,false);
-    sceneEngine = new tfusion::SceneReconstruction<TVoxel,TIndex>();
-    renderState = new tfusion::RenderState_VH(VoxelBlockHash::noTotalEntries,new Vector2i(params_.cols,params_.rows),params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
-    visualisationEngine = new tfusion::VisualisationEngine<TVoxel,TIndex>();
+    scene = new tfusion::Scene<TVoxel,TIndex>(params_.sceneParams,false);
+    sceneEngine = new tfusion::SceneReconstructionEngine_CUDA<TVoxel>();
+    tfusion::RenderState::Vector2i_host imgSize(params_.cols,params.rows);
+    renderState = new tfusion::RenderState_VH(VoxelBlockHash::noTotalEntries, imgSize,params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
+    visualisationEngine = new tfusion::VisualisationEngine_CUDA<TVoxel,TIndex>();
 
-    sceneEngine->reset(scene);
+    sceneEngine->ResetScene(scene);
 
     icp_ = cv::Ptr<cuda::ProjectiveICP>(new cuda::ProjectiveICP());
     icp_->setDistThreshold(params_.icp_dist_thres);
@@ -206,9 +209,9 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
 
 void tfusion::TopFu::renderImage(cuda::Image& image,const Affine3f& pose_, int flag)
 {
-    
-    VisualisationEngine::RenderImageType imageType = VisualisationEngine::RENDER_SHADED_GREYSCALE_IMAGENORMALS;
-    VisualisationEngine::RenderRaycastSelection raycastType = VisualisationEngine::RENDER_FROM_NEW_RAYCAST;
+    const TopFuParams& p = params_;
+    IVisualisationEngine::RenderImageType imageType = tfusion::IVisualisationEngine::RENDER_SHADED_GREYSCALE_IMAGENORMALS;
+    IVisualisationEngine::RenderRaycastSelection raycastType = tfusion::IVisualisationEngine::RENDER_FROM_NEW_RAYCAST;
 
     Affine3f pose = poses_.back();
     Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
@@ -217,7 +220,7 @@ void tfusion::TopFu::renderImage(cuda::Image& image,const Affine3f& pose_, int f
                 pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
 
     Vector4f intrs(p.intr.fx,p.intr.fy,p.intr.cx,p.intr.cy);
-    visualisation->RenderImage(scene,M_d,intrs,rederState,rederState->raycastImage,imageType,raycastType);
+    visualisationEngine->RenderImage(scene,M_d,intrs,renderState,renderState->raycastImage,imageType,raycastType);
     // Affine3f pose = pose_.inv();
     // // Vector2i imgSize = outputImage->noDims;
     // Vector2i imgSize(image.cols,image.rows);
@@ -244,8 +247,8 @@ void tfusion::TopFu::renderImage(cuda::Image& image,const Affine3f& pose_, int f
 }
 
 
-void tfusion::TopFu::renderImage(cuda::Image& image, const Affine3f& pose, int flag)
-{
+// void tfusion::TopFu::renderImage(cuda::Image& image, const Affine3f& pose, int flag)
+// {
 //     const TopFuParams& p = params_;
 //     image.create(p.rows, flag != 3 ? p.cols : p.cols * 2);
 //     depths_.create(p.rows, p.cols);
@@ -273,4 +276,4 @@ void tfusion::TopFu::renderImage(cuda::Image& image, const Affine3f& pose, int f
 //         cuda::renderTangentColors(normals_, i2);
 //     }
 // #undef PASS1
-}
+// }

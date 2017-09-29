@@ -5,21 +5,24 @@
 #include <tfusion/cuda/projective_icp.hpp>
 #include <vector>
 #include <string>
-#include <tfusion/cuda/reconstruction.hpp>
+// #include <tfusion/cuda/reconstruction.hpp>
 #include <tfusion/Defines.hpp>
-#include <tfusion/cuda/reconstruction_CUDA.hpp>
+#include <tfusion/cuda/SceneReconstructionEngine_host.hpp>
 #include <tfusion/cuda/VisualisationEngine_CUDA.hpp>
+#include <tfusion/scene.hpp>
+#include <tfusion/RenderState.hpp>
+#include <tfusion/RenderState_VH.hpp>
 
 namespace tfusion
 {
     namespace cuda
     {
-        KF_EXPORTS int getCudaEnabledDeviceCount();
-        KF_EXPORTS void setDevice(int device);
-        KF_EXPORTS std::string getDeviceName(int device);
-        KF_EXPORTS bool checkIfPreFermiGPU(int device);
-        KF_EXPORTS void printCudaDeviceInfo(int device);
-        KF_EXPORTS void printShortCudaDeviceInfo(int device);
+         int getCudaEnabledDeviceCount();
+         void setDevice(int device);
+         std::string getDeviceName(int device);
+         bool checkIfPreFermiGPU(int device);
+         void printCudaDeviceInfo(int device);
+         void printShortCudaDeviceInfo(int device);
     }
 
     struct KF_EXPORTS TopFuParams
@@ -101,7 +104,7 @@ namespace tfusion
         // View *view;
         // ViewBuilder *viewBuilder;
         Scene<TVoxel,VoxelBlockHash> *scene;
-        SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash> *sceneEngine;
+        SceneReconstructionEngine_CUDA<TVoxel> *sceneEngine;
         RenderState *renderState;
         VisualisationEngine_CUDA<TVoxel,VoxelBlockHash> *visualisationEngine;
     };

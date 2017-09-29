@@ -1,9 +1,11 @@
 #pragma once
 
-#include "tfusion/cuda/SceneReconstructionEngine.hpp"
-#include <tfusion/cuda/CUDAUtils.hpp>
+// #include "tfusion/cuda/SceneReconstructionEngine.hpp"
+// #include <tfusion/cuda/CUDAUtils.hpp>
 #include <tfusion/Defines.hpp>
-#include <tfusion/cuda/reconstruction.hpp>
+// #include <tfusion/cuda/reconstruction.hpp>
+#include <tfusion/scene.hpp>
+#include <tfusion/RenderState.hpp>
 
 namespace tfusion
 {

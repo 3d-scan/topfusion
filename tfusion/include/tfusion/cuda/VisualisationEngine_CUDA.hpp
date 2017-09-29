@@ -16,7 +16,7 @@ namespace tfusion
 		explicit VisualisationEngine_CUDA(void);
 		~VisualisationEngine_CUDA(void);
 
-		RenderState* CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const;
+		// RenderState* CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const;
 		// void FindVisibleBlocks(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, RenderState *renderState) const;
 		// int CountVisibleBlocks(const Scene<TVoxel,TIndex> *scene, const RenderState *renderState, int minBlockId, int maxBlockId) const;
 		// void CreateExpectedDepths(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, RenderState *renderState) const;

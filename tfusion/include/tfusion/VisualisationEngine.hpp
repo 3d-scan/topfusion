@@ -57,7 +57,7 @@ namespace tfusion
 		/** Creates a render state, containing rendering info
 		for the scene.
 		*/
-		virtual typename IndexToRenderState<TIndex>::type *CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const = 0;
+		// virtual typename IndexToRenderState<TIndex>::type *CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const = 0;
 
 		/** Given a scene, pose and intrinsics, compute the
 		visible subset of the scene and store it in an

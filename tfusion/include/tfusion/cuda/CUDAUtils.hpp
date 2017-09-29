@@ -1,10 +1,5 @@
 #pragma once
-#include <tfusion/cuda/CUDADefines.hpp>
-// #include <cuda.h>
-// #include <cuda_runtime_api.h>
-// #include <cuda_runtime.h>
-// #include <device_launch_parameters.h>
-// #include <device_functions.hpp>
+#include "tfusion/cuda/CUDADefines.hpp"
 
 template<class T>
 inline __device__ void warpReduce(volatile T* sdata, int tid) {
@@ -46,7 +41,6 @@ __device__ int computePrefixSum_device(uint element, T *sum, int localSize, int 
 
 	prefixBuffer[localId] = element;
 	__syncthreads();
-	// syncthreads();
 
 	int s1, s2;
 
@@ -123,12 +117,12 @@ inline void memsetKernel(T *devPtr, const T val, size_t nwords)
 	dim3 gridSize((int)ceil((float)nwords / (float)blockSize.x));
 	if (gridSize.x <= 65535) {
 		memsetKernel_device<T> <<<gridSize,blockSize>>>(devPtr, val, nwords);
-		// ORcudaKernelCheck;
+		ORcudaKernelCheck;
 	} else {
 		gridSize.x = (int)ceil(sqrt((float)gridSize.x));
 		gridSize.y = (int)ceil((float)nwords / (float)(blockSize.x * gridSize.x));
 		memsetKernelLarge_device<T> <<<gridSize,blockSize>>>(devPtr, val, nwords);
-		// ORcudaKernelCheck;
+		ORcudaKernelCheck;
 	}
 }
 
@@ -146,6 +140,6 @@ inline void fillArrayKernel(T *devPtr, size_t nwords)
 	dim3 blockSize(256);
 	dim3 gridSize((int)ceil((float)nwords / (float)blockSize.x));
 	fillArrayKernel_device<T> <<<gridSize,blockSize>>>(devPtr, nwords);
-	// ORcudaKernelCheck;
+	ORcudaKernelCheck;
 }
 

@@ -22,13 +22,13 @@ VisualisationEngine_CUDA<TVoxel, TIndex>::~VisualisationEngine_CUDA(void)
 	ORcudaSafeCall(cudaFree(noTotalPoints_device));
 }
 
-template<class TVoxel, class TIndex>
-RenderState* VisualisationEngine_CUDA<TVoxel, TIndex>::CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const
-{
-	return new RenderState(
-		imgSize, scene->sceneParams->viewFrustum_min, scene->sceneParams->viewFrustum_max
-	);
-}
+// template<class TVoxel, class TIndex>
+// RenderState* VisualisationEngine_CUDA<TVoxel, TIndex>::CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const
+// {
+// 	return new RenderState(
+// 		imgSize, scene->sceneParams->viewFrustum_min, scene->sceneParams->viewFrustum_max
+// 	);
+// }
 
 // template<class TVoxel>
 // RenderState_VH* VisualisationEngine_CUDA<TVoxel, VoxelBlockHash>::CreateRenderState(const Scene<TVoxel, VoxelBlockHash> *scene, const Vector2i & imgSize) const

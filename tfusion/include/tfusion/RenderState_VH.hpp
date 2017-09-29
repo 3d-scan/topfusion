@@ -32,7 +32,7 @@ namespace tfusion
 		/** Number of entries in the live list. */
 		int noVisibleEntries;
            
-		RenderState_VH(int noTotalEntries, const Vector2i & imgSize, float vf_min, float vf_max)
+		RenderState_VH(int noTotalEntries, const Vector2i_host & imgSize, float vf_min, float vf_max)
 			: RenderState(imgSize, vf_min, vf_max)
 		{
 			// this->memoryType = memoryType;

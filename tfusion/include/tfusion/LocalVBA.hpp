@@ -36,8 +36,8 @@ namespace tfusion
 		}
 		~LocalVBA(void)
 		{
-			delete voxelBlocks;
-			delete allocationList;
+			// delete voxelBlocks;
+			// delete allocationList;
 		}
 
 		// Suppress the default copy constructor and assignment operator
