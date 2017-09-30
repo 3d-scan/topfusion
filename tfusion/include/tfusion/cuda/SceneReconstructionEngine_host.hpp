@@ -6,11 +6,15 @@
 // #include <tfusion/cuda/reconstruction.hpp>
 #include <tfusion/scene.hpp>
 #include <tfusion/RenderState.hpp>
-
+#include <tfusion/cuda/SceneReconstruction.hpp>
 namespace tfusion
 {
+	template<class TVoxel, class TIndex>
+	class SceneReconstructionEngine_CUDA : public SceneReconstructionEngine < TVoxel, TIndex >
+	{};
+
 	template<class TVoxel>
-	class SceneReconstructionEngine_CUDA
+	class SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash> : public SceneReconstructionEngine<TVoxel,VoxelBlockHash>
 	{
 	private:
 		void *allocationTempData_device;
@@ -28,6 +32,8 @@ namespace tfusion
 
 		SceneReconstructionEngine_CUDA(void);
 		~SceneReconstructionEngine_CUDA(void);
+		// void hello();
 	};
 
+	// void hello();
 }

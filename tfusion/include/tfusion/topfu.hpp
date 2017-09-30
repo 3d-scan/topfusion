@@ -103,9 +103,9 @@ namespace tfusion
 
         // View *view;
         // ViewBuilder *viewBuilder;
-        Scene<TVoxel,VoxelBlockHash> *scene;
-        SceneReconstructionEngine_CUDA<TVoxel> *sceneEngine;
+        Scene<Voxel_s,VoxelBlockHash> *scene;
+        SceneReconstructionEngine<Voxel_s,VoxelBlockHash> *sceneEngine;
         RenderState *renderState;
-        VisualisationEngine_CUDA<TVoxel,VoxelBlockHash> *visualisationEngine;
+        VisualisationEngine_CUDA<Voxel_s,VoxelBlockHash> *visualisationEngine;
     };
 }

@@ -60,12 +60,12 @@ tfusion::TopFu::TopFu(const TopFuParams& params) : frame_counter_(0), params_(pa
     // volume_->setPose(params_.volume_pose);
     // volume_->setRaycastStepFactor(params_.raycast_step_factor);
     // volume_->setGradientDeltaFactor(params_.gradient_delta_factor);
-    scene = new tfusion::Scene<TVoxel,TIndex>(params_.sceneParams,false);
-    sceneEngine = new tfusion::SceneReconstructionEngine_CUDA<TVoxel>();
+    scene = new tfusion::Scene<Voxel_s,VoxelBlockHash>(params_.sceneParams,false);
+    sceneEngine = new tfusion::SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>;
     tfusion::RenderState::Vector2i_host imgSize(params_.cols,params.rows);
     renderState = new tfusion::RenderState_VH(VoxelBlockHash::noTotalEntries, imgSize,params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
-    visualisationEngine = new tfusion::VisualisationEngine_CUDA<TVoxel,TIndex>();
-
+    visualisationEngine = new tfusion::VisualisationEngine_CUDA<Voxel_s,VoxelBlockHash>();
+// hello();
     sceneEngine->ResetScene(scene);
 
     icp_ = cv::Ptr<cuda::ProjectiveICP>(new cuda::ProjectiveICP());

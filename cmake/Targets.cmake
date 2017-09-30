@@ -86,7 +86,7 @@ macro(add_module_library name)
   pickup_std_sources()
   include_directories(include src src/cuda)  
   
-  set(__has_cuda OFF)
+  set(__has_cuda ON)
   check_cuda(__has_cuda)  
   
   set(__lib_type STATIC)
@@ -95,7 +95,7 @@ macro(add_module_library name)
   endif()
 
   if (__has_cuda)  
-    CUDA_ADD_LIBRARY(${module_name} ${__lib_type} ${sources})
+    cuda_add_library(${module_name} ${__lib_type} ${sources})
     # message(${headers})
   else()
     add_library(${module_name} ${__lib_type} ${sources})

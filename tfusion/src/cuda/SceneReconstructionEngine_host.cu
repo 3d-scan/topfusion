@@ -3,62 +3,60 @@
 #include <tfusion/RenderState.hpp>
 #include <tfusion/RenderState_VH.hpp>
 #include <tfusion/cuda/SceneReconstructionEngine.hpp>
+// #include <tfusion/Defines.hpp>
+using namespace tfusion;
 
-namespace tfusion{
-	template<class TVoxel>
-	class SceneReconstructionEngine_CUDA{
-		private:
-		void *allocationTempData_device;
-		void *allocationTempData_host;
-		unsigned char *entriesAllocType_device;
-		Vector4s *blockCoords_device;
+// template<class TVoxel>
+// void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::hello()
+// {
+// 	return;
+// }
+template<class TVoxel>
+tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::SceneReconstructionEngine_CUDA(void)
+{
+	ORcudaSafeCall(cudaMalloc((void**)&allocationTempData_device, sizeof(AllocationTempData)));
+	ORcudaSafeCall(cudaMallocHost((void**)&allocationTempData_host, sizeof(AllocationTempData)));
 
-		public:
-		template<class TVoxel>
-		SceneReconstructionEngine_CUDA(void)
-		{
-			ORcudaSafeCall(cudaMalloc((void**)&allocationTempData_device, sizeof(AllocationTempData)));
-			ORcudaSafeCall(cudaMallocHost((void**)&allocationTempData_host, sizeof(AllocationTempData)));
+	int noTotalEntries = VoxelBlockHash::noTotalEntries;
+	ORcudaSafeCall(cudaMalloc((void**)&entriesAllocType_device, noTotalEntries));
+	ORcudaSafeCall(cudaMalloc((void**)&blockCoords_device, noTotalEntries * sizeof(Vector4s)));
+}
 
-			int noTotalEntries = VoxelBlockHash::noTotalEntries;
-			ORcudaSafeCall(cudaMalloc((void**)&entriesAllocType_device, noTotalEntries));
-			ORcudaSafeCall(cudaMalloc((void**)&blockCoords_device, noTotalEntries * sizeof(Vector4s)));
-		}
+template<class TVoxel>
+tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::~SceneReconstructionEngine_CUDA(void)
+{
+	ORcudaSafeCall(cudaFreeHost(allocationTempData_host));
+	ORcudaSafeCall(cudaFree(allocationTempData_device));
+	ORcudaSafeCall(cudaFree(entriesAllocType_device));
+	ORcudaSafeCall(cudaFree(blockCoords_device));
+}
 
-		template<class TVoxel>
-		~SceneReconstructionEngine_CUDA(void)
-		{
-			ORcudaSafeCall(cudaFreeHost(allocationTempData_host));
-			ORcudaSafeCall(cudaFree(allocationTempData_device));
-			ORcudaSafeCall(cudaFree(entriesAllocType_device));
-			ORcudaSafeCall(cudaFree(blockCoords_device));
-		}
+template<class TVoxel>
+void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::ResetScene(Scene<TVoxel, VoxelBlockHash> *scene)
+{
+	int numBlocks = scene->index.getNumAllocatedVoxelBlocks();
+	int blockSize = scene->index.getVoxelBlockSize();
 
-		template<class TVoxel>
-		void ResetScene(Scene<TVoxel, VoxelBlockHash> *scene)
-		{
-			int numBlocks = scene->index.getNumAllocatedVoxelBlocks();
-			int blockSize = scene->index.getVoxelBlockSize();
+	// a();
+	TVoxel *voxelBlocks_ptr = scene->localVBA.GetVoxelBlocks();
+	memsetKernel<TVoxel>(voxelBlocks_ptr, TVoxel(), numBlocks * blockSize);
+	int *vbaAllocationList_ptr = scene->localVBA.GetAllocationList();
+	fillArrayKernel<int>(vbaAllocationList_ptr, numBlocks);
+	scene->localVBA.lastFreeBlockId = numBlocks - 1;
 
-			TVoxel *voxelBlocks_ptr = scene->localVBA.GetVoxelBlocks();
-			memsetKernel<TVoxel>(voxelBlocks_ptr, TVoxel(), numBlocks * blockSize);
-			int *vbaAllocationList_ptr = scene->localVBA.GetAllocationList();
-			fillArrayKernel<int>(vbaAllocationList_ptr, numBlocks);
-			scene->localVBA.lastFreeBlockId = numBlocks - 1;
+	HashEntry tmpEntry;
+	memset(&tmpEntry, 0, sizeof(HashEntry));
+	tmpEntry.ptr = -2;
+	HashEntry *hashEntry_ptr = scene->index.GetEntries();
+	memsetKernel<HashEntry>(hashEntry_ptr, tmpEntry, scene->index.noTotalEntries);
+	int *excessList_ptr = scene->index.GetExcessAllocationList();
+	fillArrayKernel<int>(excessList_ptr, SDF_EXCESS_LIST_SIZE);
 
-			HashEntry tmpEntry;
-			memset(&tmpEntry, 0, sizeof(HashEntry));
-			tmpEntry.ptr = -2;
-			HashEntry *hashEntry_ptr = scene->index.GetEntries();
-			memsetKernel<HashEntry>(hashEntry_ptr, tmpEntry, scene->index.noTotalEntries);
-			int *excessList_ptr = scene->index.GetExcessAllocationList();
-			fillArrayKernel<int>(excessList_ptr, SDF_EXCESS_LIST_SIZE);
-
-			scene->index.SetLastFreeExcessListId(SDF_EXCESS_LIST_SIZE - 1);
-		}
+	scene->index.SetLastFreeExcessListId(SDF_EXCESS_LIST_SIZE - 1);
+}
 //modified by chuan
 template<class TVoxel>
-void AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr, 
+void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr, 
 	const Affine3f pose, cuda::Dists &dist,const RenderState *renderState,bool onlyUpdateVisibleList, bool resetVisibleList)
 {
 	// Vector2i depthImgSize = view->depth->noDims;
@@ -66,8 +64,8 @@ void AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr int
 	float voxelSize = scene->sceneParams->voxelSize;
 
 	// Matrix4f M_d, invM_d;
-	Vector4f projParams_d, invProjParams_d;
-
+	// Vector4f projParams_d, invProjParams_d;
+	Vector4f invProjParams_d;
 	RenderState_VH *renderState_vh = (RenderState_VH*)renderState;
 
 	if (resetVisibleList) renderState_vh->noVisibleEntries = 0;
@@ -85,7 +83,8 @@ void AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr int
 		pose_inv.matrix(2,0),pose_inv.matrix(2,1),pose_inv.matrix(2,2),pose_inv.matrix(2,3),
 		pose_inv.matrix(3,0),pose_inv.matrix(3,1),pose_inv.matrix(3,2),pose_inv.matrix(3,3));
 	
-	projParams_d = new Vector4f(intr.fx,intr.fy,intr.cx,intr.cy);
+	// projParams_d = Vector4f(intr.fx,intr.fy,intr.cx,intr.cy);
+	Vector4f projParams_d(intr.fx,intr.fy,intr.cx,intr.cy);
 	invProjParams_d = projParams_d;
 	invProjParams_d.x = 1.0f / invProjParams_d.x;
 	invProjParams_d.y = 1.0f / invProjParams_d.y;
@@ -173,7 +172,7 @@ void AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr int
 }
 
 template<class TVoxel>
-void IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr,
+void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr,
 	const Affine3f pose, cuda::Dists& dist, const RenderState *renderState)
 {
 	Vector2i depthImgSize(dist.cols(),dist.rows());
@@ -223,8 +222,8 @@ void IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr,
 		ORcudaKernelCheck;
 	}
 }
-}
-}
+
+
 // namespace
 // {
 // 	//device functions
