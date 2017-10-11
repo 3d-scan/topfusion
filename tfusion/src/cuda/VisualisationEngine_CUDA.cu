@@ -1,8 +1,9 @@
 #include "tfusion/cuda/VisualisationEngine_CUDA.hpp"
 #include "tfusion/cuda/VisualisationHelper.hpp"
 
-using namespace tfusion;
 
+namespace tfusion
+{
 inline dim3 getGridSize(dim3 taskSize, dim3 blockSize)
 {
 	return dim3((taskSize.x + blockSize.x - 1) / blockSize.x, (taskSize.y + blockSize.y - 1) / blockSize.y, (taskSize.z + blockSize.z - 1) / blockSize.z);
@@ -10,17 +11,17 @@ inline dim3 getGridSize(dim3 taskSize, dim3 blockSize)
 
 inline dim3 getGridSize(Vector2i taskSize, dim3 blockSize) { return getGridSize(dim3(taskSize.x, taskSize.y), blockSize); }
 
-template<class TVoxel, class TIndex>
-VisualisationEngine_CUDA<TVoxel, TIndex>::VisualisationEngine_CUDA(void)
-{
-	ORcudaSafeCall(cudaMalloc((void**)&noTotalPoints_device, sizeof(uint)));
-}
+// template<class TVoxel, class TIndex>
+// VisualisationEngine_CUDA<TVoxel, TIndex>::VisualisationEngine_CUDA(void)
+// {
+// 	ORcudaSafeCall(cudaMalloc((void**)&noTotalPoints_device, sizeof(uint)));
+// }
 
-template<class TVoxel, class TIndex>
-VisualisationEngine_CUDA<TVoxel, TIndex>::~VisualisationEngine_CUDA(void)
-{
-	ORcudaSafeCall(cudaFree(noTotalPoints_device));
-}
+// template<class TVoxel, class TIndex>
+// VisualisationEngine_CUDA<TVoxel, TIndex>::~VisualisationEngine_CUDA(void)
+// {
+// 	ORcudaSafeCall(cudaFree(noTotalPoints_device));
+// }
 
 // template<class TVoxel, class TIndex>
 // RenderState* VisualisationEngine_CUDA<TVoxel, TIndex>::CreateRenderState(const Scene<TVoxel, TIndex> *scene, const Vector2i & imgSize) const
@@ -163,7 +164,7 @@ VisualisationEngine_CUDA<TVoxel, TIndex>::~VisualisationEngine_CUDA(void)
 // }
 
 template <class TVoxel, class TIndex>
-__global__ static void GenericRaycast(const Scene<TVoxel, TIndex> *scene, const Vector2i& imgSize, const Matrix4f& invM, const Vector4f& projParams, const RenderState *renderState, bool updateVisibleList)
+static void GenericRaycast(const Scene<TVoxel, TIndex> *scene, const Vector2i& imgSize, const Matrix4f& invM, const Vector4f& projParams, RenderState *renderState, bool updateVisibleList)
 {
 	float voxelSize = scene->sceneParams->voxelSize;
 	float oneOverVoxelSize = 1.0f / voxelSize;
@@ -208,8 +209,8 @@ __global__ static void GenericRaycast(const Scene<TVoxel, TIndex> *scene, const 
 }
 
 template<class TVoxel, class TIndex>
-__global__ static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, const Matrix4f pose, const Vector4f intrinsics, RenderState *renderState,
-	cuda::image4u &outputImage, IVisualisationEngine::RenderImageType type, IVisualisationEngine::RenderRaycastSelection raycastType)
+static void RenderImage_common(const tfusion::Scene<Voxel_s, VoxelBlockHash> *scene, Matrix4f pose,const Vector4f intrinsics,tfusion::RenderState *renderState,
+	tfusion::cuda::image4u &outputImage, tfusion::IVisualisationEngine::RenderImageType type, tfusion::IVisualisationEngine::RenderRaycastSelection raycastType)
 {
 	// Vector2i imgSize = outputImage->noDims;
 	Vector2i imgSize(outputImage.cols(),outputImage.rows());
@@ -227,7 +228,7 @@ __global__ static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, co
 	// } else {
 		GenericRaycast(scene, imgSize, invM, intrinsics, renderState, false);
 		// pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
-	Vector4f *pointsRay = renderState->raycastResult.ptr();
+	const Vector4f *pointsRay = renderState->raycastResult.ptr();
 	// }
 
 	Vector3f lightSource = -Vector3f(invM.getColumn(2));
@@ -401,11 +402,11 @@ __global__ static void RenderImage_common(const Scene<TVoxel, TIndex> *scene, co
 // 	RenderImage_common(scene, pose, intrinsics, renderState, outputImage, type, raycastType);
 // }
 template<class TVoxel, class TIndex>
-void VisualisationEngine_CUDA<TVoxel, TIndex>::RenderImage(const Scene<TVoxel,TIndex> *scene, Matrix4f pose, const Vector4f intrinsics, const RenderState *renderState,
+void VisualisationEngine_CUDA<TVoxel, TIndex>::RenderImage(const Scene<TVoxel,TIndex> *scene, Matrix4f pose, const Vector4f intrinsics, RenderState *renderState,
 	cuda::image4u& outputImage, IVisualisationEngine::RenderImageType type,
 	IVisualisationEngine::RenderRaycastSelection raycastType) const
 {
-	RenderImage_common(scene, pose, intrinsics, renderState, outputImage, type, raycastType);
+	RenderImage_common<TVoxel,TIndex>(scene, pose, intrinsics, renderState, outputImage, type, raycastType);
 }
 
 // template<class TVoxel>
@@ -470,3 +471,4 @@ void VisualisationEngine_CUDA<TVoxel, TIndex>::RenderImage(const Scene<TVoxel,TI
 // {
 // 	ForwardRender_common(scene, view, trackingState, renderState, this->noTotalPoints_device);
 // }
+}

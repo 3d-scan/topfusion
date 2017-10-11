@@ -79,8 +79,8 @@ namespace tfusion
 
         bool operator()(const cuda::Depth& dpeth, const cuda::Image& image = cuda::Image());
 
-        void renderImage(cuda::Image& image, int flags = 0);
-        void renderImage(cuda::Image& image, const Affine3f& pose, int flags = 0);
+        // void renderImage(cuda::Image& image, int flags = 0);
+        void renderImage(cuda::image4u& image);//, const Affine3f& pose, int flags = 0);
 
         Affine3f getCameraPose (int time = -1) const;
     private:
@@ -104,7 +104,7 @@ namespace tfusion
         // View *view;
         // ViewBuilder *viewBuilder;
         Scene<Voxel_s,VoxelBlockHash> *scene;
-        SceneReconstructionEngine<Voxel_s,VoxelBlockHash> *sceneEngine;
+        SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash> *sceneEngine;
         RenderState *renderState;
         VisualisationEngine_CUDA<Voxel_s,VoxelBlockHash> *visualisationEngine;
     };

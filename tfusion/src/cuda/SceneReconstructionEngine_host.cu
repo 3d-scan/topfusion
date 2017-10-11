@@ -1,38 +1,55 @@
-#include <tfusion/cuda/SceneReconstructionEngine_CUDA.hpp>
+// #include <tfusion/cuda/SceneReconstructionEngine_CUDA.hpp>
 #include <tfusion/cuda/SceneReconstructionEngine_host.hpp>
 #include <tfusion/RenderState.hpp>
 #include <tfusion/RenderState_VH.hpp>
 #include <tfusion/cuda/SceneReconstructionEngine.hpp>
-// #include <tfusion/Defines.hpp>
+#include <tfusion/Defines.hpp>
+#include <tfusion/GlobalCache.hpp>
+//using namespace tfusion;
 using namespace tfusion;
 
-// template<class TVoxel>
-// void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::hello()
-// {
-// 	return;
-// }
-template<class TVoxel>
-tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::SceneReconstructionEngine_CUDA(void)
-{
-	ORcudaSafeCall(cudaMalloc((void**)&allocationTempData_device, sizeof(AllocationTempData)));
-	ORcudaSafeCall(cudaMallocHost((void**)&allocationTempData_host, sizeof(AllocationTempData)));
+// struct AllocationTempData{
 
-	int noTotalEntries = VoxelBlockHash::noTotalEntries;
-	ORcudaSafeCall(cudaMalloc((void**)&entriesAllocType_device, noTotalEntries));
-	ORcudaSafeCall(cudaMalloc((void**)&blockCoords_device, noTotalEntries * sizeof(Vector4s)));
+// 	int noAllocatedVoxelEntries;
+// 	int noAllocatedExcessEntries;
+// 	int noVisibleEntries; 
+// };
+namespace 
+{
+
+	template<class TVoxel,bool stopMaxW>
+	__global__ void integrateIntoScene_device(TVoxel *localVBA, const HashEntry *hashTable, int *visibleEntryIDs,
+		const ushort* depth, Vector2i depthImgSize, Matrix4f M_d, Vector4f projParams_d, 
+		float _voxelSize, float mu, int maxW);
+
+	// template<class TVoxel, bool stopMaxW>
+	// __global__ void integrateIntoScene_device(TVoxel *voxelArray, const PlainVoxelArray::VoxelArrayInfo *arrayInfo,
+	// 	const Vector4u *rgb, Vector2i rgbImgSize, const float *depth, const float *confidence, Vector2i depthImgSize, Matrix4f M_d, Matrix4f M_rgb, Vector4f projParams_d, 
+	// 	Vector4f projParams_rgb, float _voxelSize, float mu, int maxW);
+
+	__global__ void buildHashAllocAndVisibleType_device(uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords, const ushort* depth,
+		Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i _imgSize, float _voxelSize, HashEntry *hashTable, float viewFrustum_min,
+		float viewFrustum_max);
+
+	__global__ void allocateVoxelBlocksList_device(int *voxelAllocationList, int *excessAllocationList, HashEntry *hashTable, int noTotalEntries,
+		AllocationTempData *allocData, uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords);
+
+	__global__ void reAllocateSwappedOutVoxelBlocks_device(int *voxelAllocationList, HashEntry *hashTable, int noTotalEntries,
+		AllocationTempData *allocData, uchar *entriesVisibleType);
+
+	__global__ void setToType3(uchar *entriesVisibleType, int *visibleEntryIDs, int noVisibleEntries);
+
+	template<bool useSwapping>
+	__global__ void buildVisibleList_device(HashEntry *hashTable, HashSwapState *swapStates, int noTotalEntries,
+		int *visibleEntryIDs, AllocationTempData *allocData, uchar *entriesVisibleType,
+		Matrix4f M_d, Vector4f projParams_d, Vector2i depthImgSize, float voxelSize);
 }
 
-template<class TVoxel>
-tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::~SceneReconstructionEngine_CUDA(void)
-{
-	ORcudaSafeCall(cudaFreeHost(allocationTempData_host));
-	ORcudaSafeCall(cudaFree(allocationTempData_device));
-	ORcudaSafeCall(cudaFree(entriesAllocType_device));
-	ORcudaSafeCall(cudaFree(blockCoords_device));
-}
 
-template<class TVoxel>
-void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::ResetScene(Scene<TVoxel, VoxelBlockHash> *scene)
+namespace tfusion{
+
+template<class TVoxel,class TIndex>
+void tfusion::SceneReconstructionEngine_CUDA<TVoxel,TIndex>::ResetScene(Scene<Voxel_s, VoxelBlockHash> *scene)
 {
 	int numBlocks = scene->index.getNumAllocatedVoxelBlocks();
 	int blockSize = scene->index.getVoxelBlockSize();
@@ -55,8 +72,8 @@ void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::ResetScene(
 	scene->index.SetLastFreeExcessListId(SDF_EXCESS_LIST_SIZE - 1);
 }
 //modified by chuan
-template<class TVoxel>
-void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr, 
+template<class TVoxel,class TIndex>
+void tfusion::SceneReconstructionEngine_CUDA<TVoxel,TIndex>::AllocateSceneFromDepth(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr, 
 	const Affine3f pose, cuda::Dists &dist,const RenderState *renderState,bool onlyUpdateVisibleList, bool resetVisibleList)
 {
 	// Vector2i depthImgSize = view->depth->noDims;
@@ -171,8 +188,8 @@ void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::AllocateSce
 	scene->index.SetLastFreeExcessListId(tempData->noAllocatedExcessEntries);
 }
 
-template<class TVoxel>
-void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr,
+template<class TVoxel,class TIndex>
+void tfusion::SceneReconstructionEngine_CUDA<TVoxel,TIndex>::IntegrateIntoScene(Scene<TVoxel, VoxelBlockHash> *scene, const Intr intr,
 	const Affine3f pose, cuda::Dists& dist, const RenderState *renderState)
 {
 	Vector2i depthImgSize(dist.cols(),dist.rows());
@@ -261,3 +278,194 @@ void tfusion::SceneReconstructionEngine_CUDA<TVoxel,VoxelBlockHash>::IntegrateIn
 // 	ComputeUpdatedVoxelInfo<TVoxel::hasColorInformation, TVoxel::hasConfidenceInformation, TVoxel>::compute(localVoxelBlock[locId], 
 // 		pt_model, M_d, projParams_d, mu, maxW, depth, depthImgSize);
 // }
+}
+
+namespace 
+{
+	//device functions
+
+	template<class TVoxel, bool stopMaxW>
+	__global__ void integrateIntoScene_device(TVoxel *localVBA, const HashEntry *hashTable, int *visibleEntryIDs,
+		const ushort* depth, Vector2i depthImgSize, Matrix4f M_d, Vector4f projParams_d, 
+		float _voxelSize, float mu, int maxW)
+	{
+		Vector3i globalPos;
+		int entryId = visibleEntryIDs[blockIdx.x];
+
+		const HashEntry &currentHashEntry = hashTable[entryId];
+
+		if (currentHashEntry.ptr < 0) return;
+
+		globalPos = currentHashEntry.pos.toInt() * SDF_BLOCK_SIZE;
+
+		TVoxel *localVoxelBlock = &(localVBA[currentHashEntry.ptr * SDF_BLOCK_SIZE3]);
+
+		int x = threadIdx.x, y = threadIdx.y, z = threadIdx.z;
+
+		Vector4f pt_model; int locId;
+
+		locId = x + y * SDF_BLOCK_SIZE + z * SDF_BLOCK_SIZE * SDF_BLOCK_SIZE;
+
+		if (stopMaxW) if (localVoxelBlock[locId].w_depth == maxW) return;
+	//if (approximateIntegration) if (localVoxelBlock[locId].w_depth != 0) return;
+
+	pt_model.x = (float)(globalPos.x + x) * _voxelSize;
+	pt_model.y = (float)(globalPos.y + y) * _voxelSize;
+	pt_model.z = (float)(globalPos.z + z) * _voxelSize;
+	pt_model.w = 1.0f;
+
+	ComputeUpdatedVoxelInfo<TVoxel::hasColorInformation, TVoxel::hasConfidenceInformation, TVoxel>::compute(localVoxelBlock[locId], 
+		pt_model, M_d, projParams_d, mu, maxW, depth, depthImgSize);
+}
+
+__global__ void buildHashAllocAndVisibleType_device(uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords, const ushort* depth,
+	Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i _imgSize, float _voxelSize, HashEntry *hashTable, float viewFrustum_min,
+	float viewFrustum_max)
+{
+	int x = threadIdx.x + blockIdx.x * blockDim.x, y = threadIdx.y + blockIdx.y * blockDim.y;
+
+	if (x > _imgSize.x - 1 || y > _imgSize.y - 1) return;
+
+	buildHashAllocAndVisibleTypePP(entriesAllocType, entriesVisibleType, x, y, blockCoords, depth, invM_d,
+		projParams_d, mu, _imgSize, _voxelSize, hashTable, viewFrustum_min, viewFrustum_max);
+}
+
+__global__ void setToType3(uchar *entriesVisibleType, int *visibleEntryIDs, int noVisibleEntries)
+{
+	int entryId = threadIdx.x + blockIdx.x * blockDim.x;
+	if (entryId > noVisibleEntries - 1) return;
+	entriesVisibleType[visibleEntryIDs[entryId]] = 3;
+}
+
+__global__ void allocateVoxelBlocksList_device(int *voxelAllocationList, int *excessAllocationList, HashEntry *hashTable, int noTotalEntries,
+	AllocationTempData *allocData, uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords)
+{
+	int targetIdx = threadIdx.x + blockIdx.x * blockDim.x;
+	if (targetIdx > noTotalEntries - 1) return;
+
+	int vbaIdx, exlIdx;
+
+	switch (entriesAllocType[targetIdx])
+	{
+	case 1: //needs allocation, fits in the ordered list
+	vbaIdx = atomicSub(&allocData->noAllocatedVoxelEntries, 1);
+
+		if (vbaIdx >= 0) //there is room in the voxel block array
+		{
+			Vector4s pt_block_all = blockCoords[targetIdx];
+
+			HashEntry hashEntry;
+			hashEntry.pos.x = pt_block_all.x; hashEntry.pos.y = pt_block_all.y; hashEntry.pos.z = pt_block_all.z;
+			hashEntry.ptr = voxelAllocationList[vbaIdx];
+			hashEntry.offset = 0;
+
+			hashTable[targetIdx] = hashEntry;
+		}
+		else
+		{
+			// Mark entry as not visible since we couldn't allocate it but buildHashAllocAndVisibleTypePP changed its state.
+			entriesVisibleType[targetIdx] = 0;
+
+			// Restore the previous value to avoid leaks.
+			atomicAdd(&allocData->noAllocatedVoxelEntries, 1);
+		}
+		break;
+
+	case 2: //needs allocation in the excess list
+	vbaIdx = atomicSub(&allocData->noAllocatedVoxelEntries, 1);
+	exlIdx = atomicSub(&allocData->noAllocatedExcessEntries, 1);
+
+		if (vbaIdx >= 0 && exlIdx >= 0) //there is room in the voxel block array and excess list
+		{
+			Vector4s pt_block_all = blockCoords[targetIdx];
+
+			HashEntry hashEntry;
+			hashEntry.pos.x = pt_block_all.x; hashEntry.pos.y = pt_block_all.y; hashEntry.pos.z = pt_block_all.z;
+			hashEntry.ptr = voxelAllocationList[vbaIdx];
+			hashEntry.offset = 0;
+
+			int exlOffset = excessAllocationList[exlIdx];
+
+			hashTable[targetIdx].offset = exlOffset + 1; //connect to child
+
+			hashTable[SDF_BUCKET_NUM + exlOffset] = hashEntry; //add child to the excess list
+
+			entriesVisibleType[SDF_BUCKET_NUM + exlOffset] = 1; //make child visible
+		}
+		else
+		{
+			// No need to mark the entry as not visible since buildHashAllocAndVisibleTypePP did not mark it.
+			// Restore the previous values to avoid leaks.
+			atomicAdd(&allocData->noAllocatedVoxelEntries, 1);
+			atomicAdd(&allocData->noAllocatedExcessEntries, 1);
+		}
+
+		break;
+	}
+}
+
+__global__ void reAllocateSwappedOutVoxelBlocks_device(int *voxelAllocationList, HashEntry *hashTable, int noTotalEntries,
+	AllocationTempData *allocData, /*int *noAllocatedVoxelEntries,*/ uchar *entriesVisibleType)
+{
+	int targetIdx = threadIdx.x + blockIdx.x * blockDim.x;
+	if (targetIdx > noTotalEntries - 1) return;
+
+	int vbaIdx;
+	int hashEntry_ptr = hashTable[targetIdx].ptr;
+
+	if (entriesVisibleType[targetIdx] > 0 && hashEntry_ptr == -1) //it is visible and has been previously allocated inside the hash, but deallocated from VBA
+	{
+		vbaIdx = atomicSub(&allocData->noAllocatedVoxelEntries, 1);
+		if (vbaIdx >= 0) hashTable[targetIdx].ptr = voxelAllocationList[vbaIdx];
+		else atomicAdd(&allocData->noAllocatedVoxelEntries, 1);
+	}
+}
+
+template<bool useSwapping>
+__global__ void buildVisibleList_device(HashEntry *hashTable, HashSwapState *swapStates, int noTotalEntries,
+	int *visibleEntryIDs, AllocationTempData *allocData, uchar *entriesVisibleType, 
+	Matrix4f M_d, Vector4f projParams_d, Vector2i depthImgSize, float voxelSize)
+{
+	int targetIdx = threadIdx.x + blockIdx.x * blockDim.x;
+	if (targetIdx > noTotalEntries - 1) return;
+
+	__shared__ bool shouldPrefix;
+	shouldPrefix = false;
+	__syncthreads();
+
+	unsigned char hashVisibleType = entriesVisibleType[targetIdx];
+	const HashEntry & hashEntry = hashTable[targetIdx];
+
+	if (hashVisibleType == 3)
+	{
+		bool isVisibleEnlarged, isVisible;
+
+		if (useSwapping)
+		{
+			checkBlockVisibility<true>(isVisible, isVisibleEnlarged, hashEntry.pos, M_d, projParams_d, voxelSize, depthImgSize);
+			if (!isVisibleEnlarged) hashVisibleType = 0;
+			} else {
+				checkBlockVisibility<false>(isVisible, isVisibleEnlarged, hashEntry.pos, M_d, projParams_d, voxelSize, depthImgSize);
+				if (!isVisible) hashVisibleType = 0;
+			}
+			entriesVisibleType[targetIdx] = hashVisibleType;
+		}
+
+		if (hashVisibleType > 0) shouldPrefix = true;
+
+		if (useSwapping)
+		{
+			if (hashVisibleType > 0 && swapStates[targetIdx].state != 2) swapStates[targetIdx].state = 1;
+		}
+
+		__syncthreads();
+
+		if (shouldPrefix)
+		{
+			int offset = computePrefixSum_device<int>(hashVisibleType > 0, &allocData->noVisibleEntries, blockDim.x * blockDim.y, threadIdx.x);
+			if (offset != -1) visibleEntryIDs[offset] = targetIdx;
+		}
+
+	}
+
+}

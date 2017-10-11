@@ -80,7 +80,7 @@ namespace tfusion
 		// 	RenderState *renderState) const = 0;
 
 		/** This will render an image using raycasting. */
-		virtual void RenderImage(const Scene<TVoxel,TIndex> *scene, Matrix4f pose, const Vector4f intrinsics, const RenderState *renderState,
+		virtual void RenderImage(const Scene<TVoxel,TIndex> *scene, Matrix4f pose, const Vector4f intrinsics, RenderState *renderState,
 	cuda::image4u& outputImage, RenderImageType type = RENDER_SHADED_GREYSCALE, RenderRaycastSelection raycastType = RENDER_FROM_NEW_RAYCAST) const = 0;
 
 		/** Finds the scene surface using raycasting. */

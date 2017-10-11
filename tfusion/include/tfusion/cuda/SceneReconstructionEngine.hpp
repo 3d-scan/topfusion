@@ -6,9 +6,23 @@
 #include "PlatformIndependence.hpp"
 #include "tfusion/cuda/CUDAUtils.hpp"
 
+inline float half2float_impl(ushort value)
+{
+	float out;
+	int abs = value & 0x7FFF;
+	if(abs > 0x7C00)
+		out = std::numeric_limits<float>::has_quiet_NaN ? std::numeric_limits<float>::quiet_NaN() : 0.0f;
+	else if(abs == 0x7C00)
+		out = std::numeric_limits<float>::has_infinity ? std::numeric_limits<float>::infinity() : std::numeric_limits<float>::max();
+	else if(abs > 0x3FF)
+		out = std::ldexp(static_cast<float>((value&0x3FF)|0x400), (abs>>10)-25);
+	else
+		out = std::ldexp(static_cast<float>(abs), -24);
+	return (value&0x8000) ? -out : out;
+}
 template<class TVoxel>
 _CPU_AND_GPU_CODE_ inline float computeUpdatedVoxelDepthInfo(DEVICEPTR(TVoxel) &voxel, const THREADPTR(Vector4f) & pt_model, const CONSTPTR(Matrix4f) & M_d,
-	const CONSTPTR(Vector4f) & projParams_d, float mu, int maxW, ushort* depth, const CONSTPTR(Vector2i) & imgSize)
+	const CONSTPTR(Vector4f) & projParams_d, float mu, int maxW, const ushort* depth, const CONSTPTR(Vector2i) & imgSize)
 {
 	Vector4f pt_camera; Vector2f pt_image;
 	float depth_measure, eta, oldF, newF;
@@ -23,8 +37,12 @@ _CPU_AND_GPU_CODE_ inline float computeUpdatedVoxelDepthInfo(DEVICEPTR(TVoxel) &
 	if ((pt_image.x < 1) || (pt_image.x > imgSize.x - 2) || (pt_image.y < 1) || (pt_image.y > imgSize.y - 2)) return -1;
 
 	// get measured depth from image
+#if defined(__CUDACC__) && defined(__CUDA_ARCH__)
 	depth_measure = __half2float(depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x]);
+#else	
+	depth_measure = half2float_impl(depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x]);
 	// depth_measure = __half2float(depth(int(pt_image.y + 0.5f) * imgSize.x, (int)(pt_image.x + 0.5f)));
+#endif
 	if (depth_measure <= 0.0f) return -1;
 
 	// check whether voxel needs updating
@@ -188,9 +206,12 @@ _CPU_AND_GPU_CODE_ inline void buildHashAllocAndVisibleTypePP(DEVICEPTR(uchar) *
 {
 	float depth_measure; unsigned int hashIdx; int noSteps;
 	Vector4f pt_camera_f; Vector3f point_e, point, direction; Vector3s blockPos;
-
+#if defined(__CUDACC__) && defined(__CUDA_ARCH__)
 	depth_measure = __half2float(depth[x + y * imgSize.x]);
+#else
+	depth_measure = half2float_impl(depth[x + y * imgSize.x]);
 	// depth_measure = __half2float(depth(y*imgSize.x,x));
+#endif
 	if (depth_measure <= 0 || (depth_measure - mu) < 0 || (depth_measure - mu) < viewFrustum_min || (depth_measure + mu) > viewFrustum_max) return;
 
 	pt_camera_f.z = depth_measure;

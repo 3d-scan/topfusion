@@ -1,4 +1,5 @@
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS} "--ftz=true;--prec-div=false;--prec-sqrt=false")
+set(CUDA_NVCC_FLAGS -std=c++11; ${CUDA_NVCC_FLAGS})
 add_module_library(tfusion)
 # message(${sources})
 target_link_libraries(tfusion ${CUDA_LIBRARIES} ${CUDA_CUDA_LIBRARY} ${OpenCV_LIBS} ${OPENNI_LIBRARY})

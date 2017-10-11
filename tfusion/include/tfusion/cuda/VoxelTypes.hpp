@@ -84,6 +84,7 @@ struct Voxel_s
 	//uchar pad;
 
 	_CPU_AND_GPU_CODE_ Voxel_s()
+	// Voxel_s()
 	{
 		sdf = SDF_initialValue();
 		w_depth = 0;

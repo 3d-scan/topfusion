@@ -48,14 +48,23 @@ struct TopFuApp
     void show_raycasted(TopFu& topfu)
     {
         const int mode = 3;
-        if (iteractive_mode_)
-            topfu.renderImage(view_device_, viz.getViewerPose(), mode);
-        else
-            topfu.renderImage(view_device_, mode);
+        // if (iteractive_mode_)
+            topfu.renderImage(view_device_);//, viz.getViewerPose(), mode);
+        // else
+            // topfu.renderImage(view_device_, mode);
 
         view_host_.create(view_device_.rows(), view_device_.cols(), CV_8UC4);
         view_device_.download(view_host_.ptr<void>(), view_host_.step);
+        // cv::Mat view(view_device_.rows(),view_device_.cols(),CV_8UC1);
+        // for(int i=0;i<view_device_.rows();i++)
+        // {
+        //     for(int j=0;j<view_device_.cols();j++)
+        //     {
+        //         view.data[i * view_device_.cols() + j] = view_host_.data[i * view_device_.cols() * 4 + j * 4];
+        //     }
+        // }
         cv::imshow("Scene", view_host_);
+        // cv::imshow("Scene",view);
     }
 
     void take_cloud(TopFu& topfu)
@@ -89,7 +98,7 @@ struct TopFuApp
 
             // std::cout<<"pose::"<<topfu<<std::endl;
             if (has_image)
-                // show_raycasted(topfu);
+                show_raycasted(topfu);
 
             show_depth(depth);
             //cv::imshow("Image", image);
@@ -120,7 +129,8 @@ struct TopFuApp
     cv::viz::Viz3d viz;
 
     cv::Mat view_host_;
-    cuda::Image view_device_;
+    // cuda::Image view_device_;
+    cuda::image4u view_device_;
     cuda::Depth depth_device_;
     cuda::DeviceArray<Point> cloud_buffer;
 };

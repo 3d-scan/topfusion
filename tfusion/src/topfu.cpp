@@ -60,11 +60,12 @@ tfusion::TopFu::TopFu(const TopFuParams& params) : frame_counter_(0), params_(pa
     // volume_->setPose(params_.volume_pose);
     // volume_->setRaycastStepFactor(params_.raycast_step_factor);
     // volume_->setGradientDeltaFactor(params_.gradient_delta_factor);
-    scene = new tfusion::Scene<Voxel_s,VoxelBlockHash>(params_.sceneParams,false);
-    sceneEngine = new tfusion::SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>;
+    scene = new Scene<Voxel_s,VoxelBlockHash>(params_.sceneParams,false);
+    // sceneEngine = dynamic_cast<tfusion::SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>*>(new SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>);
+    sceneEngine = new SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>;
     tfusion::RenderState::Vector2i_host imgSize(params_.cols,params.rows);
-    renderState = new tfusion::RenderState_VH(VoxelBlockHash::noTotalEntries, imgSize,params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
-    visualisationEngine = new tfusion::VisualisationEngine_CUDA<Voxel_s,VoxelBlockHash>();
+    renderState = new RenderState_VH(VoxelBlockHash::noTotalEntries, imgSize,params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
+    visualisationEngine = new VisualisationEngine_CUDA<Voxel_s,VoxelBlockHash>;
 // hello();
     sceneEngine->ResetScene(scene);
 
@@ -207,9 +208,11 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
     return ok;
 }
 
-void tfusion::TopFu::renderImage(cuda::Image& image,const Affine3f& pose_, int flag)
+void tfusion::TopFu::renderImage(cuda::image4u& image)//,const Affine3f& pose_, int flag)
 {
     const TopFuParams& p = params_;
+
+    image.create(p.rows,p.cols);
     IVisualisationEngine::RenderImageType imageType = tfusion::IVisualisationEngine::RENDER_SHADED_GREYSCALE_IMAGENORMALS;
     IVisualisationEngine::RenderRaycastSelection raycastType = tfusion::IVisualisationEngine::RENDER_FROM_NEW_RAYCAST;
 
@@ -220,7 +223,8 @@ void tfusion::TopFu::renderImage(cuda::Image& image,const Affine3f& pose_, int f
                 pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
 
     Vector4f intrs(p.intr.fx,p.intr.fy,p.intr.cx,p.intr.cy);
-    visualisationEngine->RenderImage(scene,M_d,intrs,renderState,renderState->raycastImage,imageType,raycastType);
+    // visualisationEngine->RenderImage(scene,M_d,intrs,renderState,renderState->raycastImage,imageType,raycastType);
+    visualisationEngine->RenderImage(scene,M_d,intrs,renderState,image,imageType,raycastType);
     // Affine3f pose = pose_.inv();
     // // Vector2i imgSize = outputImage->noDims;
     // Vector2i imgSize(image.cols,image.rows);
