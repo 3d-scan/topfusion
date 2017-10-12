@@ -63,7 +63,7 @@ tfusion::TopFu::TopFu(const TopFuParams& params) : frame_counter_(0), params_(pa
     scene = new Scene<Voxel_s,VoxelBlockHash>(params_.sceneParams,false);
     // sceneEngine = dynamic_cast<tfusion::SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>*>(new SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>);
     sceneEngine = new SceneReconstructionEngine_CUDA<Voxel_s,VoxelBlockHash>;
-    tfusion::RenderState::Vector2i_host imgSize(params_.cols,params.rows);
+    tfusion::RenderState::Vector2i_host imgSize(params_.cols,params_.rows);
     renderState = new RenderState_VH(VoxelBlockHash::noTotalEntries, imgSize,params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
     visualisationEngine = new VisualisationEngine_CUDA<Voxel_s,VoxelBlockHash>;
 // hello();
