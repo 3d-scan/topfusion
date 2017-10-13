@@ -3,7 +3,7 @@
 #include <tfusion/RenderState.hpp>
 #include <tfusion/RenderState_VH.hpp>
 #include <tfusion/scene.hpp>
-
+#include <tfusion/types.hpp>
 // #include "../../../Objects/Tracking/TrackingState.h"
 // #include "../../../Objects/Views/View.h"
 
@@ -76,8 +76,7 @@ namespace tfusion
 		of the minimum and maximum depths at each pixel of
 		an image.
 		*/
-		// virtual void CreateExpectedDepths(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics,
-		// 	RenderState *renderState) const = 0;
+		virtual void CreateExpectedDepths(const Scene<TVoxel,TIndex> *scene, const Affine3f pose, const Intr intrinsics, RenderState *renderState) const = 0;
 
 		/** This will render an image using raycasting. */
 		virtual void RenderImage(const Scene<TVoxel,TIndex> *scene, Matrix4f pose, const Vector4f intrinsics, RenderState *renderState,
@@ -96,8 +95,8 @@ namespace tfusion
 		/** Create an image of reference points and normals as
 		required by the Lib::Engine::DepthTracker classes.
 		*/
-		// virtual void CreateICPMaps(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState, 
-		// 	RenderState *renderState) const = 0;
+		virtual void CreateICPMaps(const Scene<TVoxel,VoxelBlockHash> *scene, const Affine3f pose_,const Intr intr_,cuda::Cloud &points_,cuda::Normals &normals_, 
+	RenderState *renderState) const = 0;
 
 		/** Create an image of reference points and normals as
 		required by the Lib::Engine::DepthTracker classes.

@@ -202,8 +202,16 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
         sceneEngine->IntegrateIntoScene(scene,p.intr,pose,dists_,renderState);
     }
 
-    prev_.points_pyr.swap(curr_.points_pyr);
-    prev_.normals_pyr.swap(curr_.normals_pyr);
+
+    //prepare icp
+    visualisationEngine->CreateExpectedDepths(scene,pose,p.intr,renderState);
+
+    visualisationEngine->CreateICPMaps(scene,pose,p.intr,prev_.points_pyr[0], prev_.normals_pyr[0],renderState);
+
+    for (int i = 1; i < LEVELS; ++i)
+        resizePointsNormals(prev_.points_pyr[i-1], prev_.normals_pyr[i-1], prev_.points_pyr[i], prev_.normals_pyr[i]);
+    // prev_.points_pyr.swap(curr_.points_pyr);
+    // prev_.normals_pyr.swap(curr_.normals_pyr);
     ++frame_counter_;
     return ok;
 }
