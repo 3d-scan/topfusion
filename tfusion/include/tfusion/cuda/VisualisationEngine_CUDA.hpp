@@ -41,7 +41,7 @@ namespace tfusion
 			IVisualisationEngine::RenderRaycastSelection raycastType = IVisualisationEngine::RENDER_FROM_NEW_RAYCAST) const;
 		// void FindSurface(const Scene<TVoxel,TIndex> *scene, const ORUtils::SE3Pose *pose, const Intrinsics *intrinsics, const RenderState *renderState) const;
 		// void CreatePointCloud(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState, RenderState *renderState, bool skipPoints) const;
-		void CreateICPMaps(const Scene<TVoxel,TIndex> *scene, const Affine3f pose_,const Intr intr_,cuda::Cloud &points_,cuda::Normals &normals_, 
+		void CreateICPMaps(const Scene<TVoxel,TIndex> *scene, const Matrix4f pose_,const Intr intr_,cuda::Cloud &points_,cuda::Normals &normals_, 
 	RenderState *renderState) const;
 		// void ForwardRender(const Scene<TVoxel,TIndex> *scene, const View *view, TrackingState *trackingState, RenderState *renderState) const;
 	};

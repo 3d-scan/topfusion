@@ -235,7 +235,7 @@ static void RenderImage_common(const tfusion::Scene<Voxel_s, VoxelBlockHash> *sc
 		// pointsRay = renderState->forwardProjection->GetData(MEMORYDEVICE_CUDA);
 		// pointsRay = renderState->forwardProjection.ptr();
 	// } else {
-		GenericRaycast(scene, imgSize, invM, intrinsics, renderState, false);
+		//GenericRaycast(scene, imgSize, invM, intrinsics, renderState, false);
 		// pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
 	Vector4f *pointsRay = renderState->raycastResult.ptr();
 	// }
@@ -467,16 +467,17 @@ void VisualisationEngine_CUDA<TVoxel, TIndex>::RenderImage(const Scene<TVoxel,TI
 // }
 
 template<class TVoxel,class TIndex>
-void VisualisationEngine_CUDA<TVoxel, TIndex>::CreateICPMaps(const Scene<TVoxel,TIndex> *scene, const Affine3f pose_,const Intr intr_,cuda::Cloud &points_,cuda::Normals &normals_, 
+void VisualisationEngine_CUDA<TVoxel, TIndex>::CreateICPMaps(const Scene<TVoxel,TIndex> *scene, const Matrix4f pose_,const Intr intr_,cuda::Cloud &points_,cuda::Normals &normals_, 
 	RenderState *renderState) const
 {
 
-	Affine3f pose_inv = pose_.inv();
+	/*Affine3f pose_inv = pose_.inv();
 	Matrix4f pose(pose_inv.matrix(0,0),pose_inv.matrix(0,1),pose_inv.matrix(0,2),pose_inv.matrix(0,3),
 		pose_inv.matrix(1,0),pose_inv.matrix(1,1),pose_inv.matrix(1,2),pose_inv.matrix(1,3),
 		pose_inv.matrix(2,0),pose_inv.matrix(2,1),pose_inv.matrix(2,2),pose_inv.matrix(2,3),
-		pose_inv.matrix(3,0),pose_inv.matrix(3,1),pose_inv.matrix(3,2),pose_inv.matrix(3,3));
-
+		pose_inv.matrix(3,0),pose_inv.matrix(3,1),pose_inv.matrix(3,2),pose_inv.matrix(3,3));*/
+	Matrix4f pose;
+	pose_.inv(pose);
 	Vector4f intr(intr_.fx,intr_.fy,intr_.cx,intr_.cy);
 
 	Vector4f *points = (Vector4f*)(points_.ptr());

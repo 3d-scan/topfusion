@@ -16,7 +16,8 @@ namespace tfusion
         typedef unsigned short ushort;
         typedef unsigned char uchar;
 
-        typedef PtrStepSz<ushort> Dists;
+        //typedef PtrStepSz<ushort> Dists;
+		typedef PtrStepSz<float> Dists;
         typedef DeviceArray2D<ushort> Depth;
         typedef DeviceArray2D<Normal> Normals;
         typedef DeviceArray2D<Point> Points;

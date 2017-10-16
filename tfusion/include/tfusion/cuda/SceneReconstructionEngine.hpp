@@ -22,7 +22,7 @@ inline float half2float_impl(ushort value)
 }
 template<class TVoxel>
 _CPU_AND_GPU_CODE_ inline float computeUpdatedVoxelDepthInfo(DEVICEPTR(TVoxel) &voxel, const THREADPTR(Vector4f) & pt_model, const CONSTPTR(Matrix4f) & M_d,
-	const CONSTPTR(Vector4f) & projParams_d, float mu, int maxW, const ushort* depth, const CONSTPTR(Vector2i) & imgSize)
+	const CONSTPTR(Vector4f) & projParams_d, float mu, int maxW, const float* depth, const CONSTPTR(Vector2i) & imgSize)
 {
 	Vector4f pt_camera; Vector2f pt_image;
 	float depth_measure, eta, oldF, newF;
@@ -38,9 +38,12 @@ _CPU_AND_GPU_CODE_ inline float computeUpdatedVoxelDepthInfo(DEVICEPTR(TVoxel) &
 
 	// get measured depth from image
 #if defined(__CUDACC__) && defined(__CUDA_ARCH__)
-	depth_measure = __half2float(depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x]);
+	//depth_measure = __half2float(depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x]);
+	depth_measure = depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x];
+	//depth_measure = __half2float(depth[(int)(pt_image.y + 0.5f) + (int)(pt_image.x + 0.5f) * imgSize.y]);
 #else	
-	depth_measure = half2float_impl(depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x]);
+	//depth_measure = half2float_impl(depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x]);
+	depth_measure = depth[(int)(pt_image.x + 0.5f) + (int)(pt_image.y + 0.5f) * imgSize.x];
 	// depth_measure = __half2float(depth(int(pt_image.y + 0.5f) * imgSize.x, (int)(pt_image.x + 0.5f)));
 #endif
 	if (depth_measure <= 0.0f) return -1;
@@ -151,7 +154,7 @@ struct ComputeUpdatedVoxelInfo<false, false, TVoxel> {
 	_CPU_AND_GPU_CODE_ static void compute(DEVICEPTR(TVoxel) & voxel, const THREADPTR(Vector4f) & pt_model,
 		const CONSTPTR(Matrix4f) & M_d, const CONSTPTR(Vector4f) & projParams_d,
 		float mu, int maxW,
-		const ushort* depth, const CONSTPTR(Vector2i) & imgSize_d)
+		const float* depth, const CONSTPTR(Vector2i) & imgSize_d)
 	{
 		computeUpdatedVoxelDepthInfo(voxel, pt_model, M_d, projParams_d, mu, maxW, depth, imgSize_d);
 	}
@@ -201,15 +204,18 @@ struct ComputeUpdatedVoxelInfo<false, false, TVoxel> {
 // };
 
 _CPU_AND_GPU_CODE_ inline void buildHashAllocAndVisibleTypePP(DEVICEPTR(uchar) *entriesAllocType, DEVICEPTR(uchar) *entriesVisibleType, int x, int y,
-	DEVICEPTR(Vector4s) *blockCoords, const ushort* depth, Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i imgSize,
+	DEVICEPTR(Vector4s) *blockCoords, const float* depth, Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i imgSize,
 	float oneOverVoxelSize, const CONSTPTR(HashEntry) *hashTable, float viewFrustum_min, float viewFrustum_max)
 {
 	float depth_measure; unsigned int hashIdx; int noSteps;
 	Vector4f pt_camera_f; Vector3f point_e, point, direction; Vector3s blockPos;
 #if defined(__CUDACC__) && defined(__CUDA_ARCH__)
-	depth_measure = __half2float(depth[x + y * imgSize.x]);
+	//depth_measure = __half2float(depth[x + y * imgSize.x]);
+	depth_measure = depth[x + y * imgSize.x];
+	//depth_measure = _half2float(depth[y + x * imgSize.y]);
 #else
-	depth_measure = half2float_impl(depth[x + y * imgSize.x]);
+	//depth_measure = half2float_impl(depth[x + y * imgSize.x]);
+	depth_measure = depth[x + y * imgSize.x];
 	// depth_measure = __half2float(depth(y*imgSize.x,x));
 #endif
 	if (depth_measure <= 0 || (depth_measure - mu) < 0 || (depth_measure - mu) < viewFrustum_min || (depth_measure + mu) > viewFrustum_max) return;

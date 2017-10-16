@@ -95,7 +95,7 @@ namespace tfusion
 		/** Create an image of reference points and normals as
 		required by the Lib::Engine::DepthTracker classes.
 		*/
-		virtual void CreateICPMaps(const Scene<TVoxel,VoxelBlockHash> *scene, const Affine3f pose_,const Intr intr_,cuda::Cloud &points_,cuda::Normals &normals_, 
+		virtual void CreateICPMaps(const Scene<TVoxel,VoxelBlockHash> *scene, const Matrix4f pose_,const Intr intr_,cuda::Cloud &points_,cuda::Normals &normals_, 
 	RenderState *renderState) const = 0;
 
 		/** Create an image of reference points and normals as

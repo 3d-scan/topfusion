@@ -67,6 +67,7 @@ tfusion::TopFu::TopFu(const TopFuParams& params) : frame_counter_(0), params_(pa
     renderState = new RenderState_VH(VoxelBlockHash::noTotalEntries, imgSize,params_.sceneParams->viewFrustum_min,params_.sceneParams->viewFrustum_max);
     visualisationEngine = new VisualisationEngine_CUDA<Voxel_s,VoxelBlockHash>;
 // hello();
+	//cout<<"renderstate cols :"<<renderState->renderingRangeImage.cols()<<",rows:"<<renderState->renderingRangeImage.rows()<<endl;
     sceneEngine->ResetScene(scene);
 
     icp_ = cv::Ptr<cuda::ProjectiveICP>(new cuda::ProjectiveICP());
@@ -160,6 +161,20 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
     cuda::computeDists(depth,dists_,p.intr);
     cuda::depthBilateralFilter(depth, curr_.depth_pyr[0], p.bilateral_kernel_size, p.bilateral_sigma_spatial, p.bilateral_sigma_depth);
 
+	//cv::Mat dist_display(dists_.cols(),dists_.rows(),CV_32F);
+	//cv::Mat dist_display(dists_.rows(),dists_.cols(),CV_32F);
+	/*cv::Mat dist_display(p.rows,p.cols,CV_32F);
+	cout<<"step:"<<dist_display.step<<endl;
+	dists_.download(dist_display.data,dist_display.step);*/
+	
+	/*cv::Mat dist_char(p.rows,p.cols,CV_8UC1);
+	int temp;
+	for(int i=0;i<480;i++)
+		for(int j=0;j<640;j++)
+		{
+			temp = (int)(dist_display.data[j + i * 640]);
+			dist_char.data[j + i * 640] = (uchar)(temp) * 10;
+		}*/
     if(p.icp_truncate_depth_dist > 0)
         tfusion::cuda::depthTruncation(curr_.depth_pyr[0],p.icp_truncate_depth_dist);
 
@@ -206,12 +221,21 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
     //prepare icp
     visualisationEngine->CreateExpectedDepths(scene,pose,p.intr,renderState);
 
-    visualisationEngine->CreateICPMaps(scene,pose,p.intr,prev_.points_pyr[0], prev_.normals_pyr[0],renderState);
+	Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+                pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
+                pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
+                pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+
+    visualisationEngine->CreateICPMaps(scene,M_d,p.intr,prev_.points_pyr[0], prev_.normals_pyr[0],renderState);
+
+	cv::Mat points_mat(480,640,CV_32FC4);
+
+	prev_.points_pyr[0].download(points_mat.data,points_mat.step);
 
     for (int i = 1; i < LEVELS; ++i)
         resizePointsNormals(prev_.points_pyr[i-1], prev_.normals_pyr[i-1], prev_.points_pyr[i], prev_.normals_pyr[i]);
-    // prev_.points_pyr.swap(curr_.points_pyr);
-    // prev_.normals_pyr.swap(curr_.normals_pyr);
+     //prev_.points_pyr.swap(curr_.points_pyr);
+     //prev_.normals_pyr.swap(curr_.normals_pyr);
     ++frame_counter_;
     return ok;
 }

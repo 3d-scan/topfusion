@@ -27,7 +27,7 @@ namespace
 	// 	const Vector4u *rgb, Vector2i rgbImgSize, const float *depth, const float *confidence, Vector2i depthImgSize, Matrix4f M_d, Matrix4f M_rgb, Vector4f projParams_d, 
 	// 	Vector4f projParams_rgb, float _voxelSize, float mu, int maxW);
 
-	__global__ void buildHashAllocAndVisibleType_device(uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords, const ushort* depth,
+	__global__ void buildHashAllocAndVisibleType_device(uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords, const float* depth,
 		Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i _imgSize, float _voxelSize, HashEntry *hashTable, float viewFrustum_min,
 		float viewFrustum_max);
 
@@ -286,7 +286,7 @@ namespace
 
 	template<class TVoxel, bool stopMaxW>
 	__global__ void integrateIntoScene_device(TVoxel *localVBA, const HashEntry *hashTable, int *visibleEntryIDs,
-		const ushort* depth, Vector2i depthImgSize, Matrix4f M_d, Vector4f projParams_d, 
+		const float* depth, Vector2i depthImgSize, Matrix4f M_d, Vector4f projParams_d, 
 		float _voxelSize, float mu, int maxW)
 	{
 		Vector3i globalPos;
@@ -318,7 +318,7 @@ namespace
 		pt_model, M_d, projParams_d, mu, maxW, depth, depthImgSize);
 }
 
-__global__ void buildHashAllocAndVisibleType_device(uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords, const ushort* depth,
+__global__ void buildHashAllocAndVisibleType_device(uchar *entriesAllocType, uchar *entriesVisibleType, Vector4s *blockCoords, const float* depth,
 	Matrix4f invM_d, Vector4f projParams_d, float mu, Vector2i _imgSize, float _voxelSize, HashEntry *hashTable, float viewFrustum_min,
 	float viewFrustum_max)
 {
