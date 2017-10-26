@@ -236,6 +236,7 @@ namespace tfusion {
 		friend std::ostream& operator<<(std::ostream& os, const Matrix4<T>& dt) {
 			for (int y = 0; y < 4; y++)
 				os << dt(0, y) << ", " << dt(1, y) << ", " << dt(2, y) << ", " << dt(3, y) << "\n";
+				//os << dt(y,0)<<","<<dt(y,1)<<","<<dt(y,2)<<","<<dt(y,3)<<"\n";
 			return os;
 		}
 	};

@@ -69,7 +69,7 @@ namespace tfusion
 
 		if (x >= imgSize.x || y >= imgSize.y) return;
 
-		processPixelICP<true, flipNormals>(pointsMap, normalsMap, pointsRay, imgSize, x, y, voxelSize, lightSource);
+		processPixelICP<false, flipNormals>(pointsMap, normalsMap, pointsRay, imgSize, x, y, voxelSize, lightSource);
 	}
 
 	template<bool flipNormals>

@@ -192,7 +192,7 @@ bool tfusion::cuda::ProjectiveICP::estimateTransform(Affine3f& affine, const Int
 
             StreamHelper::Vec6f b;
             StreamHelper::Mat6f A = sh.get(b);
-
+			 
             //checking nullspace
             double det = cv::determinant(A);
 

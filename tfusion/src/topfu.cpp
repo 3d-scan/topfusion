@@ -19,6 +19,9 @@ tfusion::TopFuParams tfusion::TopFuParams::default_params()
     p.cols = 640;  //pixels
     p.rows = 480;  //pixels
     p.intr = Intr(525.f, 525.f, p.cols/2 - 0.5f, p.rows/2 - 0.5f);
+	//p.intr = Intr(580.f,580.f,320.f,240.f);
+	//p.intr = Intr(573.71,574.394,346.471,249.031);
+	p.intr = Intr(504.261,503.905,352.457,272.202);
 
     p.volume_dims = Vec3i::all(512);  //number of voxels
     p.volume_size = Vec3f::all(3.f);  //meters
@@ -28,7 +31,8 @@ tfusion::TopFuParams tfusion::TopFuParams::default_params()
     p.bilateral_sigma_spatial = 4.5; //pixels
     p.bilateral_kernel_size = 7;     //pixels
 
-    p.icp_truncate_depth_dist = 0.f;        //meters, disabled
+    //p.icp_truncate_depth_dist = 0.f;        //meters, disabled
+	p.icp_truncate_depth_dist = 2.0f;        //meters, disabled
     p.icp_dist_thres = 0.1f;                //meters
     p.icp_angle_thres = deg2rad(30.f); //radians
     p.icp_iter_num.assign(iters, iters + levels);
@@ -144,6 +148,7 @@ void tfusion::TopFu::reset()
     poses_.reserve(30000);
     poses_.push_back(Affine3f::Identity());
     // volume_->clear();
+	sceneEngine->ResetScene(scene);
 }
 
 tfusion::Affine3f tfusion::TopFu::getCameraPose (int time) const
@@ -160,7 +165,14 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
 
     cuda::computeDists(depth,dists_,p.intr);
     cuda::depthBilateralFilter(depth, curr_.depth_pyr[0], p.bilateral_kernel_size, p.bilateral_sigma_spatial, p.bilateral_sigma_depth);
+	//depth.copyTo(curr_.depth_pyr[0]);
+	//cuda::computeDists(curr_.depth_pyr[0],dists_,p.intr);
+	/*cv::Mat depth_raw(480,640,CV_16U);
+	cv::Mat depth_filter(480,640,CV_16U);
 
+	depth.download(depth_raw.data,depth_raw.step);
+	curr_.depth_pyr[0].download(depth_filter.data,depth_filter.step);*/
+	
 	//cv::Mat dist_display(dists_.cols(),dists_.rows(),CV_32F);
 	//cv::Mat dist_display(dists_.rows(),dists_.cols(),CV_32F);
 	/*cv::Mat dist_display(p.rows,p.cols,CV_32F);
@@ -182,62 +194,139 @@ bool tfusion::TopFu::operator()(const tfusion::cuda::Depth& depth,const tfusion:
         cuda::depthBuildPyramid(curr_.depth_pyr[i-1],curr_.depth_pyr[i],p.bilateral_sigma_depth);
 
     for(int i=0;i < LEVELS;i++)
-        // cuda::computeNormalsAndMaskDepth(p.intr(i),curr_.depth_pyr[i],curr_.normals_pyr[i]);
         cuda::computePointNormals(p.intr(i),curr_.depth_pyr[i],curr_.points_pyr[i],curr_.normals_pyr[i]);
     cuda::waitAllDefaultStream();
 
     if(frame_counter_ == 0)
     {
+		sceneEngine->AllocateSceneFromDepth(scene,p.intr,poses_.back(),dists_,renderState);
+        sceneEngine->IntegrateIntoScene(scene,p.intr,poses_.back(),dists_,renderState);
         // curr_.depth_pyr.swap(prev_.depth_pyr);
         curr_.points_pyr.swap(prev_.points_pyr);
 
         curr_.normals_pyr.swap(prev_.normals_pyr);
-        return ++frame_counter_,false;
+        return ++frame_counter_,true;
     }
 
     Affine3f affine;
+	cv::Mat points_mat(480,640,CV_32FC4);
+	curr_.points_pyr[0].download(points_mat.data,points_mat.step);
 
+	cv::Mat points_mat1(480,640,CV_32FC4);
+	prev_.points_pyr[0].download(points_mat1.data,points_mat1.step);
+
+	cv::Mat points_mat2(480,640,CV_32FC1);
+
+	dists_.download(points_mat2.data,points_mat2.step);
+	cv::Mat points_mat3(480,640,CV_16UC1);
+
+	curr_.depth_pyr[0].download(points_mat3.data,points_mat3.step);
+
+	//ifstream inFile;
+	//inFile.open("D:\\a.txt",ios::in);
+	////float a;
+	//istream_iterator<float> begin(inFile);    //按 float 格式取文件数据流的起始指针  
+ //   istream_iterator<float> end;          //取文件流的终止位置  
+ //   vector<float> inData(begin,end);      //将文件数据保存至 std::vector 中  
+	//for(int i=0;i<4;i++)
+	//	for(int j=0;j<4;j++)
+	//	{
+	//		affine.matrix(i,j) = inData[(frame_counter_-1)*16 + i * 4 + j];
+	//	}
+
+	//cout<<affine.matrix(0,0)<<" "<<affine.matrix(0,1)<<" "<<affine.matrix(0,2)<<" "<<affine.matrix(0,3)<<endl
+	//	<<affine.matrix(1,0)<<" "<<affine.matrix(1,1)<<" "<<affine.matrix(1,2)<<" "<<affine.matrix(1,3)<<endl
+	//	<<affine.matrix(2,0)<<" "<<affine.matrix(2,1)<<" "<<affine.matrix(2,2)<<" "<<affine.matrix(2,3)<<endl
+	//	<<affine.matrix(3,0)<<" "<<affine.matrix(3,1)<<" "<<affine.matrix(3,2)<<" "<<affine.matrix(3,3)<<endl;
     // bool ok = icp_->estimateTransform(affine, p.intr, curr_.depth_pyr, curr_.normals_pyr, prev_.depth_pyr, prev_.normals_pyr);
     bool ok = icp_->estimateTransform(affine,p.intr,curr_.points_pyr,curr_.normals_pyr,prev_.points_pyr,prev_.normals_pyr);
+	poses_.push_back(poses_.back() * affine);
+	//poses_.push_back(affine);
+	Affine3f pose = poses_.back();
+	Matrix4f M_d_print(pose.matrix(0,0),pose.matrix(1,0),pose.matrix(2,0),pose.matrix(3,0),
+		pose.matrix(0,1),pose.matrix(1,1),pose.matrix(2,1),pose.matrix(3,1),
+		pose.matrix(0,2),pose.matrix(1,2),pose.matrix(2,2),pose.matrix(3,2),
+		pose.matrix(0,3),pose.matrix(1,3),pose.matrix(2,3),pose.matrix(3,3));
+
+
+	cout<<"pose:"<<endl<<M_d_print<<endl;
+	//cout<<"pose-before:"<<endl<<affine.matrix<<endl;
+	/*Matrix4f a(1.f,0.f,0.f,0.f,
+			   2.f,1.f,0.f,0.f,
+			   0.f,0.f,1.f,0.f,
+			   0.f,0.f,0.f,1.f);
+	Matrix4f b(1.f,1.f,0.f,0.f,
+			   0.f,1.f,0.f,0.f,
+			   0.f,0.f,1.f,0.f,
+			   0.f,0.f,0.f,1.f);
+	cout<<"result:\n"<<a*b<<endl;*/
     if(!ok)
         return reset(),false;
 
-    poses_.push_back(poses_.back() * affine);
+    /*poses_.push_back(poses_.back() * affine);
 
-    Affine3f pose = poses_.back();
+    Affine3f pose = poses_.back();*/
 
     // Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
     //             pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
     //             pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
     //             pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
     //allocation and integration
+	/*float rnorm = (float)cv::norm(affine.rvec());
+    float tnorm = (float)cv::norm(affine.translation());
+    bool integrate = (rnorm + tnorm)/2 >= p.tsdf_min_camera_movement;
+	if(integrate)*/
     {
         // sceneEngine->AllocateSceneFromDepth(scene,view,pose_.back(),dists_);
-        sceneEngine->AllocateSceneFromDepth(scene,p.intr,pose,dists_,renderState);
-        sceneEngine->IntegrateIntoScene(scene,p.intr,pose,dists_,renderState);
+        sceneEngine->AllocateSceneFromDepth(scene,p.intr,pose.inv(),dists_,renderState);
+        sceneEngine->IntegrateIntoScene(scene,p.intr,pose.inv(),dists_,renderState);
     }
+	cuda::image4u image;
+	renderImage(image);
+	cv::Mat points_mat6(480,640,CV_8UC4);
 
-
+	image.download(points_mat6.data,points_mat6.step); 
     //prepare icp
-    visualisationEngine->CreateExpectedDepths(scene,pose,p.intr,renderState);
+    //visualisationEngine->CreateExpectedDepths(scene,pose,p.intr,renderState);
 
-	Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
-                pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
-                pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
-                pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+	Affine3f pose_inv = poses_.back();
+	Matrix4f M_d(pose_inv.matrix(0,0),pose_inv.matrix(1,0),pose_inv.matrix(2,0),pose_inv.matrix(3,0),
+		pose_inv.matrix(0,1),pose_inv.matrix(1,1),pose_inv.matrix(2,1),pose_inv.matrix(3,1),
+		pose_inv.matrix(0,2),pose_inv.matrix(1,2),pose_inv.matrix(2,2),pose_inv.matrix(3,2),
+		pose_inv.matrix(0,3),pose_inv.matrix(1,3),pose_inv.matrix(2,3),pose_inv.matrix(3,3));
 
+	//Matrix4f M_d(pose.matrix(0,0),pose.matrix(1,0),pose.matrix(2,0),pose.matrix(3,0),
+	//	pose.matrix(0,1),pose.matrix(1,1),pose.matrix(2,1),pose.matrix(3,1),
+	//	pose.matrix(0,2),pose.matrix(1,2),pose.matrix(2,2),pose.matrix(3,2),
+	//	pose.matrix(0,3),pose.matrix(1,3),pose.matrix(2,3),pose.matrix(3,3));
+	/*Matrix4f M_d(affine.matrix(0,0),affine.matrix(1,0),affine.matrix(2,0),affine.matrix(3,0),
+				 affine.matrix(0,1),affine.matrix(1,1),affine.matrix(2,1),affine.matrix(3,1),
+				 affine.matrix(0,2),affine.matrix(1,2),affine.matrix(2,2),affine.matrix(3,2),
+				 affine.matrix(0,3),affine.matrix(1,3),affine.matrix(2,3),affine.matrix(3,3));*/
+	visualisationEngine->CreateExpectedDepths(scene,pose.inv(),p.intr,renderState);
     visualisationEngine->CreateICPMaps(scene,M_d,p.intr,prev_.points_pyr[0], prev_.normals_pyr[0],renderState);
-
-	cv::Mat points_mat(480,640,CV_32FC4);
-
-	prev_.points_pyr[0].download(points_mat.data,points_mat.step);
-
     for (int i = 1; i < LEVELS; ++i)
         resizePointsNormals(prev_.points_pyr[i-1], prev_.normals_pyr[i-1], prev_.points_pyr[i], prev_.normals_pyr[i]);
-     //prev_.points_pyr.swap(curr_.points_pyr);
-     //prev_.normals_pyr.swap(curr_.normals_pyr);
+    /*cv::Mat points_mat10(480,640,CV_32FC4);
+
+	prev_.points_pyr[0].download(points_mat10.data,points_mat10.step); */
+	/*cv::Mat points_mat(480,640,CV_32FC4);
+
+	prev_.points_pyr[0].download(points_mat.data,points_mat.step); 
+	cv::Mat points_mat1(240,320,CV_32FC4);
+
+	prev_.points_pyr[1].download(points_mat1.data,points_mat1.step); 
+	cv::Mat points_mat2(120,160,CV_32FC4);
+
+	prev_.points_pyr[2].download(points_mat2.data,points_mat2.step); */
+	/*prev_.points_pyr.swap(curr_.points_pyr);
+    prev_.normals_pyr.swap(curr_.normals_pyr);*/
+	/*cv::Mat points_mat5(480,640,CV_32FC4);
+
+	prev_.points_pyr[0].download(points_mat5.data,points_mat5.step); */
+	 //prev_.points_pyr[0].download(points_mat.data,points_mat.step);
     ++frame_counter_;
-    return ok;
+    return true;
 }
 
 void tfusion::TopFu::renderImage(cuda::image4u& image)//,const Affine3f& pose_, int flag)
@@ -245,14 +334,19 @@ void tfusion::TopFu::renderImage(cuda::image4u& image)//,const Affine3f& pose_, 
     const TopFuParams& p = params_;
 
     image.create(p.rows,p.cols);
-    IVisualisationEngine::RenderImageType imageType = tfusion::IVisualisationEngine::RENDER_SHADED_GREYSCALE_IMAGENORMALS;
+    //IVisualisationEngine::RenderImageType imageType = tfusion::IVisualisationEngine::RENDER_SHADED_GREYSCALE_IMAGENORMALS;
+	IVisualisationEngine::RenderImageType imageType = tfusion::IVisualisationEngine::RENDER_SHADED_GREYSCALE;
     IVisualisationEngine::RenderRaycastSelection raycastType = tfusion::IVisualisationEngine::RENDER_FROM_NEW_RAYCAST;
 
     Affine3f pose = poses_.back();
-    Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+    /*Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
                 pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
                 pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
-                pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+                pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));*/
+	Matrix4f M_d(pose.matrix(0,0),pose.matrix(1,0),pose.matrix(2,0),pose.matrix(3,0),
+		pose.matrix(0,1),pose.matrix(1,1),pose.matrix(2,1),pose.matrix(3,1),
+		pose.matrix(0,2),pose.matrix(1,2),pose.matrix(2,2),pose.matrix(3,2),
+		pose.matrix(0,3),pose.matrix(1,3),pose.matrix(2,3),pose.matrix(3,3));
 
     Vector4f intrs(p.intr.fx,p.intr.fy,p.intr.cx,p.intr.cy);
     // visualisationEngine->RenderImage(scene,M_d,intrs,renderState,renderState->raycastImage,imageType,raycastType);

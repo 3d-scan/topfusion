@@ -85,9 +85,17 @@ struct TopFuApp
 
         for (int i = 0; !exit_ && !viz.wasStopped(); ++i)
         {
-            bool has_frame = capture_.grab(depth, image);
+            /*bool has_frame = capture_.grab(depth, image);
             if (!has_frame)
-                return std::cout << "Can't grab" << std::endl, false;
+                return std::cout << "Can't grab" << std::endl, false;*/
+			char filename[100];
+			char filename1[100];
+			sprintf(filename,"E:\\Teddy\\Frames\\%04d.pgm",i);
+			sprintf(filename1,"E:\\Teddy\\Frames\\%04d.ppm",i);
+			//std::cout<<filename<<std::endl;
+			depth = cv::imread(filename,CV_16U);
+			image = cv::imread(filename1);
+
 
             depth_device_.upload(depth.data, depth.step, depth.rows, depth.cols);
 
@@ -101,7 +109,7 @@ struct TopFuApp
                 show_raycasted(topfu);
 
             show_depth(depth);
-            //cv::imshow("Image", image);
+            cv::imshow("Image", image);
 
             if (!iteractive_mode_)
                 viz.setViewerPose(topfu.getCameraPose());

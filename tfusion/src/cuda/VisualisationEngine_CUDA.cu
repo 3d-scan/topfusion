@@ -134,10 +134,10 @@ void VisualisationEngine_CUDA<TVoxel, TIndex>::CreateExpectedDepths(const Scene<
 
 	RenderState_VH* renderState_vh = (RenderState_VH*)renderState;
 
-	Matrix4f pose(pose_.matrix(0,0),pose_.matrix(0,1),pose_.matrix(0,2),pose_.matrix(0,3),
-		pose_.matrix(1,0),pose_.matrix(1,1),pose_.matrix(1,2),pose_.matrix(1,3),
-		pose_.matrix(2,0),pose_.matrix(2,1),pose_.matrix(2,2),pose_.matrix(2,3),
-		pose_.matrix(3,0),pose_.matrix(3,1),pose_.matrix(3,2),pose_.matrix(3,3));
+	Matrix4f pose(pose_.matrix(0,0),pose_.matrix(1,0),pose_.matrix(2,0),pose_.matrix(3,0),
+		pose_.matrix(0,1),pose_.matrix(1,1),pose_.matrix(2,1),pose_.matrix(3,1),
+		pose_.matrix(0,2),pose_.matrix(1,2),pose_.matrix(2,2),pose_.matrix(3,2),
+		pose_.matrix(0,3),pose_.matrix(1,3),pose_.matrix(2,3),pose_.matrix(3,3));
 
 	Vector4f intr(intr_.fx,intr_.fy,intr_.cx,intr_.cy);
 	//go through list of visible 8x8x8 blocks
@@ -235,12 +235,13 @@ static void RenderImage_common(const tfusion::Scene<Voxel_s, VoxelBlockHash> *sc
 		// pointsRay = renderState->forwardProjection->GetData(MEMORYDEVICE_CUDA);
 		// pointsRay = renderState->forwardProjection.ptr();
 	// } else {
-		//GenericRaycast(scene, imgSize, invM, intrinsics, renderState, false);
+		GenericRaycast(scene, imgSize, pose, intrinsics, renderState, false);
 		// pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
 	Vector4f *pointsRay = renderState->raycastResult.ptr();
 	// }
 
-	Vector3f lightSource = -Vector3f(invM.getColumn(2));
+	Vector3f lightSource = -Vector3f(pose.getColumn(2));
+
 
 	Vector4u *outRendering = outputImage.ptr();
 
@@ -328,6 +329,7 @@ void CreateICPMaps_common(const Scene<TVoxel, TIndex> *scene, Matrix4f pose,Vect
 	Matrix4f invM = pose;
 
 	GenericRaycast(scene, imgSize, invM, intr, renderState, true);
+	//GenericRaycast(scene, imgSize, invM, intr, renderState, false);
 	// trackingState->pose_pointCloud->SetFrom(trackingState->pose_d);
 
 	// Vector4f *pointsMap = trackingState->pointCloud->locations->GetData(MEMORYDEVICE_CUDA);
@@ -337,21 +339,23 @@ void CreateICPMaps_common(const Scene<TVoxel, TIndex> *scene, Matrix4f pose,Vect
 	// Vector4f *pointsRay = renderState->raycastResult->GetData(MEMORYDEVICE_CUDA);
 	Vector4f *pointsRay = renderState->raycastResult.ptr();
 	Vector3f lightSource = -Vector3f(invM.getColumn(2));
+	//Vector3f lightSource = Vector3f(0.f,0.f,0.f);
 
 	dim3 cudaBlockSize(16, 12);
 	dim3 gridSize((int)ceil((float)imgSize.x / (float)cudaBlockSize.x), (int)ceil((float)imgSize.y / (float)cudaBlockSize.y));
 
 	// if (view->calib.intrinsics_d.FocalLengthSignsDiffer())
-	if(false)
-	{
-		renderICP_device<true> <<<gridSize, cudaBlockSize>>>(pointsMap, normalsMap, pointsRay,
+
+		if(false)
+		{
+			renderICP_device<true> <<<gridSize, cudaBlockSize>>>(pointsMap, normalsMap, pointsRay,
 			scene->sceneParams->voxelSize, imgSize, lightSource);
-	}
-	else
-	{
-		renderICP_device<false> <<<gridSize, cudaBlockSize>>>(pointsMap, normalsMap, pointsRay,
+		}
+		else
+		{
+			renderICP_device<false> <<<gridSize, cudaBlockSize>>>(pointsMap, normalsMap, pointsRay,
 			scene->sceneParams->voxelSize, imgSize, lightSource);
-	}
+		}
 	ORcudaKernelCheck;
 }
 
@@ -485,7 +489,7 @@ void VisualisationEngine_CUDA<TVoxel, TIndex>::CreateICPMaps(const Scene<TVoxel,
 
 
 	// CreateICPMaps_common(scene, view, trackingState, renderState);
-	CreateICPMaps_common(scene,pose,intr,points,normals,renderState);
+	CreateICPMaps_common(scene,pose_,intr,points,normals,renderState);
 }
 
 // template<class TVoxel, class TIndex>

@@ -16,6 +16,11 @@ namespace tfusion
                 return;
 
             int value = src(y, x);
+			/*if(value >=2047 || value <=0)
+			{
+				dst(y,x) = (short)-1;
+				return;
+			}*/
 
             int tx = min (x - ksz / 2 + ksz, src.cols - 1);
             int ty = min (y - ksz / 2 + ksz, src.rows - 1);
@@ -232,8 +237,8 @@ namespace tfusion
                 float3 v10 = reproj(x, y+1, z10);
 
                 float3 n = normalized( cross (v01 - v00, v10 - v00) );
-                normals(y, x) = make_float4(-n.x, -n.y, -n.z, 0.f);
-                points(y, x) = make_float4(v00.x, v00.y, v00.z, 0.f);
+                normals(y, x) = make_float4(-n.x, -n.y, -n.z, 1.0f);
+                points(y, x) = make_float4(v00.x, v00.y, v00.z, 1.0f);
             }
         }
     }
@@ -267,7 +272,9 @@ namespace tfusion
                 float lambda = sqrtf (xl * xl + yl * yl + 1);
 
                 //dists(y, x) = __float2half_rn(depth(y, x) * lambda * 0.001f); //meters
-				dists(y, x) = (depth(y, x) * lambda * 0.001f); //meters
+				//dists(y, x) = (depth(y,x)>=2047 || depth(y,x) <=0 ) ? -1.0f : (depth(y, x) * lambda * 0.001f); //meters
+				//dists(y, x) = (depth(y, x) / lambda )* 0.001f;
+				dists(y,x) = (depth(y,x)>=2047 || depth(y,x) <=0 ) ? -1.0f :depth(y,x)* 0.001f;
             }
         }
     }
@@ -367,7 +374,7 @@ namespace tfusion
             if (!isnan(d00.x * d01.x * d10.x * d11.x))
             {
                 float3 d = (d00 + d01 + d10 + d11) * 0.25f;
-                vdst(y, x) = make_float4(d.x, d.y, d.z, 0.f);
+                vdst(y, x) = make_float4(d.x, d.y, d.z, 1.0f);
 
                 float3 n00 = tr(nsrc(ys+0, xs+0));
                 float3 n01 = tr(nsrc(ys+0, xs+1));

@@ -322,35 +322,35 @@ _CPU_AND_GPU_CODE_ inline void drawPixelColour(DEVICEPTR(Vector4u) & dest, const
 }
 
 
-template<class TVoxel, class TIndex>
-_CPU_AND_GPU_CODE_ inline void processPixelICP(DEVICEPTR(Vector4f) &pointsMap, DEVICEPTR(Vector4f) &normalsMap,
-	const THREADPTR(Vector3f) & point, bool foundPoint, const CONSTPTR(TVoxel) *voxelData, const CONSTPTR(typename TIndex::IndexData) *voxelIndex,
-	float voxelSize, const THREADPTR(Vector3f) &lightSource)
-{
-	Vector3f outNormal;
-	float angle;
-
-	computeNormalAndAngle<TVoxel, TIndex>(foundPoint, point, voxelData, voxelIndex, lightSource, outNormal, angle);
-
-	if (foundPoint)
-	{
-		Vector4f outPoint4;
-		outPoint4.x = point.x * voxelSize; outPoint4.y = point.y * voxelSize;
-		outPoint4.z = point.z * voxelSize; outPoint4.w = 1.0f;
-		pointsMap = outPoint4;
-
-		Vector4f outNormal4;
-		outNormal4.x = outNormal.x; outNormal4.y = outNormal.y; outNormal4.z = outNormal.z; outNormal4.w = 0.0f;
-		normalsMap = outNormal4;
-	}
-	else
-	{
-		Vector4f out4;
-		out4.x = 0.0f; out4.y = 0.0f; out4.z = 0.0f; out4.w = -1.0f;
-
-		pointsMap = out4; normalsMap = out4;
-	}
-}
+//template<class TVoxel, class TIndex>
+//_CPU_AND_GPU_CODE_ inline void processPixelICP(DEVICEPTR(Vector4f) &pointsMap, DEVICEPTR(Vector4f) &normalsMap,
+//	const THREADPTR(Vector3f) & point, bool foundPoint, const CONSTPTR(TVoxel) *voxelData, const CONSTPTR(typename TIndex::IndexData) *voxelIndex,
+//	float voxelSize, const THREADPTR(Vector3f) &lightSource)
+//{
+//	Vector3f outNormal;
+//	float angle;
+//
+//	computeNormalAndAngle<TVoxel, TIndex>(foundPoint, point, voxelData, voxelIndex, lightSource, outNormal, angle);
+//
+//	if (foundPoint)
+//	{
+//		Vector4f outPoint4;
+//		outPoint4.x = point.x * voxelSize; outPoint4.y = point.y * voxelSize;
+//		outPoint4.z = point.z * voxelSize; outPoint4.w = 1.0f;
+//		pointsMap = outPoint4;
+//
+//		Vector4f outNormal4;
+//		outNormal4.x = outNormal.x; outNormal4.y = outNormal.y; outNormal4.z = outNormal.z; outNormal4.w = 0.0f;
+//		normalsMap = outNormal4;
+//	}
+//	else
+//	{
+//		Vector4f out4;
+//		out4.x = 0.0f; out4.y = 0.0f; out4.z = 0.0f; out4.w = -1.0f;
+//
+//		pointsMap = out4; normalsMap = out4;
+//	}
+//}
 
 template<bool useSmoothing, bool flipNormals>
 _CPU_AND_GPU_CODE_ inline void processPixelICP(DEVICEPTR(Vector4f) *pointsMap, DEVICEPTR(Vector4f) *normalsMap,
@@ -364,6 +364,7 @@ _CPU_AND_GPU_CODE_ inline void processPixelICP(DEVICEPTR(Vector4f) *pointsMap, D
 	Vector4f point = pointsRay[locId];
 
 	bool foundPoint = point.w > 0.0f;
+	//bool foundPoint = point.w == 0.0f;
 
 	computeNormalAndAngle<useSmoothing, flipNormals>(foundPoint, x, y, pointsRay, lightSource, voxelSize, imgSize, outNormal, angle);
 
@@ -371,17 +372,25 @@ _CPU_AND_GPU_CODE_ inline void processPixelICP(DEVICEPTR(Vector4f) *pointsMap, D
 	{
 		Vector4f outPoint4;
 		outPoint4.x = point.x * voxelSize; outPoint4.y = point.y * voxelSize;
-		outPoint4.z = point.z * voxelSize; outPoint4.w = point.w;//outPoint4.w = 1.0f;
+		outPoint4.z = point.z * voxelSize; //outPoint4.w = point.w;
+		outPoint4.w = 1.0f;
 		pointsMap[locId] = outPoint4;
 
 		Vector4f outNormal4;
-		outNormal4.x = outNormal.x; outNormal4.y = outNormal.y; outNormal4.z = outNormal.z; outNormal4.w = 0.0f;
+		outNormal4.x = outNormal.x; outNormal4.y = outNormal.y; outNormal4.z = outNormal.z; outNormal4.w = 1.0f;
 		normalsMap[locId] = outNormal4;
 	}
 	else
 	{
 		Vector4f out4;
-		out4.x = 0.0f; out4.y = 0.0f; out4.z = 0.0f; out4.w = -1.0f;
+		float qnan;
+#if defined(__CUDACC__) && defined(__CUDA_ARCH__)
+		qnan = __int_as_float(0x7fffffff);
+#else
+		qnan = 0.0f;
+#endif
+		//out4.x = 0.0f; out4.y = 0.0f; out4.z = 0.0f; out4.w = -1.0f;
+		 out4.x = qnan; out4.y = qnan; out4.z =qnan; out4.w =qnan;
 
 		pointsMap[locId] = out4; normalsMap[locId] = out4;
 	}

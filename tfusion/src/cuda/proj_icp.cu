@@ -81,7 +81,7 @@ namespace tfusion
         int ComputeIcpHelper::find_coresp(int x, int y, float3& nd, float3& d, float3& s) const
         {
             s = tr(vcurr(y, x));
-            if (isnan(s.x))
+            if (isnan(s.x))// || s.z >=2.047)
                 return 40;
 
             s = aff * s;
@@ -89,7 +89,16 @@ namespace tfusion
             float2 coo = proj(s);
             if (s.z <= 0 || coo.x < 0 || coo.y < 0 || coo.x >= cols || coo.y >= rows)
                 return 80;
-
+			/*float2 fl_coo;
+			fl_coo.x = floor(coo.x);
+			fl_coo.y = floor(coo.y);
+			float4 aa = tex2D(vprev_tex,fl_coo.x-1,fl_coo.y);
+			float4 bb = tex2D(vprev_tex,fl_coo.x+1,fl_coo.y);
+			float4 cc = tex2D(vprev_tex,fl_coo.x,fl_coo.y+1);
+			float4 dd = tex2D(vprev_tex,fl_coo.x,fl_coo.y-1);
+			float4 ee = tex2D(vprev_tex,fl_coo.x,fl_coo.y);
+			if(isnan(aa.w) || isnan(bb.w) || isnan(cc.w) || isnan(dd.w) || isnan(ee.w))
+				return 70;*/
             d = tr(tex2D(vprev_tex, coo.x, coo.y));
             if (isnan(d.x))
                 return 120;

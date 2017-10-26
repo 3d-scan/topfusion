@@ -87,18 +87,24 @@ void tfusion::SceneReconstructionEngine_CUDA<TVoxel,TIndex>::AllocateSceneFromDe
 
 	if (resetVisibleList) renderState_vh->noVisibleEntries = 0;
 
-	Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+	/*Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
 		pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
 		pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
-		pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+		pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));*/
+	Matrix4f M_d(pose.matrix(0,0),pose.matrix(1,0),pose.matrix(2,0),pose.matrix(3,0),
+		pose.matrix(0,1),pose.matrix(1,1),pose.matrix(2,1),pose.matrix(3,1),
+		pose.matrix(0,2),pose.matrix(1,2),pose.matrix(2,2),pose.matrix(3,2),
+		pose.matrix(0,3),pose.matrix(1,3),pose.matrix(2,3),pose.matrix(3,3));
 	// M_d = trackingState->pose_d->GetM(); M_d.inv(invM_d);
 	// Matrix4f M_d(pose);
-	Affine3f pose_inv = pose.inv();
+	//Affine3f pose_inv = pose.inv();
 
-	Matrix4f invM_d(pose_inv.matrix(0,0),pose_inv.matrix(0,1),pose_inv.matrix(0,2),pose_inv.matrix(0,3),
+	Matrix4f invM_d;
+	M_d.inv(invM_d);
+	/*Matrix4f invM_d(pose_inv.matrix(0,0),pose_inv.matrix(0,1),pose_inv.matrix(0,2),pose_inv.matrix(0,3),
 		pose_inv.matrix(1,0),pose_inv.matrix(1,1),pose_inv.matrix(1,2),pose_inv.matrix(1,3),
 		pose_inv.matrix(2,0),pose_inv.matrix(2,1),pose_inv.matrix(2,2),pose_inv.matrix(2,3),
-		pose_inv.matrix(3,0),pose_inv.matrix(3,1),pose_inv.matrix(3,2),pose_inv.matrix(3,3));
+		pose_inv.matrix(3,0),pose_inv.matrix(3,1),pose_inv.matrix(3,2),pose_inv.matrix(3,3));*/
 	
 	// projParams_d = Vector4f(intr.fx,intr.fy,intr.cx,intr.cy);
 	Vector4f projParams_d(intr.fx,intr.fy,intr.cx,intr.cy);
@@ -199,10 +205,14 @@ void tfusion::SceneReconstructionEngine_CUDA<TVoxel,TIndex>::IntegrateIntoScene(
 	if(renderState_vh->noVisibleEntries == 0) return;
 
 	// M_d = trackingState->pose_d->GetM();
-	Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
+	/*Matrix4f M_d(pose.matrix(0,0),pose.matrix(0,1),pose.matrix(0,2),pose.matrix(0,3),
 		pose.matrix(1,0),pose.matrix(1,1),pose.matrix(1,2),pose.matrix(1,3),
 		pose.matrix(2,0),pose.matrix(2,1),pose.matrix(2,2),pose.matrix(2,3),
-		pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));
+		pose.matrix(3,0),pose.matrix(3,1),pose.matrix(3,2),pose.matrix(3,3));*/
+	Matrix4f M_d(pose.matrix(0,0),pose.matrix(1,0),pose.matrix(2,0),pose.matrix(3,0),
+		pose.matrix(0,1),pose.matrix(1,1),pose.matrix(2,1),pose.matrix(3,1),
+		pose.matrix(0,2),pose.matrix(1,2),pose.matrix(2,2),pose.matrix(3,2),
+		pose.matrix(0,3),pose.matrix(1,3),pose.matrix(2,3),pose.matrix(3,3));
 	// Matrix4f M_d(pose);
 	// if (TVoxel::hasColorInformation) M_rgb = view->calib.trafo_rgb_to_depth.calib_inv * M_d;
 
